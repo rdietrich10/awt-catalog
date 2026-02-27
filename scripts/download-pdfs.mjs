@@ -86,7 +86,7 @@ Google Drive requires sign-in for these files. Manual download:
 3. Open: https://drive.google.com/file/d/1Xe8J1BUQpLFFDqxotEPiHPVyQsmZmXqM (LNAD)
 4. Download each (or right-click Nutriments folder → Download)
 5. Place PDFs in: ${path.relative(rootDir, downloadDir)}/
-6. Rename to match: AlphaBioMed_mixing_instructions.pdf, HC360_LNAD_Protocol.pdf, etc.
+6. Rename to match: AlphaBioMed_mixing_instructions.pdf, Americare_LNAD_Protocol.pdf, etc.
    (See scripts/pdf-sources.json for exact filenames)
 7. Run: npm run extract:pdfs
 `);

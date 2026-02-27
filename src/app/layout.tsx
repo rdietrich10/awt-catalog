@@ -22,15 +22,15 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "HealthCode360 | Peptide Catalog",
-    template: "%s | HealthCode360",
+    default: "Americare Wellness | Peptide Catalog",
+    template: "%s | Americare Wellness",
   },
   description:
-    "HealthCode360 peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Provider-guided, precision formulated.",
+    "Americare Wellness peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Provider-guided, precision formulated.",
   keywords: [
     "peptides",
     "peptide catalog",
-    "HealthCode360",
+    "Americare Wellness",
     "semaglutide",
     "tirzepatide",
     "BPC-157",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     "growth hormone",
     "clinical grade",
   ],
-  authors: [{ name: "HealthCode360" }],
-  creator: "HealthCode360",
-  publisher: "HealthCode360",
+  authors: [{ name: "Americare Wellness" }],
+  creator: "Americare Wellness",
+  publisher: "Americare Wellness",
   formatDetection: {
     email: false,
     address: false,
@@ -52,24 +52,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "HealthCode360 Peptide Catalog",
-    title: "HealthCode360 | Peptide Catalog",
+    siteName: "Americare Wellness Peptide Catalog",
+    title: "Americare Wellness | Peptide Catalog",
     description:
-      "HealthCode360 peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision peptides. Elevated outcomes.",
+      "Americare Wellness peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision peptides. Elevated outcomes.",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "HealthCode360 Peptide Catalog — Precision peptides. Elevated outcomes.",
+        alt: "Americare Wellness Peptide Catalog — Precision peptides. Elevated outcomes.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HealthCode360 | Peptide Catalog",
+    title: "Americare Wellness | Peptide Catalog",
     description:
-      "HealthCode360 peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision peptides. Elevated outcomes.",
+      "Americare Wellness peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision peptides. Elevated outcomes.",
     images: ["/images/og-image.png"],
   },
   robots: {

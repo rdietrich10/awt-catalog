@@ -2,7 +2,7 @@
 
 /**
  * Generate Sema GLP-1 product image using fal.ai Nano Banana Pro.
- * Uses the edit endpoint with HealthCode360 logo. Silver/chrome accents only.
+ * Uses the edit endpoint with Americare Wellness logo. Silver/chrome accents only.
  * Reads FAL_API_KEY or FAL_KEY from .env (use --env-file=.env).
  *
  * Usage: node --env-file=.env scripts/generate-sema-image.mjs
@@ -17,13 +17,13 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = `${__dirname}/..`;
 const OUTPUT_PATH = `${ROOT}/public/images/products/sema-glp-1.png`;
-const LOGO_PATH = `${ROOT}/public/images/hc360-logo.png`;
+const LOGO_PATH = `${ROOT}/public/images/americare-logo.png`;
 
-const PROMPT = `Create an ultra-premium editorial product photograph of a pharmaceutical vial. Use the HealthCode360 logo from this image on the vial label.
+const PROMPT = `Create an ultra-premium editorial product photograph of a pharmaceutical vial. Use the Americare Wellness logo from this image on the vial label.
 
 Reference the label layout: top band with logo, middle white section with product name, bottom band with key details. Apply this structure for Sema GLP-1:
 
-Top band (silver/chrome or charcoal): HealthCode360 logo in white
+Top band (silver/chrome or charcoal): Americare Wellness logo in white
 Middle white section: "MEDICAL GRADE" in small grey text, then "Sema GLP-1" in large bold black, "Semaglutide" in grey below
 Bottom band (silver/chrome or charcoal): "10 mg | 20 mg • GLP-1 Receptor Agonist • Weight Management • Subcutaneous • Once weekly"
 
@@ -62,7 +62,7 @@ async function main() {
   fal.config({ credentials });
 
   console.log("📤 Uploading logo to fal storage...");
-  const logoUrl = await uploadFile(LOGO_PATH, "hc360-logo.png");
+  const logoUrl = await uploadFile(LOGO_PATH, "americare-logo.png");
 
   console.log("🎨 Generating Sema GLP-1 image via Nano Banana Pro (edit): logo only, new bottle...");
   const result = await fal.subscribe("fal-ai/nano-banana-pro/edit", {

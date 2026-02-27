@@ -1,14 +1,14 @@
-# HealthCode360 Documentation
+# Americare Wellness Documentation
 
-Documentation for the HealthCode360 peptide catalog and related products.
+Documentation for the Americare Wellness peptide catalog and related products.
 
 ## Structure
 
 | Folder | Description | Source |
 |--------|-------------|--------|
-| [hc360-ifu](./hc360-ifu/) | Peptide Instructions for Use (IFU) | Internal |
+| [americare-ifu](./americare-ifu/) | Peptide Instructions for Use (IFU) | Internal |
 | [alphabiomed-mixing](./alphabiomed-mixing/) | AlphaBioMed peptide mixing/reconstitution instructions | [Google Drive](https://drive.google.com/file/d/1S1qX3AnGRL1n3XwRPn96v5WbWBDcQ9j3/view?usp=sharing) |
-| [hc360-lnad](./hc360-lnad/) | HC360 Lathmized NAD+ (LNAD) protocol | [Google Drive](https://drive.google.com/file/d/1Xe8J1BUQpLFFDqxotEPiHPVyQsmZmXqM/view?usp=sharing) |
+| [americare-lnad](./americare-lnad/) | Americare Wellness Lathmized NAD+ (LNAD) protocol | [Google Drive](https://drive.google.com/file/d/1Xe8J1BUQpLFFDqxotEPiHPVyQsmZmXqM/view?usp=sharing) |
 | [nutriments](./nutriments/) | Nutriments marketing & sales sheets (PlanetOne) | [Google Drive Folder](https://drive.google.com/drive/folders/107Ko2gfe7uGjVJLdWbp4fl8JGHcQupl1?usp=sharing) |
 
 ## Extracting PDF Content

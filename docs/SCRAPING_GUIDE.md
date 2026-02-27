@@ -18,7 +18,7 @@ npm run extract:pdfs
 
 This extracts text from each PDF and writes/updates the corresponding markdown files in `docs/`.
 
-**Note:** AlphaBioMed mixing instructions and HC360 LNAD Protocol may fail with "Invalid PDF structure"—re-download those manually or copy-paste content if needed.
+**Note:** AlphaBioMed mixing instructions and Americare Wellness LNAD Protocol may fail with "Invalid PDF structure"—re-download those manually or copy-paste content if needed.
 
 **Manual download (if automated download fails):**
 
@@ -33,7 +33,7 @@ Place all PDFs in `docs/downloads/` and rename to match the expected filenames (
 | Source | Filename in docs/downloads/ |
 |--------|-----------------------------|
 | AlphaBioMed mixing | `AlphaBioMed_mixing_instructions.pdf` |
-| HC360 LNAD | `HC360_LNAD_Protocol.pdf` |
+| Americare LNAD | `Americare_LNAD_Protocol.pdf` |
 | Price List | `NUTRIMENTS_PlanetOne_2025_Price_List.pdf` |
 | 15 Day Cleanse Sales | `15_Day_Total_Body_Cleanse_Sales.pdf` |
 | 15 Day Cleanse FAQ | `15_Day_Total_Body_Cleanse_FAQ.pdf` |

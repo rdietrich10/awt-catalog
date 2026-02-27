@@ -1,6 +1,6 @@
-# HC360 Lathmized NAD+ (LNAD) Protocol
+# Americare Wellness Lathmized NAD+ (LNAD) Protocol
 
-> **Source:** [HC360 LNAD Protocol_.pdf](https://drive.google.com/file/d/1Xe8J1BUQpLFFDqxotEPiHPVyQsmZmXqM/view?usp=sharing)  
+> **Source:** [Americare LNAD Protocol_.pdf](https://drive.google.com/file/d/1Xe8J1BUQpLFFDqxotEPiHPVyQsmZmXqM/view?usp=sharing)  
 > **Note:** PDF extraction failed (Invalid PDF structure). Content below is derived from general Lathmized NAD+ protocols. Manually copy content from the PDF to replace this section if needed.
 
 ---
@@ -26,7 +26,7 @@ Lathmized NAD+ is a stabilized form of NAD+ (nicotinamide adenine dinucleotide) 
 
 ### Dosing
 
-- Dosing is product-specific. Refer to the HC360 LNAD product label and your provider's guidance.
+- Dosing is product-specific. Refer to the Americare Wellness LNAD product label and your provider's guidance.
 - Start at the recommended dose; do not exceed without provider approval.
 
 ---
@@ -56,7 +56,7 @@ Some protocols use intermittent dosing (e.g., 5 days on / 2 days off) to support
 
 ## Placeholder for PDF Content
 
-*When the PDF content is extracted, add the following sections from the official HC360 LNAD Protocol:*
+*When the PDF content is extracted, add the following sections from the official Americare Wellness LNAD Protocol:*
 
 - [ ] Exact dosing instructions
 - [ ] Formulation details (strength, volume)

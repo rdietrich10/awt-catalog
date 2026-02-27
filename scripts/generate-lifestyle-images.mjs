@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Generate lifestyle images for HealthCode360 catalog using fal.ai Nano Banana Pro.
+ * Generate lifestyle images for Americare Wellness catalog using fal.ai Nano Banana Pro.
  * Text-to-image generation (no base image needed — unlike product label edits).
  * Reads FAL_API_KEY or FAL_KEY from .env.
  *

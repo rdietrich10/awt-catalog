@@ -15,7 +15,7 @@ export default function QualityControlPage() {
           Quality Control & Chain of Custody
         </h1>
         <p className="text-body-sm text-brand-silver mb-8">
-          HealthCode360 partners with third-party laboratories to verify quality, purity, and absence of contamination for our compounded peptides. Chain of custody reports and certificates of analysis will be available here once provided.
+          Americare Wellness partners with third-party laboratories to verify quality, purity, and absence of contamination for our compounded peptides. Chain of custody reports and certificates of analysis will be available here once provided.
         </p>
         <div className="border border-brand-border p-8 text-center">
           <p className="text-body-sm text-brand-silver-dark">
