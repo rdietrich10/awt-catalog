@@ -51,7 +51,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
       />
       {isWeightManagement && <BMICalculator />}
       <div className={isWeightManagement ? undefined : "mt-6"}>
-        <PlaceholderImage src={category.image} aspectRatio="16/9" label={category.name} />
+        <PlaceholderImage src={category.image} aspectRatio="16/9" label={category.name} sizes="(max-width: 1280px) 100vw, 1280px" priority />
       </div>
       <div className="mt-8">
         <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white">

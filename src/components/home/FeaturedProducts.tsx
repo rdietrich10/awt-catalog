@@ -22,7 +22,6 @@ function ProductCard({ product, priority }: { product: Product; priority?: boole
           label={product.name}
           sizes="256px"
           priority={priority}
-          unoptimized
         />
         <div className="p-4">
           <Badge className="mb-2">{product.category}</Badge>

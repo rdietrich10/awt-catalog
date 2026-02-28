@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { getBlurDataURL } from "@/lib/blurData";
 
 export interface QualityReport {
   src: string;
@@ -14,6 +15,7 @@ interface QualityReportGridProps {
 
 function ReportCard({ report }: { report: QualityReport }) {
   const [expanded, setExpanded] = useState(false);
+  const blurData = getBlurDataURL(report.src);
 
   return (
     <>
@@ -29,6 +31,8 @@ function ReportCard({ report }: { report: QualityReport }) {
             fill
             className="object-contain p-2"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            placeholder={blurData ? "blur" : "empty"}
+            blurDataURL={blurData}
           />
         </div>
         <div className="border-t border-brand-border px-3 py-2">

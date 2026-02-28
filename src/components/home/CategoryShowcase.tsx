@@ -32,6 +32,7 @@ export function CategoryShowcase() {
                 aspectRatio="16/9"
                 label={cat.name}
                 context={cat.name}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="p-4">
                 <h3 className="font-display text-body-sm uppercase tracking-wider text-brand-white group-hover:text-brand-gold transition-colors">

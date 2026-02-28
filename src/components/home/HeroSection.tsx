@@ -35,6 +35,8 @@ export function HeroSection() {
           aspectRatio="full"
           label="Hero"
           context="Vial"
+          priority
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/80 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-transparent to-brand-black/40" />

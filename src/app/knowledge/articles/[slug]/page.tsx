@@ -52,7 +52,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           { label: article.title },
         ]}
       />
-      <PlaceholderImage src={article.image} aspectRatio="16/9" label={article.title} className="mt-6" />
+      <PlaceholderImage src={article.image} aspectRatio="16/9" label={article.title} sizes="(max-width: 768px) 100vw, 768px" priority className="mt-6" />
       <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mt-8">
         {article.title}
       </h1>

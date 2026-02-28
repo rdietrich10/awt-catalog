@@ -5,7 +5,6 @@ import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { search } from "@/lib/search";
 import type { SearchResult } from "@/lib/search";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Badge } from "@/components/ui/Badge";
 
 function SearchResultsInner() {

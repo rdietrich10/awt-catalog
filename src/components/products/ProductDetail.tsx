@@ -48,7 +48,6 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
             aspectRatio="16/9"
             label={product.name}
             priority
-            unoptimized
             sizes="(max-width: 1024px) 100vw, 66vw"
             className="mb-6"
           />

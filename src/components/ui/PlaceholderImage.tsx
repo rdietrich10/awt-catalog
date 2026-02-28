@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { getBlurDataURL } from "@/lib/blurData";
 
 interface PlaceholderImageProps {
   /** Optional image URL. When provided, renders real image; falls back to placeholder on error. */
@@ -17,8 +18,6 @@ interface PlaceholderImageProps {
   sizes?: string;
   /** Preload above-the-fold images for faster LCP */
   priority?: boolean;
-  /** Skip Next.js optimization — faster for API-served images */
-  unoptimized?: boolean;
   className?: string;
 }
 
@@ -64,12 +63,12 @@ export function PlaceholderImage({
   context,
   sizes,
   priority = false,
-  unoptimized = false,
   className,
 }: PlaceholderImageProps) {
   const [imageError, setImageError] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const showRealImage = src && !imageError;
+
+  const blurDataURL = src ? getBlurDataURL(src) : undefined;
 
   const aspectClassMap = {
     "16/9": "aspect-video",
@@ -95,14 +94,11 @@ export function PlaceholderImage({
           src={src}
           alt={label || ""}
           fill
-          className={cn(
-            "object-cover transition-opacity duration-300 ease-out",
-            loaded ? "opacity-100" : "opacity-0"
-          )}
+          className="object-cover"
           sizes={sizes}
           priority={priority}
-          unoptimized={unoptimized}
-          onLoad={() => setLoaded(true)}
+          placeholder={blurDataURL ? "blur" : "empty"}
+          blurDataURL={blurDataURL}
           onError={() => setImageError(true)}
         />
       </div>

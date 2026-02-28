@@ -15,6 +15,7 @@
     "generate:lifestyle-images": "node --env-file=.env scripts/generate-lifestyle-images.mjs",
     "generate:og-image": "node --env-file=.env scripts/generate-og-image.mjs",
     "generate:rfk-image": "node --env-file=.env scripts/generate-rfk-article-image.mjs",
+    "generate:blur-placeholders": "node scripts/generate-blur-placeholders.mjs",
     "download:pdfs": "node scripts/download-pdfs.mjs",
     "extract:pdfs": "node scripts/extract-pdf-content.mjs",
     "deploy": "vercel --prod",
@@ -39,6 +40,7 @@
     "eslint-config-next": "14.2.18",
     "pdf-parse": "^2.4.5",
     "postcss": "^8",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.14",
     "typescript": "^5",
     "vercel": "^39.0.0"

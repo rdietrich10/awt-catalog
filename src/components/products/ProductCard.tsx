@@ -27,7 +27,6 @@ export const ProductCard = memo(function ProductCard({ product, priority = false
           label={product.name}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
           priority={priority}
-          unoptimized
         />
         <div className="p-4">
           <Badge variant={product.isBlend ? "blend" : "default"} className="mb-2">

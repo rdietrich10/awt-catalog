@@ -43,7 +43,7 @@ export function InterestListItem({ product, onRemove, className }: InterestListI
             src={product.image}
             aspectRatio="1/1"
             label={product.name}
-            unoptimized
+            sizes="96px"
           />
         </div>
         <div className="flex-1 min-w-0">

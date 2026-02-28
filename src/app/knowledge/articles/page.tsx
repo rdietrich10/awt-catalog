@@ -25,7 +25,7 @@ export default function ArticlesPage() {
             href={`/knowledge/articles/${a.slug}`}
             className="block border border-brand-border bg-brand-black hover:border-brand-grey-500 transition-colors overflow-hidden"
           >
-            <PlaceholderImage src={a.image} aspectRatio="4/3" label={a.title} />
+            <PlaceholderImage src={a.image} aspectRatio="4/3" label={a.title} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
             <div className="p-4">
               <h2 className="font-display text-body-sm uppercase tracking-wider text-brand-white">
                 {a.title}

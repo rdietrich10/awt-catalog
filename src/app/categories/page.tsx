@@ -26,7 +26,7 @@ export default function CategoriesPage() {
             href={`/categories/${cat.slug}`}
             className="group block border border-brand-border bg-brand-black hover:border-brand-grey-500 transition-colors overflow-hidden"
           >
-            <PlaceholderImage src={cat.image} aspectRatio="16/9" label={cat.name} />
+            <PlaceholderImage src={cat.image} aspectRatio="16/9" label={cat.name} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
             <div className="p-6">
               <h2 className="font-display text-lg uppercase tracking-wider text-brand-white group-hover:opacity-80">
                 {cat.name}
