@@ -14,6 +14,7 @@
     "generate:image-manifest": "node scripts/generate-image-manifest.mjs",
     "generate:lifestyle-images": "node --env-file=.env scripts/generate-lifestyle-images.mjs",
     "generate:og-image": "node --env-file=.env scripts/generate-og-image.mjs",
+    "generate:rfk-image": "node --env-file=.env scripts/generate-rfk-article-image.mjs",
     "download:pdfs": "node scripts/download-pdfs.mjs",
     "extract:pdfs": "node scripts/extract-pdf-content.mjs",
     "deploy": "vercel --prod",

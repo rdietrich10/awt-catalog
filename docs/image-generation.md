@@ -1,6 +1,6 @@
 # Image Generation
 
-All images are generated using [fal.ai](https://fal.ai) with the **Nano Banana Pro** (`fal-ai/nano-banana-pro`) model.
+All images are generated using [fal.ai](https://fal.ai) with the **Nano Banana 2** (`fal-ai/nano-banana-2`) model (upgraded from Nano Banana Pro).
 
 ## OG / Social Sharing Image
 
@@ -59,18 +59,44 @@ The script passes the base bottle image and prompts the model to update only the
 
 ## Lifestyle Image Generation
 
-Lifestyle images (hero, category, article) are generated using the same fal.ai **Nano Banana Pro** model in **text-to-image** mode (no base image — unlike product label edits).
+Lifestyle images (hero, category, article) are generated using the same fal.ai **Nano Banana 2** model in **text-to-image** mode (no base image — unlike product label edits). Article-specific images with reference photos use the **edit** endpoint (`fal-ai/nano-banana-2/edit`).
 
 ### Visual Direction
 
 All lifestyle images share a cohesive visual DNA:
 
-- **Palette:** Strictly monochromatic — black, charcoal, grey, silver, white. No color.
+- **Palette:** Predominantly monochromatic — black, charcoal, grey, silver, white — with optional **selective color accents** (see below).
 - **Photography style:** Editorial, Hasselblad H6D-400c quality. Shallow depth of field where appropriate.
 - **Lighting:** Dramatic, directional. Sculpted key light with controlled shadows. Rim/hair light for separation.
 - **Mood:** Pharmaceutical precision meets luxury design. Aesop meets Porsche Design meets Apple.
 - **Humans (when present):** Shot from behind, in profile, or abstracted (torso, hands, silhouette). Never stock-photo smiling.
 - **Environments:** Ultra-clean. Concrete, glass, steel, marble. Modern architecture. Minimalist labs.
+
+### Selective Color — "Pops of Color"
+
+Images are predominantly monochromatic (black, charcoal, grey, silver, white), but a **single, deliberate pop of color** is permitted per image to draw the viewer's eye to the conceptual focus of the composition.
+
+**Rules:**
+
+1. The pop of color is always **semantic** — it represents the subject matter, area of study, or emotional focus of the image. Color is information, not decoration.
+2. Everything outside the focal element remains desaturated, silver-toned black and white.
+3. The color should feel like a carefully placed graphic element against the silver-toned photograph — bold and intentional, never accidental or subtle.
+4. Only one color family per image. No rainbow, no multi-color.
+
+**Aesthetic references:** Milton Glaser, Saul Bass — graphical, bold, classic-modern/postmodern. Think iconic poster design applied to editorial photography.
+
+**Examples of semantic color use:**
+
+| Context | Color Accent | What It Represents |
+|---------|-------------|-------------------|
+| RFK Jr. on Joe Rogan | Deep red velvet curtain | The iconic JRE set — a moment of political consequence |
+| Healing / tissue recovery | Warm amber or gold overlay on the body | The site of healing, where biology is at work |
+| Growth hormone / recomposition | Cool electric blue contour on musculature | The body as engineered system, cellular precision |
+| Longevity / anti-aging | Soft emerald or jade on cellular structures | Renewal, vitality, the living architecture of cells |
+| Weight management | Warm coral or terracotta on the figure in motion | Metabolic energy, transformation |
+| Wellness / mood | Pale violet or lavender in ambient light | Calm, emotional equilibrium, neurochemistry |
+
+These are guidelines, not rigid rules. The color should always serve the story the image is telling.
 
 ### Generate Lifestyle Images
 
@@ -117,3 +143,17 @@ The image paths are already wired into the codebase:
   - Used in `/knowledge/articles`, `/knowledge/articles/[slug]`
 
 All `PlaceholderImage` components gracefully fall back to the vial silhouette placeholder when images are not yet generated.
+
+---
+
+## Article-Specific Image Generation
+
+Some articles require reference-based image generation (e.g., a real person's likeness). These use the **edit** endpoint with uploaded reference images.
+
+### RFK Jr. — Peptide Regulation 2026
+
+```bash
+npm run generate:rfk-image
+```
+
+Uses the official HHS portrait (`public/images/articles/rfk-jr-hhs-portrait.jpg`) as a reference input to generate an editorial image of RFK Jr. speaking on the Joe Rogan Experience. Demonstrates the **selective color** technique: monochromatic subject with a bold red velvet curtain as the sole color accent.

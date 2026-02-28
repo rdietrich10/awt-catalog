@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Generate lifestyle images for AW Therapeutics catalog using fal.ai Nano Banana Pro.
+ * Generate lifestyle images for AW Therapeutics catalog using fal.ai Nano Banana 2.
  * Text-to-image generation (no base image needed — unlike product label edits).
  * Reads FAL_API_KEY or FAL_KEY from .env.
  *
@@ -24,9 +24,9 @@ const ROOT = `${__dirname}/..`;
 // Shared visual direction (appended to every prompt for cohesion)
 // ---------------------------------------------------------------------------
 const SHARED_DIRECTION = `\n\nIMPORTANT GLOBAL STYLE CONSTRAINTS — apply to the entire image:
-Strictly monochromatic palette: black, charcoal, grey, silver, white ONLY.
-Absolutely no color — no blue, no teal, no orange, no green, no warm skin tones.
-The image should feel desaturated and silver-toned throughout.
+Predominantly monochromatic palette: black, charcoal, grey, silver, white.
+The image should feel desaturated and silver-toned throughout — EXCEPT where a deliberate "pop of color" is specified in the prompt. If no color accent is specified, the image must be strictly monochromatic with absolutely no color.
+When a pop of color IS specified, it should be the ONLY color in the image — bold, graphic, and intentional. Everything else remains desaturated black and white. Inspired by Milton Glaser and Saul Bass: color as information, not decoration.
 No text, no logos, no watermarks, no UI elements.
 Photography quality: Hasselblad H6D-400c sensor fidelity, micro-contrast, lifted blacks, recovered highlights, D65 6500K white balance.
 Mood: pharmaceutical precision meets luxury design. Aesop meets Porsche Design meets Apple.`;

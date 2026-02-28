@@ -61,7 +61,7 @@ function baseLayout(title: string, content: string): string {
               <p style="margin:0;font-size:11px;color:${BRAND.silverDim};line-height:1.6;">
                 AW Therapeutics &mdash; Americare Wellness, LLC<br/>
                 2828 S Seacrest Blvd #213, Boynton Beach, FL 33435<br/>
-                (561) 213-0134 &middot; member@americarewellness.com
+                (561) 536-3166 &middot; info@awclinics.com
               </p>
               <p style="margin:12px 0 0;font-size:10px;color:${BRAND.silverDim};">
                 This is an internal notification. Do not forward.

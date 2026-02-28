@@ -3,7 +3,7 @@ import { contactEmailHtml, inquiryEmailHtml } from "./email-templates";
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const FROM_EMAIL = "chris@postscarcity.ai";
-const TO_EMAIL = "kmcneal@awclinics.com";
+const TO_EMAIL = "info@awclinics.com";
 const BCC_EMAILS = ["cjohndesign@gmail.com"];
 
 if (!SENDGRID_API_KEY) {
