@@ -9,12 +9,16 @@ interface InquirySubmissionProps {
   items: Product[];
   onSubmit: (data: EmailCaptureData) => void;
   onCancel?: () => void;
+  loading?: boolean;
+  error?: string | null;
 }
 
 export function InquirySubmission({
   items,
   onSubmit,
   onCancel,
+  loading = false,
+  error = null,
 }: InquirySubmissionProps) {
   return (
     <div className="space-y-6 sm:space-y-8">
@@ -48,6 +52,8 @@ export function InquirySubmission({
           onSubmit={onSubmit}
           onCancel={onCancel}
           submitLabel="Submit Inquiry"
+          loading={loading}
+          error={error}
         />
       </section>
     </div>

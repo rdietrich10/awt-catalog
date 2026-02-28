@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, AlertTriangle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 interface FormState {
@@ -35,16 +35,43 @@ const inputStyles =
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (error) setError(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError(
+        "Looks like we lost connection for a sec. Check your internet and give it another go!"
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -74,6 +101,13 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {error && (
+        <div className="flex items-start gap-3 border border-red-500/30 bg-red-500/5 p-4">
+          <AlertTriangle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+          <p className="text-body-sm text-red-300">{error}</p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
@@ -84,6 +118,7 @@ export function ContactForm() {
             id="name"
             name="name"
             required
+            disabled={loading}
             value={form.name}
             onChange={handleChange}
             placeholder="Your full name"
@@ -99,6 +134,7 @@ export function ContactForm() {
             id="email"
             name="email"
             required
+            disabled={loading}
             value={form.email}
             onChange={handleChange}
             placeholder="you@example.com"
@@ -116,6 +152,7 @@ export function ContactForm() {
             type="tel"
             id="phone"
             name="phone"
+            disabled={loading}
             value={form.phone}
             onChange={handleChange}
             placeholder="(555) 123-4567"
@@ -130,6 +167,7 @@ export function ContactForm() {
             id="subject"
             name="subject"
             required
+            disabled={loading}
             value={form.subject}
             onChange={handleChange}
             className={`${inputStyles} appearance-none`}
@@ -152,6 +190,7 @@ export function ContactForm() {
           id="message"
           name="message"
           required
+          disabled={loading}
           rows={5}
           value={form.message}
           onChange={handleChange}
@@ -160,8 +199,15 @@ export function ContactForm() {
         />
       </div>
 
-      <Button type="submit" variant="cta" size="lg" icon={Send} iconPosition="right">
-        Send Message
+      <Button
+        type="submit"
+        variant="cta"
+        size="lg"
+        icon={loading ? Loader2 : Send}
+        iconPosition="right"
+        disabled={loading}
+      >
+        {loading ? "Sending..." : "Send Message"}
       </Button>
     </form>
   );

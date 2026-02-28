@@ -43,9 +43,47 @@ export function InterestListContent() {
     setShowEmailCapture(true);
   };
 
-  const handleEmailCaptureSubmit = (_data: EmailCaptureData) => {
-    setShowEmailCapture(false);
-    setShowSuccess(true);
+  const [inquiryLoading, setInquiryLoading] = useState(false);
+  const [inquiryError, setInquiryError] = useState<string | null>(null);
+
+  const handleEmailCaptureSubmit = async (data: EmailCaptureData) => {
+    setInquiryLoading(true);
+    setInquiryError(null);
+
+    try {
+      const res = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          products: items.map((p) => ({
+            name: p.name,
+            slug: p.slug,
+            category: p.category,
+          })),
+        }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        setInquiryError(
+          result.error || "Something went wrong. Please try again."
+        );
+        return;
+      }
+
+      setShowEmailCapture(false);
+      setShowSuccess(true);
+    } catch {
+      setInquiryError(
+        "Lost connection mid-flight! Check your internet and try again — your list is safe."
+      );
+    } finally {
+      setInquiryLoading(false);
+    }
   };
 
   const handleCloseSuccess = () => {
@@ -217,6 +255,8 @@ export function InterestListContent() {
           items={items}
           onSubmit={handleEmailCaptureSubmit}
           onCancel={() => setShowEmailCapture(false)}
+          loading={inquiryLoading}
+          error={inquiryError}
         />
       </Modal>
 

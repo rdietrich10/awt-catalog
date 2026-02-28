@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Send } from "lucide-react";
+import { Send, Loader2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export interface EmailCaptureData {
@@ -14,6 +14,8 @@ interface EmailCaptureFormProps {
   onSubmit: (data: EmailCaptureData) => void;
   onCancel?: () => void;
   submitLabel?: string;
+  loading?: boolean;
+  error?: string | null;
 }
 
 const inputBase =
@@ -23,6 +25,8 @@ export function EmailCaptureForm({
   onSubmit,
   onCancel,
   submitLabel = "Submit Inquiry",
+  loading = false,
+  error = null,
 }: EmailCaptureFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,13 +39,22 @@ export function EmailCaptureForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {error && (
+        <div className="flex items-start gap-3 border border-red-500/30 bg-red-500/5 p-3">
+          <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+          <p className="text-body-sm text-red-300">{error}</p>
+        </div>
+      )}
+
       <div>
-        <label htmlFor="name" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
+        <label htmlFor="capture-name" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
           Name
         </label>
         <input
-          id="name"
+          id="capture-name"
           type="text"
+          required
+          disabled={loading}
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Your name"
@@ -49,12 +62,14 @@ export function EmailCaptureForm({
         />
       </div>
       <div>
-        <label htmlFor="email" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
+        <label htmlFor="capture-email" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
           Email
         </label>
         <input
-          id="email"
+          id="capture-email"
           type="email"
+          required
+          disabled={loading}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
@@ -62,12 +77,13 @@ export function EmailCaptureForm({
         />
       </div>
       <div>
-        <label htmlFor="phone" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
+        <label htmlFor="capture-phone" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
           Phone <span className="text-brand-silver-dark">(optional)</span>
         </label>
         <input
-          id="phone"
+          id="capture-phone"
           type="tel"
+          disabled={loading}
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="(555) 123-4567"
@@ -79,17 +95,19 @@ export function EmailCaptureForm({
           type="submit"
           variant="cta"
           size="lg"
-          icon={Send}
+          icon={loading ? Loader2 : Send}
           iconPosition="right"
           className="w-full"
+          disabled={loading}
         >
-          {submitLabel}
+          {loading ? "Submitting..." : submitLabel}
         </Button>
         {onCancel && (
           <button
             type="button"
             onClick={onCancel}
-            className="block w-full text-center text-caption text-brand-silver-dark hover:text-brand-silver transition-colors py-2"
+            disabled={loading}
+            className="block w-full text-center text-caption text-brand-silver-dark hover:text-brand-silver transition-colors py-2 disabled:opacity-50"
           >
             Cancel
           </button>
