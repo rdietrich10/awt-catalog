@@ -3,13 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Home } from "lucide-react";
+import { ClipboardList } from "lucide-react";
 import { Logo } from "./Logo";
 import { useInterestList } from "@/context/InterestListContext";
 import { cn } from "@/lib/utils";
 
-const navLinks: { href: string; label: string; icon?: typeof Home }[] = [
-  { href: "/", label: "Home", icon: Home },
+const navLinks = [
   { href: "/products", label: "Catalog" },
   { href: "/categories", label: "Categories" },
   { href: "/knowledge", label: "Knowledge" },
@@ -46,27 +45,23 @@ export function Navbar() {
             />
           </form>
           <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white transition-colors flex items-center gap-1.5"
-                  aria-label={link.label === "Home" ? "Go to home page" : undefined}
-                >
-                  {Icon && <Icon className="w-4 h-4" aria-hidden />}
-                  {link.label}
-                </Link>
-              );
-            })}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
             <Link
               href="/interest-list"
-              className="relative text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white transition-colors"
+              className="relative text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white transition-colors flex items-center gap-1.5"
             >
+              <ClipboardList className="w-4 h-4 text-brand-gold" aria-hidden />
               My List
               {items.length > 0 && (
-                <span className="absolute -top-1 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-brand-gold text-brand-black text-caption">
+                <span className="absolute -top-1 -right-5 flex h-4 w-4 items-center justify-center rounded-full bg-brand-gold text-brand-black text-caption">
                   {items.length}
                 </span>
               )}
@@ -102,28 +97,25 @@ export function Navbar() {
               />
             </form>
             <div className="flex flex-col gap-2">
-              {navLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white flex items-center gap-2"
-                  >
-                    {Icon && <Icon className="w-4 h-4" aria-hidden />}
-                    {link.label}
-                  </Link>
-                );
-              })}
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
                 href="/interest-list"
                 onClick={() => setMobileOpen(false)}
-                className="relative text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white inline-flex items-center"
+                className="text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white inline-flex items-center gap-2"
               >
+                <ClipboardList className="w-4 h-4 text-brand-gold" aria-hidden />
                 My List
                 {items.length > 0 && (
-                  <span className="ml-2 flex h-4 w-4 items-center justify-center rounded-full bg-brand-gold text-brand-black text-caption font-display shrink-0">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-brand-gold text-brand-black text-caption font-display shrink-0">
                     {items.length}
                   </span>
                 )}

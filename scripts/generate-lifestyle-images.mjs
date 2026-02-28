@@ -24,12 +24,22 @@ const ROOT = `${__dirname}/..`;
 // Shared visual direction (appended to every prompt for cohesion)
 // ---------------------------------------------------------------------------
 const SHARED_DIRECTION = `\n\nIMPORTANT GLOBAL STYLE CONSTRAINTS — apply to the entire image:
-Predominantly monochromatic palette: black, charcoal, grey, silver, white.
-The image should feel desaturated and silver-toned throughout — EXCEPT where a deliberate "pop of color" is specified in the prompt. If no color accent is specified, the image must be strictly monochromatic with absolutely no color.
-When a pop of color IS specified, it should be the ONLY color in the image — bold, graphic, and intentional. Everything else remains desaturated black and white. Inspired by Milton Glaser and Saul Bass: color as information, not decoration.
-No text, no logos, no watermarks, no UI elements.
-Photography quality: Hasselblad H6D-400c sensor fidelity, micro-contrast, lifted blacks, recovered highlights, D65 6500K white balance.
-Mood: pharmaceutical precision meets luxury design. Aesop meets Porsche Design meets Apple.`;
+
+BASE PHOTOGRAPHY:
+The base image MUST be beautiful, realistic, high-end editorial photography — Hasselblad H6D-400c sensor fidelity, micro-contrast, lifted blacks, recovered highlights, D65 6500K white balance. Photorealistic. NOT illustrated, NOT posterized, NOT halftone, NOT graphic art.
+The photograph is strictly monochromatic — black, charcoal, grey, silver, white. Completely desaturated and silver-toned throughout. No color in the photography itself.
+
+BRAND RULE — "Clinical Annotation Overlay":
+OVERLAID on top of the photograph are precise AMBER-GOLD (#D4AF37) clinical annotation marks — as if a lab scientist, medical researcher, or clinical reviewer physically marked up a printed photograph with a gold felt-tip pen during a review session. These annotation marks are:
+- GEOMETRIC and INTENTIONAL: rectangles/boxes drawn around areas of interest, straight underlines, bracket marks [ ], corner crop marks ⌐ ⌐, precise arrows pointing to key details, margin tick marks, measurement lines, circle marks around focal elements. These are DELIBERATE, SYSTEMATIC annotation marks — graphic design, not artistic expression.
+- Multiple annotation elements per image — at least 5-8 distinct gold marks (boxes, lines, arrows, brackets, corner marks) spread across the composition. The image should feel THOROUGHLY annotated and reviewed.
+- Think: a forensic scientist marking evidence, a radiologist circling findings on a scan, an engineer red-lining a blueprint, a lab director reviewing batch documentation — but in gold instead of red.
+- The marks have the character of a felt-tip marker on glossy photo paper — slightly textured, mostly opaque, with occasional pen-pressure variation. Some marks may have small drips or ink pooling where the pen paused.
+- The annotation marks should circle, box, underline, or point to the conceptual focus of each image — whatever element the prompt identifies as the subject or focal point.
+- The amber-gold annotation marks are the ONLY color in the image. Everything in the photograph itself remains monochrome.
+
+No text, no logos, no watermarks, no UI elements, no words or letters.
+Mood: pharmaceutical precision meets luxury editorial meets clinical review. Aesop meets Porsche Design meets Apple.`;
 
 // ---------------------------------------------------------------------------
 // All 14 lifestyle images
@@ -40,11 +50,13 @@ const LIFESTYLE_IMAGES = [
     slug: "hero",
     outputDir: `${ROOT}/public/images/lifestyle`,
     aspectRatio: "21:9",
-    prompt: `Ultra-wide cinematic editorial photograph. A lone figure stands in a vast, ultra-modern architectural space — floor-to-ceiling glass walls, polished concrete floors, and clean geometric lines. The figure is seen from behind at mid-distance, silhouetted against diffused morning light streaming through the glass. They wear minimal athletic clothing in charcoal grey. The space is monumental and serene — think Tadao Ando meets Apple Park. A single pharmaceutical vial sits on a sleek black plinth in the foreground, slightly out of focus, catching a razor-thin specular highlight.
+    prompt: `Ultra-wide cinematic editorial photograph. A lone figure stands in a vast, ultra-modern architectural atrium — floor-to-ceiling glass walls, polished concrete floors, soaring geometric columns, and clean modernist lines reminiscent of Tadao Ando or John Pawson. The figure is seen from behind at mid-distance, silhouetted against diffused morning light pouring through the glass facade. They wear minimal athletic clothing in charcoal grey. The space is monumental and serenely empty — negative space everywhere.
 
-Strictly monochromatic: black, charcoal, grey, silver, white only. No color. No blue, no warm tones.
+In the foreground, slightly off-center on a sleek matte-black plinth, sits a single pharmaceutical vial. The vial contains a luminous AMBER-GOLD liquid — rich, warm, and glowing with inner light. This amber-gold is the ONLY color in the entire image. The liquid catches a razor-thin specular highlight, creating a warm beacon of light that draws the eye immediately. The gold reads as precious, clinical, and transformative — like liquid gold. A faint warm caustic light pattern from the vial spills subtly onto the black plinth surface.
 
-Photography: Hasselblad H6D-400c, HC 35mm f/3.5, f/4, 1/60s, ISO 100. Natural key light from glass wall camera-right. Gentle fill from polished concrete floor. Atmospheric haze for depth. Lifted blacks, matte film tone, micro-contrast. Ultra-wide 21:9 composition with generous negative space. Cinematic, aspirational, editorially minimal. Aesop meets Porsche Design meets Apple.`,
+CRITICAL COLOR RULE: The ENTIRE image is strictly monochromatic — black, charcoal, grey, silver, white — EXCEPT for the amber-gold liquid inside the vial. No other color anywhere. No blue, no teal, no warm skin tones, no colored lighting. The figure, architecture, floor, sky, everything is desaturated silver-grey. Only the vial's liquid is colored.
+
+Photography: Hasselblad H6D-400c, HC 35mm f/3.5, f/4, 1/60s, ISO 100. Natural key light from glass wall camera-right. Gentle fill from polished concrete floor. Atmospheric haze for depth. Lifted blacks, matte film tone, micro-contrast. Ultra-wide 21:9 composition with generous negative space. Depth of field isolates the vial sharply in the foreground with the figure softly in the mid-ground. Cinematic, aspirational, editorially minimal. Aesop meets Porsche Design meets Apple.`,
   },
   {
     slug: "value-props",
@@ -197,7 +209,7 @@ async function downloadImage(url) {
 async function generateImage(entry) {
   const fullPrompt = entry.prompt + SHARED_DIRECTION;
 
-  const result = await fal.subscribe("fal-ai/nano-banana-pro", {
+  const result = await fal.subscribe("fal-ai/nano-banana-2", {
     input: {
       prompt: fullPrompt,
       num_images: 1,

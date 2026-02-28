@@ -63,40 +63,45 @@ Lifestyle images (hero, category, article) are generated using the same fal.ai *
 
 ### Visual Direction
 
-All lifestyle images share a cohesive visual DNA:
+All lifestyle images share a cohesive visual DNA built on two layers: **monochromatic photography** and **clinical gold annotation overlay**.
 
-- **Palette:** Predominantly monochromatic — black, charcoal, grey, silver, white — with optional **selective color accents** (see below).
-- **Photography style:** Editorial, Hasselblad H6D-400c quality. Shallow depth of field where appropriate.
+#### Layer 1 — Base Photography
+
+- **Palette:** Strictly monochromatic — black, charcoal, grey, silver, white. Completely desaturated.
+- **Photography style:** Editorial, Hasselblad H6D-400c quality. Photorealistic. Shallow depth of field where appropriate.
 - **Lighting:** Dramatic, directional. Sculpted key light with controlled shadows. Rim/hair light for separation.
 - **Mood:** Pharmaceutical precision meets luxury design. Aesop meets Porsche Design meets Apple.
 - **Humans (when present):** Shot from behind, in profile, or abstracted (torso, hands, silhouette). Never stock-photo smiling.
 - **Environments:** Ultra-clean. Concrete, glass, steel, marble. Modern architecture. Minimalist labs.
 
-### Selective Color — "Pops of Color"
+#### Layer 2 — Clinical Annotation Overlay ("Pops of Color")
 
-Images are predominantly monochromatic (black, charcoal, grey, silver, white), but a **single, deliberate pop of color** is permitted per image to draw the viewer's eye to the conceptual focus of the composition.
+Overlaid on the monochromatic photography are precise **amber-gold (#D4AF37)** clinical annotation marks — as if a lab scientist or medical reviewer physically marked up a printed photograph with a gold felt-tip pen. These marks are the **only color** in the image.
 
 **Rules:**
 
-1. The pop of color is always **semantic** — it represents the subject matter, area of study, or emotional focus of the image. Color is information, not decoration.
-2. Everything outside the focal element remains desaturated, silver-toned black and white.
-3. The color should feel like a carefully placed graphic element against the silver-toned photograph — bold and intentional, never accidental or subtle.
-4. Only one color family per image. No rainbow, no multi-color.
+1. Annotations are **geometric and intentional**: rectangles/boxes around areas of interest, straight underlines, bracket marks, corner crop marks, precise arrows, margin tick marks, measurement lines, circle marks. This is **graphic design, not artistic expression** — structured, systematic, deliberate.
+2. Multiple annotation elements per image — **at least 5-8 distinct gold marks** spread across the composition. The image should feel thoroughly reviewed and annotated.
+3. Marks are drawn around the **conceptual focus** of the image — whatever the subject is, the gold annotations identify, highlight, and call attention to it.
+4. The marks have the character of a felt-tip marker on glossy photo paper — slightly textured, mostly opaque, with occasional pen-pressure variation and minor drips where the pen paused.
+5. Only amber-gold (#D4AF37). No other colors. Everything in the photography itself remains monochrome.
 
-**Aesthetic references:** Milton Glaser, Saul Bass — graphical, bold, classic-modern/postmodern. Think iconic poster design applied to editorial photography.
+**Think:** A forensic scientist marking evidence on a photograph. A radiologist circling findings on a scan. An engineer red-lining a blueprint. A lab director reviewing batch documentation — but in gold instead of red.
 
-**Examples of semantic color use:**
+**Aesthetic references:** Clinical review documents, QA inspection photography, architectural red-lines, forensic annotation — combined with the luxury editorial sensibility of the brand.
 
-| Context | Color Accent | What It Represents |
-|---------|-------------|-------------------|
-| RFK Jr. on Joe Rogan | Deep red velvet curtain | The iconic JRE set — a moment of political consequence |
-| Healing / tissue recovery | Warm amber or gold overlay on the body | The site of healing, where biology is at work |
-| Growth hormone / recomposition | Cool electric blue contour on musculature | The body as engineered system, cellular precision |
-| Longevity / anti-aging | Soft emerald or jade on cellular structures | Renewal, vitality, the living architecture of cells |
-| Weight management | Warm coral or terracotta on the figure in motion | Metabolic energy, transformation |
-| Wellness / mood | Pale violet or lavender in ambient light | Calm, emotional equilibrium, neurochemistry |
+**Examples of annotation use:**
 
-These are guidelines, not rigid rules. The color should always serve the story the image is telling.
+| Context | Annotation Focus | What the Marks Highlight |
+|---------|-----------------|------------------------|
+| Browse & Select | Hand pointing at vial | Gold box around selected vial, arrows to fingertip, corner crops, measurement ticks |
+| Physician Review | Vial being examined | Gold circle around vial, brackets on physician's hands, arrows to stethoscope |
+| Shipping / Delivery | Open package on doorstep | Gold rectangle around box, individual boxes on each vial, arrows pointing inward |
+| Hero | Vial on plinth | Gold accent on the vial liquid — the focal product (hero may use amber liquid as pop instead of annotation marks) |
+| Category images | The human subject | Gold annotation marks identifying the area of treatment/focus |
+| Article images | The key concept | Gold marks boxing/circling the primary subject of the article |
+
+The hero image is an exception — it uses **amber-gold liquid inside the vial** as the pop of color rather than annotation marks, for maximum cinematic impact at the largest display size.
 
 ### Generate Lifestyle Images
 
