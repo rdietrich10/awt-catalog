@@ -117,6 +117,19 @@ export default function HowItWorksPage() {
           </p>
         </div>
 
+        <div className="mt-4 border border-brand-border bg-brand-black p-6 sm:p-8">
+          <h2 className="font-display text-sm uppercase tracking-wider text-brand-gold mb-3">
+            Telehealth Disclosure
+          </h2>
+          <p className="text-body-sm text-brand-silver">
+            This process constitutes a telehealth-enabled medical service. A
+            provider-patient relationship may be established where required by
+            applicable state and federal regulations. All clinical decisions are
+            made independently by the reviewing provider in accordance with
+            accepted standards of care.
+          </p>
+        </div>
+
         <Link
           href="/"
           className="mt-10 inline-block text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
