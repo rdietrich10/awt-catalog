@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+
+export const metadata: Metadata = {
+  title: "How It Works",
+  description:
+    "Learn how our advanced therapeutics ordering process works — from product selection and medical screening to provider review, invoicing, and fulfillment.",
+  alternates: { canonical: "/how-it-works" },
+};
 
 const steps = [
   {

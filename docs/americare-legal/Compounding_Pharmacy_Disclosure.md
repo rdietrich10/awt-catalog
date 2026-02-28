@@ -2,7 +2,7 @@ __Compounding Pharmacy Disclosure__
 
 __Important Information About Compounded Medications__
 
-Certain medications or therapeutic products available through our services may be prepared by a licensed compounding pharmacy pursuant to a prescription issued by a licensed healthcare provider affiliated with __Americare Wellness LLC__\.
+Certain medications or therapeutic products available through our services may be prepared by a licensed compounding pharmacy pursuant to a prescription issued by a licensed healthcare provider affiliated with __Americare Wellness, LLC (d/b/a AW Therapeutics)__\.
 
 Compounded medications are customized formulations that are prepared by pharmacists to meet the unique clinical needs of an individual patient when commercially available products may not be appropriate or available\.
 

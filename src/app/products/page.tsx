@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { products } from "@/data/products";
 import { PHYSICIAN_REVIEW_PRODUCTS_INTRO, PROTOCOL_STATEMENT } from "@/data/copy";
 import { FilterableProductGrid } from "@/components/products/FilterableProductGrid";
+
+export const metadata: Metadata = {
+  title: "Product Catalog",
+  description:
+    "Browse AW Therapeutics Medical Grade compounds for weight management, recovery, longevity, and hormonal health. Provider-guided, precision formulated.",
+  alternates: { canonical: "/products" },
+};
 
 export default function ProductsPage() {
   return (

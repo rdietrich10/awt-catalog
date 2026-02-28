@@ -1,10 +1,10 @@
-# Americare Wellness Peptide Catalog — PRD
+# AW Therapeutics Peptide Catalog — PRD
 
 Version 2.2 | Effective Date: January 31, 2026
 
 ## Overview
 
-A sophisticated, Porsche Design-inspired peptide catalog for Americare Wellness. Stark black/white/grey aesthetic, full-bleed placeholder imagery, 26 hardcoded products across 6 categories, filterable catalog, interest list flow, and knowledge base. No auth, no checkout.
+A sophisticated, Porsche Design-inspired peptide catalog for AW Therapeutics. Stark black/white/grey aesthetic, full-bleed placeholder imagery, 26 hardcoded products across 6 categories, filterable catalog, interest list flow, and knowledge base. No auth, no checkout.
 
 ## Product Catalog
 

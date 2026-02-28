@@ -1,36 +1,49 @@
-import Link from "next/link";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
-import { PHYSICIAN_REVIEW_PROVIDER_GUIDED } from "@/data/copy";
+import {
+  FlaskConical,
+  Stethoscope,
+  ShieldCheck,
+  CalendarOff,
+  Clock,
+  Truck,
+} from "lucide-react";
+import { WHY_AW_PROPS } from "@/data/copy";
 
-const props = [
-  { title: "Clinical Grade", desc: "Pharmacy-compounded to clinical standards." },
-  { title: "Provider Guided", desc: PHYSICIAN_REVIEW_PROVIDER_GUIDED },
-  { title: "Precision Formulated", desc: "Consistent dosing, clear protocols." },
-];
+const icons = [FlaskConical, Stethoscope, ShieldCheck, CalendarOff, Clock, Truck] as const;
 
 export function ValueProps() {
   return (
-    <section className="py-16 md:py-24 border-t border-brand-border">
+    <section className="py-16 md:py-24 bg-brand-grey-900/40">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <PlaceholderImage src="/images/lifestyle/value-props.png" aspectRatio="16/9" label="Value Props" context="Clinical" className="mb-12" />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {props.map((p) => (
-            <div key={p.title} className="text-center">
-              <h3 className="font-display text-body-sm uppercase tracking-widest text-brand-white">
-                {p.title}
-              </h3>
-              <p className="mt-2 text-body-sm text-brand-silver">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-12 text-center">
-          <Link
-            href="/contact"
-            className="text-body-sm font-display tracking-wider uppercase text-brand-silver hover:text-brand-white transition-colors"
-          >
-            Contact Us
-          </Link>
+        <h2 className="font-display text-2xl md:text-3xl font-medium tracking-tight text-brand-white uppercase text-center">
+          Why AW Therapeutics
+        </h2>
+        <p className="mt-3 text-body-sm text-brand-silver text-center max-w-xl mx-auto">
+          Quality, transparency, and physician oversight in every order.
         </p>
+
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          {WHY_AW_PROPS.map((prop, i) => {
+            const Icon = icons[i];
+            return (
+              <div
+                key={prop.title}
+                className="flex gap-4 p-6 border border-brand-border rounded-sm hover:border-brand-grey-500 transition-colors"
+              >
+                <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full border border-brand-border">
+                  <Icon className="w-5 h-5 text-brand-gold" aria-hidden />
+                </div>
+                <div>
+                  <h3 className="font-display text-body-sm uppercase tracking-wider text-brand-white">
+                    {prop.title}
+                  </h3>
+                  <p className="mt-1 text-body-sm text-brand-silver leading-relaxed">
+                    {prop.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

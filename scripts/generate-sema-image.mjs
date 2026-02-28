@@ -2,7 +2,7 @@
 
 /**
  * Generate Sema GLP-1 product image using fal.ai Nano Banana Pro.
- * Uses the edit endpoint with Americare Wellness logo. Silver/chrome accents only.
+ * Uses the edit endpoint with AW Therapeutics logo. Silver/chrome accents only.
  * Reads FAL_API_KEY or FAL_KEY from .env (use --env-file=.env).
  *
  * Usage: node --env-file=.env scripts/generate-sema-image.mjs
@@ -19,11 +19,11 @@ const ROOT = `${__dirname}/..`;
 const OUTPUT_PATH = `${ROOT}/public/images/products/sema-glp-1.png`;
 const LOGO_PATH = `${ROOT}/public/images/americare-logo.png`;
 
-const PROMPT = `Create an ultra-premium editorial product photograph of a pharmaceutical vial. Use the Americare Wellness logo from this image on the vial label.
+const PROMPT = `Create an ultra-premium editorial product photograph of a pharmaceutical vial. Use the AW Therapeutics logo from this image on the vial label.
 
 Reference the label layout: top band with logo, middle white section with product name, bottom band with key details. Apply this structure for Sema GLP-1:
 
-Top band (silver/chrome or charcoal): Americare Wellness logo in white
+Top band (silver/chrome or charcoal): AW Therapeutics logo in white
 Middle white section: "MEDICAL GRADE" in small grey text, then "Sema GLP-1" in large bold black, "Semaglutide" in grey below
 Bottom band (silver/chrome or charcoal): "10 mg | 20 mg • GLP-1 Receptor Agonist • Weight Management • Subcutaneous • Once weekly"
 

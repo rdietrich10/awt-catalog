@@ -1,7 +1,40 @@
-import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import type { Metadata } from "next";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { COMPANY_ADDRESS, COMPANY_PHONE, COMPANY_EMAIL } from "@/data/company";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { ContactForm } from "@/components/contact/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with AW Therapeutics. Reach us by email, phone, or mail for questions about products, orders, and support.",
+  alternates: { canonical: "/contact" },
+};
+
+const contactMethods = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: COMPANY_EMAIL,
+    href: `mailto:${COMPANY_EMAIL}`,
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: COMPANY_PHONE,
+    href: `tel:${COMPANY_PHONE.replace(/\D/g, "")}`,
+  },
+  {
+    icon: MapPin,
+    label: "Address",
+    value: COMPANY_ADDRESS,
+  },
+  {
+    icon: Clock,
+    label: "Response Time",
+    value: "Within 24 hours",
+  },
+];
 
 export default function ContactPage() {
   return (
@@ -12,54 +45,56 @@ export default function ContactPage() {
           { label: "Contact Us" },
         ]}
       />
-      <div className="mt-8 max-w-2xl">
-        <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mb-4">
-          Contact Us
+
+      <div className="mt-8">
+        <h1 className="font-display text-3xl md:text-4xl uppercase tracking-tight text-brand-white mb-4">
+          Get in Touch
         </h1>
-        <p className="text-body-sm text-brand-silver mb-8">
-          Have questions about our products or need assistance? Reach out—we&apos;re here to help.
+        <p className="text-body-sm text-brand-silver mb-12 max-w-xl">
+          Have questions about our products, need help with an order, or want to
+          learn more? Send us a message and our team will respond within 24 hours.
         </p>
-        <div className="space-y-6">
-          <a
-            href={`mailto:${COMPANY_EMAIL}`}
-            className="flex items-start gap-4 text-brand-silver hover:text-brand-white transition-colors group"
-          >
-            <Mail className="w-5 h-5 shrink-0 mt-0.5 text-brand-grey-500 group-hover:text-brand-silver" />
-            <div>
-              <p className="text-label font-display tracking-wider uppercase text-brand-silver-dark">
-                Email
-              </p>
-              <p className="text-body-sm mt-1">{COMPANY_EMAIL}</p>
-            </div>
-          </a>
-          <a
-            href={`tel:${COMPANY_PHONE.replace(/\D/g, "")}`}
-            className="flex items-start gap-4 text-brand-silver hover:text-brand-white transition-colors group"
-          >
-            <Phone className="w-5 h-5 shrink-0 mt-0.5 text-brand-grey-500 group-hover:text-brand-silver" />
-            <div>
-              <p className="text-label font-display tracking-wider uppercase text-brand-silver-dark">
-                Phone
-              </p>
-              <p className="text-body-sm mt-1">{COMPANY_PHONE}</p>
-            </div>
-          </a>
-          <div className="flex items-start gap-4 text-brand-silver">
-            <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-brand-grey-500" />
-            <div>
-              <p className="text-label font-display tracking-wider uppercase text-brand-silver-dark">
-                Address
-              </p>
-              <p className="text-body-sm mt-1">{COMPANY_ADDRESS}</p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <div className="lg:col-span-3">
+            <ContactForm />
+          </div>
+
+          <div className="lg:col-span-2">
+            <div className="border border-brand-border p-6 space-y-6">
+              <h2 className="font-display text-body-sm uppercase tracking-wider text-brand-white">
+                Contact Information
+              </h2>
+              {contactMethods.map(({ icon: Icon, label, value, href }) => {
+                const content = (
+                  <div className="flex items-start gap-4">
+                    <Icon className="w-5 h-5 shrink-0 mt-0.5 text-brand-gold" aria-hidden />
+                    <div>
+                      <p className="text-caption font-display tracking-wider uppercase text-brand-silver-dark">
+                        {label}
+                      </p>
+                      <p className="text-body-sm mt-0.5 text-brand-silver">{value}</p>
+                    </div>
+                  </div>
+                );
+
+                if (href) {
+                  return (
+                    <a
+                      key={label}
+                      href={href}
+                      className="block hover:opacity-80 transition-opacity"
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+
+                return <div key={label}>{content}</div>;
+              })}
             </div>
           </div>
         </div>
-        <Link
-          href="/products"
-          className="mt-10 inline-block text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
-        >
-          Browse our catalog
-        </Link>
       </div>
     </div>
   );

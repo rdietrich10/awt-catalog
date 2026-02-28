@@ -1,6 +1,6 @@
-# Americare Wellness Documentation
+# AW Therapeutics Documentation
 
-Documentation for the Americare Wellness peptide catalog and related products.
+Documentation for the AW Therapeutics peptide catalog and related products.
 
 ## Structure
 
@@ -8,7 +8,7 @@ Documentation for the Americare Wellness peptide catalog and related products.
 |--------|-------------|--------|
 | [americare-ifu](./americare-ifu/) | Peptide Instructions for Use (IFU) | Internal |
 | [alphabiomed-mixing](./alphabiomed-mixing/) | AlphaBioMed peptide mixing/reconstitution instructions | [Google Drive](https://drive.google.com/file/d/1S1qX3AnGRL1n3XwRPn96v5WbWBDcQ9j3/view?usp=sharing) |
-| [americare-lnad](./americare-lnad/) | Americare Wellness Lathmized NAD+ (LNAD) protocol | [Google Drive](https://drive.google.com/file/d/1Xe8J1BUQpLFFDqxotEPiHPVyQsmZmXqM/view?usp=sharing) |
+| [americare-lnad](./americare-lnad/) | AW Therapeutics Lathmized NAD+ (LNAD) protocol | [Google Drive](https://drive.google.com/file/d/1Xe8J1BUQpLFFDqxotEPiHPVyQsmZmXqM/view?usp=sharing) |
 | [nutriments](./nutriments/) | Nutriments marketing & sales sheets (PlanetOne) | [Google Drive Folder](https://drive.google.com/drive/folders/107Ko2gfe7uGjVJLdWbp4fl8JGHcQupl1?usp=sharing) |
 
 ## Extracting PDF Content

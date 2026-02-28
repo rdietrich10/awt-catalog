@@ -1,6 +1,6 @@
 __Telehealth & Medical Services Disclaimer__
 
-Medical services described on this website are provided through telehealth by licensed healthcare professionals affiliated with __Americare Wellness LLC__, a Florida\-licensed healthcare clinic\. Telehealth services are conducted in accordance with applicable Florida law, including Florida Statute §456\.47\.
+Medical services described on this website are provided through telehealth by licensed healthcare professionals affiliated with __Americare Wellness, LLC (d/b/a AW Therapeutics)__, a Florida\-licensed healthcare clinic\. Telehealth services are conducted in accordance with applicable Florida law, including Florida Statute §456\.47\.
 
 By submitting a request for products or services, you acknowledge and agree that:
 

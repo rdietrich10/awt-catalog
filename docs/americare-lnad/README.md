@@ -1,6 +1,6 @@
-# Americare Wellness Lathmized NAD+ (LNAD) Protocol
+# AW Therapeutics Lathmized NAD+ (LNAD) Protocol
 
-Protocol and usage guidelines for Americare Wellness Lathmized NAD+ formulations.
+Protocol and usage guidelines for AW Therapeutics Lathmized NAD+ formulations.
 
 **Source:** [Americare LNAD Protocol_.pdf](https://drive.google.com/file/d/1Xe8J1BUQpLFFDqxotEPiHPVyQsmZmXqM/view?usp=sharing)
 

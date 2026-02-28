@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { KnowledgeNav } from "@/components/knowledge/KnowledgeNav";
 import { protocolSections } from "@/data/protocols";
+
+export const metadata: Metadata = {
+  title: "Protocols",
+  description:
+    "Reconstitution, storage, injection technique, and usage protocols for therapeutic compounds, nutriments, and Lathmized NAD+.",
+  alternates: { canonical: "/knowledge/protocols" },
+};
 
 export default function ProtocolsPage() {
   return (
@@ -11,10 +20,12 @@ export default function ProtocolsPage() {
           { label: "Protocols" },
         ]}
       />
-      <div className="mt-8 max-w-3xl">
+      <div className="mt-8">
         <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mb-4">
           Protocols
         </h1>
+        <KnowledgeNav activeSection="protocols" />
+        <div className="max-w-3xl">
         <p className="text-body-sm text-brand-silver mb-12">
           Education on the use of therapeutic compounds, nutriments, and Lathmized NAD+. Always follow your provider&apos;s guidance and the product-specific instructions.
         </p>
@@ -42,6 +53,7 @@ export default function ProtocolsPage() {
         >
           ← Back to Knowledge Base
         </Link>
+        </div>
       </div>
     </div>
   );

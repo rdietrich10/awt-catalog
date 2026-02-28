@@ -1,7 +1,7 @@
 # Kent McNeal Requirements — Master Document
 
 > **Source:** 5 emails from kmcneal@awclinics.com (Feb 26–27, 2026)
-> **Contact:** Kent McNeal, CEO, Americare Wellness LLC
+> **Contact:** Kent McNeal, CEO, AW Therapeutics LLC
 > **Phone:** (561) 536-3166 | Mobile: (561) 213-0134
 > **Website:** www.awclinics.com
 

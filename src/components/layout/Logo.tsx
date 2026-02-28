@@ -6,7 +6,7 @@ export function Logo() {
       href="/"
       className="font-display text-xl md:text-2xl font-medium tracking-tight text-brand-white hover:opacity-80 transition-opacity"
     >
-      Americare Wellness
+      AW Therapeutics
     </Link>
   );
 }

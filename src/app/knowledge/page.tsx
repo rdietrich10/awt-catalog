@@ -1,52 +1,85 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { KnowledgeNav } from "@/components/knowledge/KnowledgeNav";
+import { articles } from "@/data/articles";
+import { faqItems } from "@/data/faq";
+
+export const metadata: Metadata = {
+  title: "Knowledge Base",
+  description:
+    "Educational articles, FAQ, protocols, and a glossary of therapeutic terms. Learn about advanced therapeutics, medication safety, reconstitution, and Medical Grade compounds.",
+  alternates: { canonical: "/knowledge" },
+};
 
 export default function KnowledgePage() {
+  const previewFaq = faqItems.slice(0, 4);
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mb-4">
         Knowledge Base
       </h1>
-      <p className="text-body-sm text-brand-silver mb-12 max-w-2xl">
-        FAQ, educational articles, protocols, and a glossary of therapeutic terms.
+      <p className="text-body-sm text-brand-silver mb-8 max-w-2xl">
+        Educational articles, FAQ, protocols, and a glossary of therapeutic terms.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <Link
-          href="/knowledge/faq"
-          className="block border border-brand-border p-8 hover:border-brand-grey-500 transition-colors"
-        >
-          <h2 className="font-display text-lg uppercase tracking-wider text-brand-white">FAQ</h2>
-          <p className="mt-2 text-body-sm text-brand-silver">
-            Common questions about our therapeutics, storage, and protocols.
-          </p>
-        </Link>
-        <Link
-          href="/knowledge/articles"
-          className="block border border-brand-border p-8 hover:border-brand-grey-500 transition-colors"
-        >
-          <h2 className="font-display text-lg uppercase tracking-wider text-brand-white">Articles</h2>
-          <p className="mt-2 text-body-sm text-brand-silver">
-            Educational content on how our therapeutics work and best practices.
-          </p>
-        </Link>
-        <Link
-          href="/knowledge/protocols"
-          className="block border border-brand-border p-8 hover:border-brand-grey-500 transition-colors"
-        >
-          <h2 className="font-display text-lg uppercase tracking-wider text-brand-white">Protocols</h2>
-          <p className="mt-2 text-body-sm text-brand-silver">
-            Reconstitution, storage, and use of therapeutic compounds, nutriments, and Lathmized NAD+.
-          </p>
-        </Link>
-        <Link
-          href="/knowledge/glossary"
-          className="block border border-brand-border p-8 hover:border-brand-grey-500 transition-colors"
-        >
-          <h2 className="font-display text-lg uppercase tracking-wider text-brand-white">Glossary</h2>
-          <p className="mt-2 text-body-sm text-brand-silver">
-            A–Z definitions of therapeutic and medical terms.
-          </p>
-        </Link>
-      </div>
+
+      <KnowledgeNav activeSection="articles" />
+
+      <section>
+        <div className="flex items-baseline justify-between mb-6">
+          <h2 className="font-display text-xl uppercase tracking-wider text-brand-white">
+            Articles
+          </h2>
+          <Link
+            href="/knowledge/articles"
+            className="text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
+          >
+            View all articles
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {articles.map((a) => (
+            <Link
+              key={a.slug}
+              href={`/knowledge/articles/${a.slug}`}
+              className="block border border-brand-border bg-brand-black hover:border-brand-grey-500 transition-colors overflow-hidden"
+            >
+              <PlaceholderImage src={a.image} aspectRatio="4/3" label={a.title} />
+              <div className="p-4">
+                <h3 className="font-display text-body-sm uppercase tracking-wider text-brand-white">
+                  {a.title}
+                </h3>
+                <p className="mt-2 text-caption text-brand-silver-dark line-clamp-2">{a.excerpt}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <div className="flex items-baseline justify-between mb-6">
+          <h2 className="font-display text-xl uppercase tracking-wider text-brand-white">
+            Frequently Asked Questions
+          </h2>
+          <Link
+            href="/knowledge/faq"
+            className="text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
+          >
+            View all FAQ
+          </Link>
+        </div>
+        <div className="space-y-4">
+          {previewFaq.map((item) => (
+            <div key={item.id} className="border border-brand-border p-5">
+              <h3 className="font-display text-body-sm uppercase tracking-wider text-brand-white">
+                {item.question}
+              </h3>
+              <p className="mt-2 text-body-sm text-brand-silver">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

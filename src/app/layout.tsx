@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
+import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { InterestListProvider } from "@/context/InterestListContext";
+import { JsonLd, organizationJsonLd, webSiteJsonLd } from "@/lib/structured-data";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -22,15 +24,15 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Americare Wellness | Advanced Therapeutics",
-    template: "%s | Americare Wellness",
+    default: "AW Therapeutics | Advanced Therapeutics",
+    template: "%s | AW Therapeutics",
   },
   description:
-    "Americare Wellness advanced therapeutics catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Provider-guided, precision formulated.",
+    "AW Therapeutics advanced therapeutics catalog. Medical Grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Provider-guided, precision formulated.",
   keywords: [
     "advanced therapeutics",
     "therapeutic medications",
-    "Americare Wellness",
+    "AW Therapeutics",
     "semaglutide",
     "tirzepatide",
     "BPC-157",
@@ -40,9 +42,9 @@ export const metadata: Metadata = {
     "growth hormone",
     "clinical grade",
   ],
-  authors: [{ name: "Americare Wellness" }],
-  creator: "Americare Wellness",
-  publisher: "Americare Wellness",
+  authors: [{ name: "AW Therapeutics" }],
+  creator: "AW Therapeutics",
+  publisher: "AW Therapeutics",
   formatDetection: {
     email: false,
     address: false,
@@ -52,24 +54,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "Americare Wellness Advanced Therapeutics",
-    title: "Americare Wellness | Advanced Therapeutics",
+    siteName: "AW Therapeutics Advanced Therapeutics",
+    title: "AW Therapeutics | Advanced Therapeutics",
     description:
-      "Americare Wellness advanced therapeutics catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision therapeutics. Elevated outcomes.",
+      "AW Therapeutics advanced therapeutics catalog. Medical Grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision therapeutics. Elevated outcomes.",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Americare Wellness Advanced Therapeutics — Precision therapeutics. Elevated outcomes.",
+        alt: "AW Therapeutics Advanced Therapeutics — Precision therapeutics. Elevated outcomes.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Americare Wellness | Advanced Therapeutics",
+    title: "AW Therapeutics | Advanced Therapeutics",
     description:
-      "Americare Wellness advanced therapeutics catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision therapeutics. Elevated outcomes.",
+      "AW Therapeutics advanced therapeutics catalog. Medical Grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision therapeutics. Elevated outcomes.",
     images: ["/images/og-image.png"],
   },
   robots: {
@@ -86,7 +88,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col font-body">
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={webSiteJsonLd()} />
         <InterestListProvider>
+          <AnnouncementBar />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

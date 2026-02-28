@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { KnowledgeNav } from "@/components/knowledge/KnowledgeNav";
 import { articles } from "@/data/articles";
+
+export const metadata: Metadata = {
+  title: "Articles",
+  description:
+    "Educational articles on advanced therapeutics — GLP-1 medications, healing compounds, longevity protocols, safety best practices, and stacking guides.",
+  alternates: { canonical: "/knowledge/articles" },
+};
 
 export default function ArticlesPage() {
   return (
@@ -8,6 +17,7 @@ export default function ArticlesPage() {
       <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mb-8">
         Articles
       </h1>
+      <KnowledgeNav activeSection="articles" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((a) => (
           <Link

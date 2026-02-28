@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { QualityReportGrid } from "@/components/quality/QualityReportGrid";
+
+export const metadata: Metadata = {
+  title: "Quality Control",
+  description:
+    "Third-party Certificates of Analysis and Exotoxin Test Reports verifying the quality, purity, potency, and sterility of AW Therapeutics compounds.",
+  alternates: { canonical: "/quality-control" },
+};
 
 const coaReports = [
   { src: "/images/quality/coa/COA_Sermorelin-10.webp", label: "Sermorelin 10mg" },
@@ -34,7 +42,7 @@ export default function QualityControlPage() {
           Quality Control & Chain of Custody
         </h1>
         <p className="text-body-sm text-brand-silver mb-12 max-w-3xl">
-          Americare Wellness partners with independent, third-party laboratories
+          AW Therapeutics partners with independent, third-party laboratories
           to verify the quality, purity, potency, and sterility of every
           compounded medication we offer. Below you will find Certificates of
           Analysis (COA) and Exotoxin Test Reports that document our commitment

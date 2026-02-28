@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Generate OG (Open Graph) image for Americare Wellness Peptide Catalog using fal.ai Nano Banana Pro.
+ * Generate OG (Open Graph) image for AW Therapeutics Peptide Catalog using fal.ai Nano Banana Pro.
  * Output: 1200x630 equivalent for social sharing (og:image, twitter:image).
  * Reads FAL_API_KEY or FAL_KEY from .env.
  *
@@ -29,7 +29,7 @@ Absolutely no color — no blue, no teal, no orange, no green.
 Photography quality: Hasselblad H6D-400c sensor fidelity, micro-contrast, lifted blacks, recovered highlights.
 Mood: pharmaceutical precision meets luxury design. Aesop meets Porsche Design meets Apple.`;
 
-const PROMPT = `Editorial Open Graph / social sharing image for Americare Wellness Peptide Catalog.
+const PROMPT = `Editorial Open Graph / social sharing image for AW Therapeutics Peptide Catalog.
 
 BACKGROUND: Ultra-wide editorial photograph. A minimalist composition: three pharmaceutical vials arranged in a precise diagonal line on a polished obsidian-black surface, receding into soft bokeh. The lead vial is in sharp focus with brilliant specular highlights on the glass. Silver and chrome caps. In the background, a vast architectural space — floor-to-ceiling glass, polished concrete, diffused morning light. A lone silhouetted figure stands in the distance. The space is monumental and serene. Strictly monochromatic: black, charcoal, grey, silver, white only.
 
@@ -39,7 +39,7 @@ HEADLINE (large, bold, white, sans-serif, uppercase, centered):
 "PRECISION PEPTIDES. ELEVATED OUTCOMES."
 
 HELPER TEXT (smaller, light grey/silver, sans-serif, centered, directly below the headline):
-"Clinical-grade compounds for weight management, recovery, longevity, and beyond."
+"Medical Grade compounds for weight management, recovery, longevity, and beyond."
 
 The text must be perfectly legible, clean typography, no artifacts. The composition should mirror a hero section: vials and architecture as background, headline and helper text as the focal action. This is a social share card — the message must read instantly.`;
 

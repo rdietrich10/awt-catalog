@@ -18,7 +18,7 @@ npm run extract:pdfs
 
 This extracts text from each PDF and writes/updates the corresponding markdown files in `docs/`.
 
-**Note:** AlphaBioMed mixing instructions and Americare Wellness LNAD Protocol may fail with "Invalid PDF structure"—re-download those manually or copy-paste content if needed.
+**Note:** AlphaBioMed mixing instructions and AW Therapeutics LNAD Protocol may fail with "Invalid PDF structure"—re-download those manually or copy-paste content if needed.
 
 **Manual download (if automated download fails):**
 

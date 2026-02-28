@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { policySections } from "@/data/policies";
+
+export const metadata: Metadata = {
+  title: "Policies",
+  description:
+    "Terms, refunds, shipping, telehealth disclaimers, compounding disclosure, and regulatory disclosures for AW Therapeutics products and services.",
+  alternates: { canonical: "/policies" },
+};
 
 export default function PoliciesPage() {
   return (
@@ -16,7 +24,7 @@ export default function PoliciesPage() {
           Policies
         </h1>
         <p className="text-body-sm text-brand-silver mb-12">
-          Terms, refunds, shipping, and regulatory disclosures for Americare Wellness products and services.
+          Terms, refunds, shipping, and regulatory disclosures for AW Therapeutics products and services.
         </p>
         <div className="space-y-10">
           {policySections.map((section) => (
@@ -39,7 +47,7 @@ export default function PoliciesPage() {
             Privacy Policy
           </h2>
           <p className="text-body-sm text-brand-silver-dark">
-            How we collect, use, and protect your information. Content pending Americare Wellness approval.
+            How we collect, use, and protect your information. Content pending AW Therapeutics approval.
           </p>
         </section>
         <Link

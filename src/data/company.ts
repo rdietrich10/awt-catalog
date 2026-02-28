@@ -1,8 +1,10 @@
 /**
- * Company contact information for Americare Wellness.
+ * Company contact information for AW Therapeutics.
  */
 
-export const COMPANY_NAME = "Americare Wellness";
+export const COMPANY_NAME = "AW Therapeutics";
+
+export const COMPANY_LEGAL_NAME = "Americare Wellness, LLC";
 
 export const COMPANY_ADDRESS = "2828 S Seacrest Blvd #213, Boynton Beach, FL 33435";
 

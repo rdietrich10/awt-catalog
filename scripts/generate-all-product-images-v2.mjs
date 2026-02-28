@@ -157,7 +157,7 @@ function buildPrompt(product) {
   return `Update the label only. Replace the current label text with this new product information. Keep everything else identical: same container, same silver/chrome design, same photography, same angle, same lighting. ONLY the product being sold in the shot - no other products.
 
 NEW LABEL:
-Top band (silver/chrome or charcoal): Americare Wellness logo in white
+Top band (silver/chrome or charcoal): AW Therapeutics logo in white
 Middle white section: "MEDICAL GRADE" in small grey text, then "${product.name}" in large bold black, "${product.genericName}" in grey below
 Bottom band (silver/chrome or charcoal): "${bottomBand}"
 

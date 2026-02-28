@@ -1,18 +1,97 @@
 import Link from "next/link";
-import { PROTOCOL_STATEMENT } from "@/data/copy";
-import { COMPANY_ADDRESS, COMPANY_PHONE } from "@/data/company";
+import { ButtonLink } from "@/components/ui/Button";
+import { PROTOCOL_STATEMENT, FOOTER_CTA_HEADLINE, FOOTER_CTA_SUBHEADLINE } from "@/data/copy";
+import {
+  COMPANY_ADDRESS,
+  COMPANY_PHONE,
+  COMPANY_EMAIL,
+  COMPANY_LEGAL_NAME,
+} from "@/data/company";
+
+const productLinks = [
+  { href: "/categories/weight-management", label: "Weight Management" },
+  { href: "/categories/healing-tissue-recovery", label: "Healing & Recovery" },
+  { href: "/categories/longevity-anti-aging", label: "Longevity" },
+  { href: "/categories/growth-hormone-recomposition", label: "Growth Hormone" },
+  { href: "/products", label: "Full Catalog" },
+];
+
+const resourceLinks = [
+  { href: "/knowledge", label: "Knowledge Hub" },
+  { href: "/knowledge/faq", label: "FAQ" },
+  { href: "/knowledge/protocols", label: "Protocols" },
+  { href: "/quality-control", label: "Quality Control" },
+  { href: "/knowledge/glossary", label: "Glossary" },
+];
+
+const companyLinks = [
+  { href: "/how-it-works", label: "How It Works" },
+  { href: "/contact", label: "Contact Us" },
+  { href: "/policies", label: "Policies" },
+  { href: "/interest-list", label: "My List" },
+];
+
+function FooterLinkGroup({ title, links }: { title: string; links: { href: string; label: string }[] }) {
+  return (
+    <div>
+      <h3 className="font-display text-caption tracking-widest uppercase text-brand-silver mb-4">
+        {title}
+      </h3>
+      <ul className="space-y-2">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className="text-body-sm text-brand-silver-dark hover:text-brand-white transition-colors"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function PreFooterCta() {
+  return (
+    <div className="border-t border-brand-border">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="text-center md:text-left">
+          <h3 className="font-display text-lg uppercase tracking-wider text-brand-white">
+            {FOOTER_CTA_HEADLINE}
+          </h3>
+          <p className="mt-1 text-body-sm text-brand-silver">
+            {FOOTER_CTA_SUBHEADLINE}
+          </p>
+        </div>
+        <ButtonLink
+          href="/contact"
+          variant="primary"
+          size="md"
+        >
+          Contact Us
+        </ButtonLink>
+      </div>
+    </div>
+  );
+}
 
 export function Footer() {
   return (
-    <footer className="border-t border-brand-border mt-auto">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-[calc(3rem+env(safe-area-inset-bottom,0px))]">
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-center md:text-left">
+    <footer className="mt-auto">
+      <PreFooterCta />
+      <div className="border-t border-brand-border bg-brand-grey-900/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+            <div>
               <p className="font-display text-body-sm tracking-wider uppercase text-brand-silver">
-                Americare Wellness
+                AW Therapeutics
               </p>
-              <p className="mt-1 text-body-sm text-brand-silver-dark">
+              <p className="text-[0.65rem] tracking-wide text-brand-silver-dark">
+                By {COMPANY_LEGAL_NAME}
+              </p>
+              <p className="mt-3 text-body-sm text-brand-silver-dark">
                 {COMPANY_ADDRESS}
               </p>
               <a
@@ -21,37 +100,27 @@ export function Footer() {
               >
                 {COMPANY_PHONE}
               </a>
+              <a
+                href={`mailto:${COMPANY_EMAIL}`}
+                className="mt-1 block text-body-sm text-brand-silver-dark hover:text-brand-silver transition-colors"
+              >
+                {COMPANY_EMAIL}
+              </a>
             </div>
-            <nav className="flex flex-wrap justify-center gap-4 md:gap-8">
-              <Link href="/products" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
-                Catalog
-              </Link>
-              <Link href="/categories" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
-                Categories
-              </Link>
-              <Link href="/knowledge" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
-                Knowledge
-              </Link>
-              <Link href="/interest-list" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
-                My List
-              </Link>
-              <Link href="/how-it-works" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
-                How It Works
-              </Link>
-              <Link href="/contact" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
-                Contact Us
-              </Link>
-              <Link href="/policies" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
-                Policies
-              </Link>
-              <Link href="/quality-control" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
-                Quality Control
-              </Link>
-            </nav>
+
+            <FooterLinkGroup title="Products" links={productLinks} />
+            <FooterLinkGroup title="Resources" links={resourceLinks} />
+            <FooterLinkGroup title="Company" links={companyLinks} />
           </div>
-          <p className="text-body-sm text-brand-silver-dark text-center max-w-2xl mx-auto">
-            {PROTOCOL_STATEMENT}
-          </p>
+
+          <div className="mt-10 pt-8 border-t border-brand-border">
+            <p className="text-caption text-brand-silver-dim text-center max-w-3xl mx-auto leading-relaxed">
+              {PROTOCOL_STATEMENT}
+            </p>
+            <p className="mt-4 text-caption text-brand-silver-dim text-center">
+              &copy; {new Date().getFullYear()} {COMPANY_LEGAL_NAME}. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

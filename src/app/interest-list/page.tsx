@@ -1,7 +1,13 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { InterestListContent } from "@/components/interest/InterestListContent";
+
+export const metadata: Metadata = {
+  title: "My List",
+  description:
+    "Review your selected products and submit an inquiry. Our physicians will review your list before we create your invoice.",
+  robots: { index: false, follow: false },
+};
 
 function InterestListFallback() {
   return (

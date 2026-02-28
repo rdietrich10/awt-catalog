@@ -1,9 +1,28 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import { ProductDetail } from "@/components/products/ProductDetail";
+import { JsonLd, productJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
+}
+
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const product = products.find((p) => p.slug === params.slug);
+  if (!product) return {};
+
+  return {
+    title: product.name,
+    description: product.shortDescription,
+    openGraph: {
+      title: `${product.name} | AW Therapeutics`,
+      description: product.shortDescription,
+      url: `/products/${product.slug}`,
+      images: product.image ? [{ url: product.image }] : undefined,
+    },
+    alternates: { canonical: `/products/${product.slug}` },
+  };
 }
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
@@ -16,6 +35,14 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <JsonLd data={productJsonLd(product)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Catalog", url: "/products" },
+          { name: product.category, url: `/categories/${product.categorySlug}` },
+          { name: product.name, url: `/products/${product.slug}` },
+        ])}
+      />
       <ProductDetail product={product} relatedProducts={relatedProducts} />
     </div>
   );

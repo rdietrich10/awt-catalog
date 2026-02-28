@@ -38,3 +38,81 @@ export const PHYSICIAN_REVIEW_FAQ_ANSWER =
 /** Protocol statement for My List, inquiry flow, and footer. */
 export const PROTOCOL_STATEMENT =
   "All supplements require physician review prior to purchase. You will receive an invoice for your product request within 24 hours of physician review. In the event our provider needs to contact you with your request, please provide your preferred contact method.";
+
+/* ── Sales / Conversion Copy ────────────────────────────────── */
+
+export const HERO_HEADLINE = "Medical Grade Therapeutics.\nDelivered to Your Door.";
+
+export const HERO_SUBHEADLINE =
+  "Physician-approved peptides, GLP-1s, and advanced compounds for weight management, recovery, longevity, and beyond.";
+
+export const HERO_CTA_PRIMARY = "Start Your Inquiry";
+export const HERO_CTA_SECONDARY = "See How It Works";
+
+export const TRUST_MICRO = [
+  "Physician-Reviewed",
+  "Pharmacy-Compounded",
+  "COA-Verified",
+  "Ships Nationwide",
+] as const;
+
+export const HOW_IT_WORKS_STEPS = [
+  {
+    title: "Browse & Select",
+    description: "Explore our catalog and add products to your interest list.",
+  },
+  {
+    title: "Physician Review",
+    description: "A licensed provider reviews your selections within 24 hours.",
+  },
+  {
+    title: "Invoice & Ship",
+    description: "Once approved, we send your invoice and ship directly to you.",
+  },
+] as const;
+
+export const WHY_AW_PROPS = [
+  {
+    title: "503A/503B Compounding",
+    description: "Every product is compounded in FDA-registered 503A and 503B pharmacies to Medical Grade standards.",
+  },
+  {
+    title: "Physician-Backed",
+    description: "A licensed provider reviews every order—no exceptions. Your safety drives every decision.",
+  },
+  {
+    title: "COA-Verified Quality",
+    description: "Third-party Certificates of Analysis verify purity, potency, and sterility on every batch.",
+  },
+  {
+    title: "No Subscriptions",
+    description: "Order what you need, when you need it. No recurring charges, no commitments.",
+  },
+  {
+    title: "24-Hour Turnaround",
+    description: "Physician review and invoice delivery within 24 hours of your inquiry submission.",
+  },
+  {
+    title: "Direct-to-Door Shipping",
+    description: "Temperature-controlled packaging shipped nationwide with tracking on every order.",
+  },
+] as const;
+
+export const FEATURED_HEADLINE = "Most Requested Therapeutics";
+export const FEATURED_SUBHEADLINE =
+  "The products providers and patients request most—backed by clinical evidence and pharmacy-grade quality.";
+
+export const CATEGORY_HEADLINE = "Find Your Treatment";
+export const CATEGORY_SUBHEADLINE =
+  "Targeted solutions across weight management, recovery, longevity, hormonal health, and more.";
+
+export const CTA_SECTION_HEADLINE = "Ready to Get Started?";
+export const CTA_SECTION_SUBHEADLINE =
+  "Browse our catalog, build your list, and submit an inquiry. A physician reviews every request—no commitment required.";
+
+export const ANNOUNCEMENT_TEXT = "New: FDA Peptide Regulation Update — What RFK Jr. Actually Said";
+export const ANNOUNCEMENT_HREF = "/knowledge/articles/peptide-regulation-2026";
+
+export const FOOTER_CTA_HEADLINE = "Have Questions?";
+export const FOOTER_CTA_SUBHEADLINE =
+  "Our team responds within 24 hours. Reach out anytime.";
