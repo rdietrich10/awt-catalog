@@ -79,6 +79,8 @@ export function articleJsonLd(article: Article) {
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
+    datePublished: article.dateCreated,
+    dateModified: article.dateUpdated,
     image: article.image ? `${BASE_URL}${article.image}` : undefined,
     author: {
       "@type": "Organization",

@@ -1,10 +1,10 @@
-import { Stethoscope, FlaskConical, ShieldCheck, Truck } from "lucide-react";
+import { Stethoscope, FlaskConical, ShieldCheck, Monitor } from "lucide-react";
 
 const badges = [
-  { icon: Stethoscope, label: "Physician-Backed" },
+  { icon: Stethoscope, label: "Physician-Directed" },
   { icon: FlaskConical, label: "503A/503B Compounded" },
-  { icon: ShieldCheck, label: "COA-Verified Quality" },
-  { icon: Truck, label: "Ships Nationwide" },
+  { icon: ShieldCheck, label: "HIPAA Compliant" },
+  { icon: Monitor, label: "Telehealth-Enabled" },
 ] as const;
 
 export function TrustBar() {

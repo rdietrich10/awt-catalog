@@ -6,6 +6,7 @@ import { longevityProducts } from "@/data/products/longevity";
 import { moodSleepProducts } from "@/data/products/mood-sleep";
 import { suppliesProducts } from "@/data/products/supplies";
 import { nutrimentsProducts } from "@/data/products/nutriments";
+import { bloodTestingProducts } from "@/data/products/blood-testing";
 
 export const products: Product[] = [
   ...peptideProducts,
@@ -15,4 +16,5 @@ export const products: Product[] = [
   ...moodSleepProducts,
   ...suppliesProducts,
   ...nutrimentsProducts,
+  ...bloodTestingProducts,
 ];

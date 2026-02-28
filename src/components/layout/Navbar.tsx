@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/categories", label: "Categories" },
   { href: "/knowledge", label: "Knowledge" },
   { href: "/how-it-works", label: "How It Works" },
+  { href: "/about", label: "About" },
 ];
 
 export function Navbar() {

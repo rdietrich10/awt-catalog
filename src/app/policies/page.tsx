@@ -46,9 +46,15 @@ export default function PoliciesPage() {
           <h2 className="font-display text-lg uppercase tracking-wider text-brand-white mb-2">
             Privacy Policy
           </h2>
-          <p className="text-body-sm text-brand-silver-dark">
-            How we collect, use, and protect your information. Content pending AW Therapeutics approval.
+          <p className="text-body-sm text-brand-silver leading-relaxed">
+            How we collect, use, and protect your health information under HIPAA.
           </p>
+          <Link
+            href="/privacy"
+            className="mt-3 inline-block text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
+          >
+            View Notice of Privacy Practices
+          </Link>
         </section>
         <Link
           href="/"

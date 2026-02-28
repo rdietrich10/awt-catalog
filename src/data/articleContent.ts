@@ -1,5 +1,9 @@
 import type { ComponentType } from "react";
 import { PeptideRegulationContent } from "@/components/articles/PeptideRegulationContent";
+import { PhysicianDirectedModelContent } from "@/components/articles/PhysicianDirectedModelContent";
+import { BiomarkerScreeningContent } from "@/components/articles/BiomarkerScreeningContent";
+import { UnderstandingBiomarkersContent } from "@/components/articles/UnderstandingBiomarkersContent";
+import { PrecisionBloodTestingContent } from "@/components/articles/PrecisionBloodTestingContent";
 
 /**
  * Maps article slugs to rich content components.
@@ -7,4 +11,8 @@ import { PeptideRegulationContent } from "@/components/articles/PeptideRegulatio
  */
 export const articleContentMap: Record<string, ComponentType> = {
   "peptide-regulation-2026": PeptideRegulationContent,
+  "physician-directed-model": PhysicianDirectedModelContent,
+  "why-annual-biomarker-screening-matters": BiomarkerScreeningContent,
+  "understanding-blood-biomarkers": UnderstandingBiomarkersContent,
+  "precision-blood-testing-healthcare": PrecisionBloodTestingContent,
 };

@@ -25,9 +25,11 @@ const resourceLinks = [
 ];
 
 const companyLinks = [
+  { href: "/about", label: "About" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/contact", label: "Contact Us" },
   { href: "/policies", label: "Policies" },
+  { href: "/privacy", label: "Privacy Notice" },
   { href: "/interest-list", label: "My List" },
 ];
 

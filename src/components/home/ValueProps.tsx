@@ -1,14 +1,14 @@
 import {
-  FlaskConical,
   Stethoscope,
-  ShieldCheck,
-  CalendarOff,
-  Clock,
-  Truck,
+  FileText,
+  FlaskConical,
+  Monitor,
+  HeartPulse,
+  RefreshCw,
 } from "lucide-react";
 import { WHY_AW_PROPS } from "@/data/copy";
 
-const icons = [FlaskConical, Stethoscope, ShieldCheck, CalendarOff, Clock, Truck] as const;
+const icons = [Stethoscope, FileText, FlaskConical, Monitor, HeartPulse, RefreshCw] as const;
 
 export function ValueProps() {
   return (

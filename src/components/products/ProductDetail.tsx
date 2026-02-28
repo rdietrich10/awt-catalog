@@ -7,6 +7,7 @@ import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Badge } from "@/components/ui/Badge";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { InterestButton } from "@/components/interest/InterestButton";
+import { PhysicianTrustStrip } from "@/components/products/PhysicianTrustStrip";
 import { Button } from "@/components/ui/Button";
 import { formatPrice } from "@/lib/formatPrice";
 import { getVariantPrice } from "@/lib/productPrice";
@@ -218,6 +219,7 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
             <p className="text-caption text-brand-silver-dark italic">{IFU_DEFAULTS.disclaimer}</p>
           </div>
           <p className="text-caption text-brand-silver-dark">{IFU_DEFAULTS.effectiveDate}</p>
+          <PhysicianTrustStrip />
           <InterestButton product={product} className="mt-4" />
         </div>
       </div>

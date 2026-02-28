@@ -61,6 +61,26 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mt-8">
           {article.title}
         </h1>
+        <div className="mt-3 flex flex-wrap gap-x-4 text-caption text-brand-silver-dim">
+          <time dateTime={article.dateCreated}>
+            Published{" "}
+            {new Date(article.dateCreated + "T00:00:00").toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+          {article.dateUpdated !== article.dateCreated && (
+            <time dateTime={article.dateUpdated}>
+              Updated{" "}
+              {new Date(article.dateUpdated + "T00:00:00").toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+          )}
+        </div>
         <p className="mt-4 text-body-sm text-brand-silver">{article.excerpt}</p>
 
         <div className="mt-8">

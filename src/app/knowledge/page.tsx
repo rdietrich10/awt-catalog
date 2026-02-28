@@ -47,6 +47,17 @@ export default function KnowledgePage() {
             >
               <PlaceholderImage src={a.image} aspectRatio="4/3" label={a.title} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               <div className="p-4">
+                <time
+                  dateTime={a.dateUpdated}
+                  className="block text-caption text-brand-silver-dim mb-2"
+                >
+                  {a.dateUpdated !== a.dateCreated ? "Updated " : ""}
+                  {new Date(a.dateUpdated + "T00:00:00").toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
                 <h3 className="font-display text-body-sm uppercase tracking-wider text-brand-white">
                   {a.title}
                 </h3>

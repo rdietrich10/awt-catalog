@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { List, LayoutGrid, Send, ArrowRight, ShoppingBag, Trash2, RotateCcw } from "lucide-react";
+import { List, LayoutGrid, Send, ArrowRight, ShoppingBag, Trash2, RotateCcw, Stethoscope } from "lucide-react";
 import { useInterestList } from "@/context/InterestListContext";
 import {
   PHYSICIAN_REVIEW_EMPTY_STATE,
@@ -171,6 +171,15 @@ export function InterestListContent() {
         >
           Clear List
         </Button>
+      </div>
+
+      <div className="mb-6 sm:mb-8 shrink-0 border border-brand-border bg-brand-grey-900/30 p-4 flex items-start gap-3">
+        <Stethoscope className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" aria-hidden />
+        <p className="text-body-sm text-brand-silver">
+          This is a medical inquiry — not a shopping cart. A licensed physician will
+          review your selections and determine clinical appropriateness before any
+          products are dispensed.
+        </p>
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8 shrink-0">

@@ -52,7 +52,7 @@ export function HeroSection() {
               {HERO_CTA_PRIMARY}
             </ButtonLink>
             <ButtonLink
-              href="/how-it-works"
+              href="/about"
               variant="secondary"
               size="lg"
               icon={PlayCircle}

@@ -83,6 +83,8 @@ export interface Article {
   excerpt: string;
   content: string;
   image: string;
+  dateCreated: string;
+  dateUpdated: string;
 }
 
 export interface GlossaryTerm {

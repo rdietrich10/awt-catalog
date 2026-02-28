@@ -55,6 +55,16 @@ const articleProductMap: Record<string, ArticleMapping> = {
     categorySlugs: ["longevity-anti-aging"],
     productSlugs: ["epithalon", "mots-c", "dsip"],
   },
+  "why-annual-biomarker-screening-matters": {
+    categorySlugs: ["blood-testing-analysis"],
+  },
+  "understanding-blood-biomarkers": {
+    categorySlugs: ["blood-testing-analysis"],
+  },
+  "precision-blood-testing-healthcare": {
+    categorySlugs: ["blood-testing-analysis"],
+    productSlugs: ["comprehensive-100-biomarker-panel"],
+  },
 };
 
 const MAX_PRODUCTS = 20;

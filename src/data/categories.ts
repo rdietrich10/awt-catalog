@@ -72,4 +72,11 @@ export const categories: Category[] = [
     image: CATEGORY_IMAGES.cognitiveHealth,
     productCount: 0,
   },
+  {
+    slug: "blood-testing-analysis",
+    name: "Blood Testing & Analysis",
+    description: "Annual comprehensive biomarker screening panels analyzing 100+ clinically relevant markers for precision-guided, whole-person healthcare.",
+    image: CATEGORY_IMAGES.bloodTestingAnalysis,
+    productCount: 8,
+  },
 ];

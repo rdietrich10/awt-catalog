@@ -1,8 +1,14 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Link from "next/link";
 import { Send, Loader2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import {
+  HIPAA_BANNER_TEXT,
+  HIPAA_BANNER_LINK_TEXT,
+  HIPAA_CONSENT_LABEL,
+} from "@/data/hipaa";
 
 export interface EmailCaptureData {
   name: string;
@@ -31,6 +37,7 @@ export function EmailCaptureForm({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [hipaaConsent, setHipaaConsent] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -90,7 +97,33 @@ export function EmailCaptureForm({
           className={inputBase}
         />
       </div>
-      <div className="pt-6 sm:pt-4 space-y-4">
+      <div className="pt-4 border-t border-brand-border space-y-3">
+        <p className="text-caption text-brand-silver-dark leading-relaxed">
+          {HIPAA_BANNER_TEXT}{" "}
+          <Link
+            href="/privacy"
+            target="_blank"
+            className="underline text-brand-silver hover:text-brand-white transition-colors"
+          >
+            {HIPAA_BANNER_LINK_TEXT}
+          </Link>
+        </p>
+        <label className="flex items-start gap-3 cursor-pointer group">
+          <input
+            type="checkbox"
+            checked={hipaaConsent}
+            onChange={(e) => setHipaaConsent(e.target.checked)}
+            disabled={loading}
+            className="mt-0.5 shrink-0 accent-brand-gold w-4 h-4"
+            required
+          />
+          <span className="text-caption text-brand-silver-dark leading-relaxed group-hover:text-brand-silver transition-colors">
+            {HIPAA_CONSENT_LABEL}
+          </span>
+        </label>
+      </div>
+
+      <div className="pt-4 space-y-4">
         <Button
           type="submit"
           variant="cta"
@@ -98,7 +131,7 @@ export function EmailCaptureForm({
           icon={loading ? Loader2 : Send}
           iconPosition="right"
           className="w-full"
-          disabled={loading}
+          disabled={loading || !hipaaConsent}
         >
           {loading ? "Submitting..." : submitLabel}
         </Button>
