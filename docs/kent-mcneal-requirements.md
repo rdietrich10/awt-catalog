@@ -110,16 +110,16 @@
 - `Tesamorelin_10mg.pdf` + `.md`
 
 ### /docs/americare-ifu-raw/ (10 IFU documents)
-- `HC360_IFU_AOD_9604-5_v2.2.docx`
-- `HC360_IFU_CJC1295_no_DAC_10MG_v2.2.docx`
-- `HC360_IFU_Ipamorelin-10_v2.2.docx`
-- `HC360_IFU_Sema-10_v2.2.docx`
-- `HC360_IFU_Sema-20_v2.2.docx`
-- `HC360_IFU_Tirz-30_ONE_PAGER_v2.2.docx`
-- `HC360_IFU_Tirz-60_ONE_PAGER_v2.2.docx`
-- `HC360_IFU_Sermorelin-10_v2.2.docx`
-- `HC360_IFU_Reta-30_v2.2.docx`
-- `HC360_IFU_Reta-50_v2.2.docx`
+- `Americare_IFU_AOD_9604-5_v2.2.docx`
+- `Americare_IFU_CJC1295_no_DAC_10MG_v2.2.docx`
+- `Americare_IFU_Ipamorelin-10_v2.2.docx`
+- `Americare_IFU_Sema-10_v2.2.docx`
+- `Americare_IFU_Sema-20_v2.2.docx`
+- `Americare_IFU_Tirz-30_ONE_PAGER_v2.2.docx`
+- `Americare_IFU_Tirz-60_ONE_PAGER_v2.2.docx`
+- `Americare_IFU_Sermorelin-10_v2.2.docx`
+- `Americare_IFU_Reta-30_v2.2.docx`
+- `Americare_IFU_Reta-50_v2.2.docx`
 
 ### /docs/americare-quality/coa/ (8 Certificates of Analysis)
 - `COA_Sermorelin-10.webp`
