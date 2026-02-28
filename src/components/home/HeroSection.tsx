@@ -2,7 +2,7 @@
 
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { HeroBackground } from "@/components/home/HeroBackground";
 import {
   HERO_HEADLINE,
   HERO_SUBHEADLINE,
@@ -29,18 +29,9 @@ function TrustMicroBar() {
 export function HeroSection() {
   return (
     <section className="relative w-full min-h-[85vh] flex items-center">
-      <div className="absolute inset-0">
-        <PlaceholderImage
-          src="/images/lifestyle/hero.png"
-          aspectRatio="full"
-          label="Hero"
-          context="Vial"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-transparent to-brand-black/40" />
-      </div>
+      <HeroBackground />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/70 to-brand-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-brand-black/30" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         <div className="max-w-2xl">

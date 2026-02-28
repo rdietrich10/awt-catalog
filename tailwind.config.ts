@@ -64,13 +64,13 @@ const config: Config = {
         "gold-glow-strong": "0 0 32px rgba(212, 175, 55, 0.5)",
       },
       keyframes: {
-        "ken-burns": {
+        "hero-kb": {
           "0%": { transform: "scale(1)" },
-          "100%": { transform: "scale(1.15)" },
+          "100%": { transform: "scale(1.08)" },
         },
       },
       animation: {
-        "ken-burns": "ken-burns 8s ease-out forwards",
+        "hero-kb": "hero-kb 10s linear forwards",
       },
     },
   },

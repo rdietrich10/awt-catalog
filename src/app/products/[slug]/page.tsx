@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { products } from "@/data/products";
+import { getArticlesForProduct } from "@/data/articleProductMap";
 import { ProductDetail } from "@/components/products/ProductDetail";
+import { RelatedArticles } from "@/components/products/RelatedArticles";
 import { JsonLd, productJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
@@ -33,6 +35,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     .filter((p) => p.categorySlug === product.categorySlug && p.slug !== product.slug)
     .slice(0, 4);
 
+  const relatedArticles = getArticlesForProduct(product);
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       <JsonLd data={productJsonLd(product)} />
@@ -44,6 +48,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         ])}
       />
       <ProductDetail product={product} relatedProducts={relatedProducts} />
+      <RelatedArticles articles={relatedArticles} />
     </div>
   );
 }

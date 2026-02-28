@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { RelatedProductsCarousel } from "@/components/articles/RelatedProductsCarousel";
 import { articles } from "@/data/articles";
 import { articleContentMap } from "@/data/articleContent";
+import { getProductsForArticle } from "@/data/articleProductMap";
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
@@ -34,9 +36,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   if (!article) notFound();
 
   const RichContent = articleContentMap[article.slug];
+  const relatedProducts = getProductsForArticle(article.slug);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       <JsonLd data={articleJsonLd(article)} />
       <JsonLd
         data={breadcrumbJsonLd([
@@ -45,32 +48,39 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           { name: article.title, url: `/knowledge/articles/${article.slug}` },
         ])}
       />
-      <Breadcrumb
-        items={[
-          { label: "Knowledge", href: "/knowledge" },
-          { label: "Articles", href: "/knowledge/articles" },
-          { label: article.title },
-        ]}
-      />
-      <PlaceholderImage src={article.image} aspectRatio="16/9" label={article.title} sizes="(max-width: 768px) 100vw, 768px" priority className="mt-6" />
-      <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mt-8">
-        {article.title}
-      </h1>
-      <p className="mt-4 text-body-sm text-brand-silver">{article.excerpt}</p>
 
-      <div className="mt-8">
-        {RichContent ? (
-          <RichContent />
-        ) : (
-          <div className="text-body-sm text-brand-silver leading-relaxed max-w-none [&>p]:mb-4">
-            <p>{article.content}</p>
-          </div>
-        )}
+      <div className="mx-auto max-w-3xl">
+        <Breadcrumb
+          items={[
+            { label: "Knowledge", href: "/knowledge" },
+            { label: "Articles", href: "/knowledge/articles" },
+            { label: article.title },
+          ]}
+        />
+        <PlaceholderImage src={article.image} aspectRatio="16/9" label={article.title} sizes="(max-width: 768px) 100vw, 768px" priority className="mt-6" />
+        <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mt-8">
+          {article.title}
+        </h1>
+        <p className="mt-4 text-body-sm text-brand-silver">{article.excerpt}</p>
+
+        <div className="mt-8">
+          {RichContent ? (
+            <RichContent />
+          ) : (
+            <div className="text-body-sm text-brand-silver leading-relaxed max-w-none [&>p]:mb-4">
+              <p>{article.content}</p>
+            </div>
+          )}
+        </div>
       </div>
 
-      <Link href="/knowledge/articles" className="mt-12 inline-block text-body-sm text-brand-silver hover:text-brand-white">
-        &larr; Back to Articles
-      </Link>
+      <RelatedProductsCarousel products={relatedProducts} />
+
+      <div className="mx-auto max-w-3xl">
+        <Link href="/knowledge/articles" className="mt-12 inline-block text-body-sm text-brand-silver hover:text-brand-white">
+          &larr; Back to Articles
+        </Link>
+      </div>
     </div>
   );
 }

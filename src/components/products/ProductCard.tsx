@@ -21,17 +21,22 @@ export const ProductCard = memo(function ProductCard({ product, priority = false
   return (
     <div className="group border border-brand-border bg-brand-black hover:border-brand-grey-500 transition-colors flex flex-col">
       <Link href={`/products/${product.slug}`} className="block flex-1">
-        <PlaceholderImage
-          src={product.image}
-          aspectRatio="1/1"
-          label={product.name}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-          priority={priority}
-        />
-        <div className="p-4">
-          <Badge variant={product.isBlend ? "blend" : "default"} className="mb-2">
+        <div className="relative">
+          <PlaceholderImage
+            src={product.image}
+            aspectRatio="1/1"
+            label={product.name}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            priority={priority}
+          />
+          <Badge
+            variant={product.isBlend ? "blend" : "default"}
+            className="absolute top-2 left-2 text-[10px] font-bold bg-brand-black/70 backdrop-blur-sm"
+          >
             {product.category}
           </Badge>
+        </div>
+        <div className="p-4">
           <h3 className="font-display text-body-sm uppercase tracking-wider text-brand-white group-hover:opacity-80">
             {product.name}
           </h3>
