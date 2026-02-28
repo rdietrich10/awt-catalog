@@ -25,9 +25,7 @@ export const healingProducts: Product[] = [
     clinicalNotes: "Wound healing, tendon repair, GI protection.",
     featured: true,
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 140, membershipPrice: 112 },
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Once daily", reconstitutionVolume: "2 mL", price: 200, membershipPrice: 160 },
-      { strength: "20 mg", vialSize: "20 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "4 mL", price: 235, membershipPrice: 188 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Once daily", reconstitutionVolume: "2 mL", price: 130 },
     ],
   }),
   base({
@@ -38,14 +36,13 @@ export const healingProducts: Product[] = [
     categorySlug: "healing-tissue-recovery",
     shortDescription: "Accelerates wound, joint, muscle repair.",
     fullDescription: "TB-500 accelerates wound healing, joint and muscle repair.",
-    medicationClass: "Regenerative Repair Peptide",
+    medicationClass: "Regenerative Repair Compound",
     indications: "Wound healing, joint and muscle repair",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Wound repair", "Joint repair", "Muscle repair"],
     clinicalNotes: "Re-evaluate injury after each week.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "0.1 mg/unit", schedule: "Consult provider", reconstitutionVolume: "1 mL", price: 150, membershipPrice: 120 },
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.1 mg/unit", schedule: "20 units 2x/week", reconstitutionVolume: "1 mL", price: 240, membershipPrice: 192 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.1 mg/unit", schedule: "20 units 2x/week", reconstitutionVolume: "1 mL", price: 130 },
     ],
   }),
   base({
@@ -66,7 +63,7 @@ export const healingProducts: Product[] = [
     blendComponents: ["BPC-157 10mg", "TB-500 10mg"],
     featured: true,
     variants: [
-      { strength: "10/10 mg", vialSize: "10/10 mg", concentration: "0.05/0.05 mg/unit", schedule: "20 units daily", reconstitutionVolume: "2 mL", price: 249, membershipPrice: 199 },
+      { strength: "10/10 mg", vialSize: "10/10 mg", concentration: "0.05/0.05 mg/unit", schedule: "20 units daily", reconstitutionVolume: "2 mL", price: 165 },
     ],
   }),
   base({
@@ -85,7 +82,7 @@ export const healingProducts: Product[] = [
     isBlend: true,
     blendComponents: ["GHK-Cu 27mg", "BPC-157 5mg", "TB-500 10mg"],
     variants: [
-      { strength: "42 mg", vialSize: "42 mg", concentration: "0.14 mg/unit", schedule: "10 units daily", reconstitutionVolume: "3 mL", price: 240, membershipPrice: 192 },
+      { strength: "42 mg", vialSize: "42 mg", concentration: "0.14 mg/unit", schedule: "10 units daily", reconstitutionVolume: "3 mL", price: 175 },
     ],
   }),
   base({
@@ -104,7 +101,7 @@ export const healingProducts: Product[] = [
     isBlend: true,
     blendComponents: ["GHK-Cu 30mg", "BPC-157 10mg", "TB-500 10mg"],
     variants: [
-      { strength: "50 mg", vialSize: "50 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 240, membershipPrice: 180 },
+      { strength: "50 mg", vialSize: "50 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 240 },
     ],
   }),
   base({
@@ -123,7 +120,7 @@ export const healingProducts: Product[] = [
     isBlend: true,
     blendComponents: ["GHK-Cu 30mg", "BPC-157 10mg", "TB-500 10mg"],
     variants: [
-      { strength: "70 mg", vialSize: "70 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 395, membershipPrice: 316 },
+      { strength: "70 mg", vialSize: "70 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 274 },
     ],
   }),
   base({
@@ -142,7 +139,7 @@ export const healingProducts: Product[] = [
     isBlend: true,
     blendComponents: ["GHK-Cu 50mg", "KPV 10mg", "BPC-157 10mg", "TB-500 10mg"],
     variants: [
-      { strength: "80 mg", vialSize: "80 mg", concentration: "0.2 mg/unit", schedule: "10 units daily 30 days", reconstitutionVolume: "4 mL", price: 420, membershipPrice: 315 },
+      { strength: "80 mg", vialSize: "80 mg", concentration: "0.2 mg/unit", schedule: "10 units daily 30 days", reconstitutionVolume: "4 mL", price: 195 },
     ],
   }),
   base({
@@ -153,15 +150,13 @@ export const healingProducts: Product[] = [
     categorySlug: "healing-tissue-recovery",
     shortDescription: "Skin tightening, hair loss, wound healing.",
     fullDescription: "GHK-Cu tightens skin, reduces fine lines, fights hair loss and exhibits wound healing properties.",
-    medicationClass: "Copper Peptide",
+    medicationClass: "Copper Compound",
     indications: "Skin, hair, wound healing",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Skin tightening", "Hair support", "Wound healing"],
     clinicalNotes: "Skin tightening, hair loss, wound healing.",
     variants: [
-      { strength: "50 mg", vialSize: "50 mg", concentration: "0.25 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 120, membershipPrice: 96 },
-      { strength: "75 mg", vialSize: "75 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 135, membershipPrice: 108 },
-      { strength: "100 mg", vialSize: "100 mg", concentration: "0.25 mg/unit", schedule: "28 days on/14 off", reconstitutionVolume: "2 mL", price: 156, membershipPrice: 125 },
+      { strength: "100 mg", vialSize: "100 mg", concentration: "0.25 mg/unit", schedule: "28 days on/14 off", reconstitutionVolume: "2 mL", price: 99 },
     ],
   }),
   base({
@@ -170,15 +165,15 @@ export const healingProducts: Product[] = [
     genericName: "Lysine-Proline-Valine",
     category: "Healing & Tissue Recovery",
     categorySlug: "healing-tissue-recovery",
-    shortDescription: "Anti-inflammatory peptide.",
+    shortDescription: "Anti-inflammatory compound.",
     fullDescription: "KPV (Lysine-Proline-Valine) has anti-inflammatory and skin support properties.",
-    medicationClass: "Anti-Inflammatory Peptide",
+    medicationClass: "Anti-Inflammatory Compound",
     indications: "Anti-inflammatory, skin",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Anti-inflammatory", "Skin support"],
-    clinicalNotes: "Anti-inflammatory peptide.",
+    clinicalNotes: "Anti-inflammatory compound.",
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 190, membershipPrice: 143 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 190 },
     ],
   }),
   base({
@@ -195,7 +190,7 @@ export const healingProducts: Product[] = [
     keyBenefits: ["Joint support", "Cartilage"],
     clinicalNotes: "Cartilage support.",
     variants: [
-      { strength: "25 mg", vialSize: "25 mg", concentration: "N/A", schedule: "Consult provider", price: 150, membershipPrice: 113 },
+      { strength: "25 mg", vialSize: "25 mg", concentration: "N/A", schedule: "Consult provider", price: 150 },
     ],
   }),
   base({
@@ -204,15 +199,15 @@ export const healingProducts: Product[] = [
     genericName: "Cardiogen",
     category: "Healing & Tissue Recovery",
     categorySlug: "healing-tissue-recovery",
-    shortDescription: "Cardiovascular support peptide.",
+    shortDescription: "Cardiovascular support compound.",
     fullDescription: "Cardiogen supports cardiovascular health.",
     medicationClass: "Cardiovascular Support",
     indications: "Cardiovascular support",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Cardiovascular support"],
-    clinicalNotes: "Cardiovascular peptide.",
+    clinicalNotes: "Cardiovascular compound.",
     variants: [
-      { strength: "25 mg", vialSize: "25 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 135, membershipPrice: 102 },
+      { strength: "25 mg", vialSize: "25 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 135 },
     ],
   }),
   base({
@@ -221,15 +216,15 @@ export const healingProducts: Product[] = [
     genericName: "LL-37",
     category: "Healing & Tissue Recovery",
     categorySlug: "healing-tissue-recovery",
-    shortDescription: "Antimicrobial peptide for immune support.",
-    fullDescription: "LL-37 is an antimicrobial peptide that supports immune function and wound healing.",
-    medicationClass: "Antimicrobial Peptide",
+    shortDescription: "Antimicrobial compound for immune support.",
+    fullDescription: "LL-37 is an antimicrobial compound that supports immune function and wound healing.",
+    medicationClass: "Antimicrobial Compound",
     indications: "Immune support, wound healing",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Immune support", "Antimicrobial"],
-    clinicalNotes: "Antimicrobial peptide.",
+    clinicalNotes: "Antimicrobial compound.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 180, membershipPrice: 144 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 180 },
     ],
   }),
   base({
@@ -240,13 +235,13 @@ export const healingProducts: Product[] = [
     categorySlug: "healing-tissue-recovery",
     shortDescription: "LL-37 complex formulation.",
     fullDescription: "LL-37 Complex for immune and wound healing support.",
-    medicationClass: "Antimicrobial Peptide Complex",
+    medicationClass: "Antimicrobial Compound Complex",
     indications: "Immune support",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Immune support", "Wound healing"],
     clinicalNotes: "LL-37 complex.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 330, membershipPrice: 248 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 330 },
     ],
   }),
   base({
@@ -263,7 +258,7 @@ export const healingProducts: Product[] = [
     keyBenefits: ["Anti-inflammatory", "Joint support"],
     clinicalNotes: "Curcumin with Bioperine.",
     variants: [
-      { strength: "600 mg", vialSize: "600 mg", concentration: "N/A", schedule: "Consult provider", price: 405, membershipPrice: 324 },
+      { strength: "600 mg", vialSize: "600 mg", concentration: "N/A", schedule: "Consult provider", price: 405 },
     ],
   }),
   base({
@@ -272,15 +267,15 @@ export const healingProducts: Product[] = [
     genericName: "PNC-28",
     category: "Healing & Tissue Recovery",
     categorySlug: "healing-tissue-recovery",
-    shortDescription: "p53-derived peptide for cellular support.",
-    fullDescription: "PNC-28 is a p53-derived peptide for cellular health support.",
-    medicationClass: "p53-Derived Peptide",
+    shortDescription: "p53-derived compound for cellular support.",
+    fullDescription: "PNC-28 is a p53-derived compound for cellular health support.",
+    medicationClass: "p53-Derived Compound",
     indications: "Cellular support",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Cellular support"],
-    clinicalNotes: "p53-derived peptide.",
+    clinicalNotes: "p53-derived compound.",
     variants: [
-      { strength: "20 mg", vialSize: "20 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 525, membershipPrice: 395 },
+      { strength: "20 mg", vialSize: "20 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 525 },
     ],
   }),
 ];

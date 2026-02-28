@@ -26,9 +26,8 @@ export const peptideProducts: Product[] = [
     clinicalNotes: "GLP-1 receptor agonist for weight management.",
     featured: true,
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "2 mL", price: 240, membershipPrice: 192 },
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "2 mL", price: 450, membershipPrice: 360 },
-      { strength: "20 mg", vialSize: "20 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "4 mL", price: 600, membershipPrice: 480 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "2 mL", price: 380 },
+      { strength: "20 mg", vialSize: "20 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "4 mL", price: 550 },
     ],
   }),
   baseProduct({
@@ -46,12 +45,8 @@ export const peptideProducts: Product[] = [
     clinicalNotes: "Dual GIP/GLP-1 receptor agonist.",
     featured: true,
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "2 mL", price: 300, membershipPrice: 240 },
-      { strength: "30 mg", vialSize: "30 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 750, membershipPrice: 600 },
-      { strength: "40 mg", vialSize: "40 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "4 mL", price: 850, membershipPrice: 640 },
-      { strength: "60 mg", vialSize: "60 mg", concentration: "0.2 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 1050, membershipPrice: 840 },
-      { strength: "75 mg", vialSize: "75 mg", concentration: "0.2 mg/unit", schedule: "Once weekly", reconstitutionVolume: "4 mL", price: 1100, membershipPrice: 875 },
-      { strength: "120 mg", vialSize: "120 mg", concentration: "0.2 mg/unit", schedule: "Once weekly", reconstitutionVolume: "6 mL", price: 1700, membershipPrice: 1275 },
+      { strength: "30 mg", vialSize: "30 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 400 },
+      { strength: "60 mg", vialSize: "60 mg", concentration: "0.2 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 600 },
     ],
   }),
   baseProduct({
@@ -69,9 +64,8 @@ export const peptideProducts: Product[] = [
     clinicalNotes: "Triple receptor agonist for weight management.",
     featured: true,
     variants: [
-      { strength: "12 mg", vialSize: "12 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "1.2 mL", price: 450, membershipPrice: 360 },
-      { strength: "24 mg", vialSize: "24 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "2.4 mL", price: 750, membershipPrice: 600 },
-      { strength: "60 mg", vialSize: "60 mg", concentration: "0.2 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 1440, membershipPrice: 1050 },
+      { strength: "30 mg", vialSize: "30 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 360 },
+      { strength: "50 mg", vialSize: "50 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "5 mL", price: 650 },
     ],
   }),
   baseProduct({
@@ -88,7 +82,7 @@ export const peptideProducts: Product[] = [
     keyBenefits: ["Weight management", "Metabolic support"],
     clinicalNotes: "Dual agonist for weight management.",
     variants: [
-      { strength: "6 mg", vialSize: "6 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 345, membershipPrice: 276 },
+      { strength: "6 mg", vialSize: "6 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 345 },
     ],
   }),
   baseProduct({
@@ -105,8 +99,8 @@ export const peptideProducts: Product[] = [
     keyBenefits: ["Appetite suppression", "Weight management"],
     clinicalNotes: "Oral formulation.",
     variants: [
-      { strength: "500 mcg x 30", vialSize: "30 capsules", concentration: "500 mcg/capsule", schedule: "Consult provider", price: 250, membershipPrice: 200 },
-      { strength: "500 mcg x 100", vialSize: "100 capsules", concentration: "500 mcg/capsule", schedule: "Consult provider", price: 600, membershipPrice: 480 },
+      { strength: "500 mcg x 30", vialSize: "30 capsules", concentration: "500 mcg/capsule", schedule: "Consult provider", price: 250 },
+      { strength: "500 mcg x 100", vialSize: "100 capsules", concentration: "500 mcg/capsule", schedule: "Consult provider", price: 600 },
     ],
   }),
   baseProduct({
@@ -115,15 +109,15 @@ export const peptideProducts: Product[] = [
     genericName: "AOD 9604",
     category: "Weight Management",
     categorySlug: "weight-management",
-    shortDescription: "Lipolysis peptide; stacks well with other weight loss meds.",
-    fullDescription: "AOD 9604 is a lipolysis peptide that breaks down visceral fat. Great to stack with other weight loss medications.",
-    medicationClass: "Lipolysis Peptide",
+    shortDescription: "Lipolysis compound; stacks well with other weight loss meds.",
+    fullDescription: "AOD 9604 is a lipolysis compound that breaks down visceral fat. Great to stack with other weight loss medications.",
+    medicationClass: "Lipolysis Compound",
     indications: "Weight Management",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Visceral fat breakdown", "Stacks with GLP-1", "Flexible dosing"],
-    clinicalNotes: "Lipolysis peptide; stacks well with other weight loss meds.",
+    clinicalNotes: "Lipolysis compound; stacks well with other weight loss meds.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "20 units (5 days on/2 off)", reconstitutionVolume: "2 mL", price: 195, membershipPrice: 156 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "20 units (5 days on/2 off)", reconstitutionVolume: "2 mL", price: 130 },
     ],
   }),
   // Growth Hormone & Recomposition
@@ -142,7 +136,7 @@ export const peptideProducts: Product[] = [
     clinicalNotes: "Best 2 hrs before first meal or bedtime.",
     featured: true,
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "20 units 5 days on/2 off", reconstitutionVolume: "2 mL", price: 195, membershipPrice: 156 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "20 units 5 days on/2 off", reconstitutionVolume: "2 mL", price: 130 },
     ],
   }),
   baseProduct({
@@ -159,7 +153,7 @@ export const peptideProducts: Product[] = [
     keyBenefits: ["Visceral fat reduction", "Muscle improvement", "Body recomposition"],
     clinicalNotes: "Decreases visceral fat; improves muscle.",
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "20 units 5 days on/2 off", reconstitutionVolume: "2 mL", price: 260, membershipPrice: 208 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "20 units 5 days on/2 off", reconstitutionVolume: "2 mL", price: 130 },
     ],
   }),
   baseProduct({
@@ -170,13 +164,13 @@ export const peptideProducts: Product[] = [
     categorySlug: "growth-hormone-recomposition",
     shortDescription: "No appetite/cortisol/prolactin increase.",
     fullDescription: "Ipamorelin promotes muscle growth by stimulating endogenous GH without increase of appetite, cortisol or prolactin.",
-    medicationClass: "Growth Hormone Releasing Peptide",
+    medicationClass: "Growth Hormone Secretagogue",
     indications: "Muscle growth, GH release",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Selective GH release", "Clean muscle gain", "No appetite spike"],
     clinicalNotes: "No appetite/cortisol/prolactin increase.",
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "5 units 3x daily before meals", reconstitutionVolume: "2 mL", price: 165, membershipPrice: 132 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "5 units 3x daily before meals", reconstitutionVolume: "2 mL", price: 130 },
     ],
   }),
   baseProduct({
@@ -187,13 +181,13 @@ export const peptideProducts: Product[] = [
     categorySlug: "growth-hormone-recomposition",
     shortDescription: "Increases IGF-1, lean muscle mass.",
     fullDescription: "CJC-1295 no DAC increases endogenous production of IGF-1 and lean muscle mass.",
-    medicationClass: "Growth Hormone Releasing Peptide",
+    medicationClass: "Growth Hormone Secretagogue",
     indications: "Increases IGF-1, lean muscle mass",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["IGF-1 elevation", "Lean mass", "Sustained GH pulse"],
     clinicalNotes: "Increases IGF-1, lean muscle mass.",
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "10–20 units 5 days on/2 off", reconstitutionVolume: "2 mL", price: 180, membershipPrice: 144 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "10–20 units 5 days on/2 off", reconstitutionVolume: "2 mL", price: 130 },
     ],
   }),
   baseProduct({
@@ -202,16 +196,16 @@ export const peptideProducts: Product[] = [
     genericName: "GHRP-2",
     category: "Growth Hormone & Recomposition",
     categorySlug: "growth-hormone-recomposition",
-    shortDescription: "Growth hormone releasing peptide.",
+    shortDescription: "Growth hormone secretagogue.",
     fullDescription: "GHRP-2 stimulates GH release for muscle growth and recovery.",
-    medicationClass: "Growth Hormone Releasing Peptide",
+    medicationClass: "Growth Hormone Secretagogue",
     indications: "GH release, muscle growth",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["GH release", "Muscle growth", "Recovery"],
-    clinicalNotes: "Growth hormone releasing peptide.",
+    clinicalNotes: "Growth hormone secretagogue.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "1 mL", price: 110, membershipPrice: 83 },
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 150, membershipPrice: 120 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "1 mL", price: 110 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 150 },
     ],
   }),
   baseProduct({
@@ -220,15 +214,15 @@ export const peptideProducts: Product[] = [
     genericName: "GHRP-6",
     category: "Growth Hormone & Recomposition",
     categorySlug: "growth-hormone-recomposition",
-    shortDescription: "Growth hormone releasing peptide.",
+    shortDescription: "Growth hormone secretagogue.",
     fullDescription: "GHRP-6 stimulates GH release for muscle growth and recovery.",
-    medicationClass: "Growth Hormone Releasing Peptide",
+    medicationClass: "Growth Hormone Secretagogue",
     indications: "GH release, muscle growth",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["GH release", "Muscle growth"],
-    clinicalNotes: "Growth hormone releasing peptide.",
+    clinicalNotes: "Growth hormone secretagogue.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "1 mL", price: 150, membershipPrice: 120 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "1 mL", price: 150 },
     ],
   }),
   baseProduct({
@@ -237,15 +231,15 @@ export const peptideProducts: Product[] = [
     genericName: "Hexarelin",
     category: "Growth Hormone & Recomposition",
     categorySlug: "growth-hormone-recomposition",
-    shortDescription: "GHRP for GH release.",
+    shortDescription: "GH secretagogue.",
     fullDescription: "Hexarelin stimulates growth hormone release for muscle growth and recovery.",
-    medicationClass: "Growth Hormone Releasing Peptide",
+    medicationClass: "Growth Hormone Secretagogue",
     indications: "GH release",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["GH release", "Muscle growth"],
-    clinicalNotes: "GHRP for GH release.",
+    clinicalNotes: "GH secretagogue.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "1 mL", price: 120, membershipPrice: 96 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "1 mL", price: 120 },
     ],
   }),
   baseProduct({
@@ -262,7 +256,7 @@ export const peptideProducts: Product[] = [
     keyBenefits: ["Muscle growth", "Fat burn", "Metabolism support"],
     clinicalNotes: "Direct IGF-1 receptor binding.",
     variants: [
-      { strength: "1 mg", vialSize: "1 mg", concentration: "0.01 mg/unit", schedule: "10 units 5 days on/2 off", reconstitutionVolume: "1 mL", price: 195, membershipPrice: 156 },
+      { strength: "1 mg", vialSize: "1 mg", concentration: "0.01 mg/unit", schedule: "10 units 5 days on/2 off", reconstitutionVolume: "1 mL", price: 120 },
     ],
   }),
   baseProduct({
@@ -279,7 +273,7 @@ export const peptideProducts: Product[] = [
     keyBenefits: ["Muscle growth", "Repair"],
     clinicalNotes: "Mechano growth factor.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 180, membershipPrice: 144 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 180 },
     ],
   }),
   baseProduct({
@@ -296,7 +290,7 @@ export const peptideProducts: Product[] = [
     keyBenefits: ["Muscle growth", "Extended half-life"],
     clinicalNotes: "PEGylated MGF.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 210, membershipPrice: 160 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 210 },
     ],
   }),
   baseProduct({
@@ -313,7 +307,7 @@ export const peptideProducts: Product[] = [
     keyBenefits: ["Muscle growth", "Myostatin inhibition"],
     clinicalNotes: "Myostatin inhibitor.",
     variants: [
-      { strength: "1 mg", vialSize: "1 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 405, membershipPrice: 324 },
+      { strength: "1 mg", vialSize: "1 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 230 },
     ],
   }),
   // Blends
@@ -333,7 +327,7 @@ export const peptideProducts: Product[] = [
     isBlend: true,
     blendComponents: ["CJC-1295 no DAC 5mg", "Ipamorelin 5mg"],
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 165, membershipPrice: 132 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 165 },
     ],
   }),
   baseProduct({
@@ -352,7 +346,7 @@ export const peptideProducts: Product[] = [
     isBlend: true,
     blendComponents: ["Tesamorelin 5mg", "Ipamorelin 5mg"],
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 165, membershipPrice: 132 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 165 },
     ],
   }),
   baseProduct({
@@ -371,7 +365,7 @@ export const peptideProducts: Product[] = [
     isBlend: true,
     blendComponents: ["Tesamorelin 10mg", "Ipamorelin 5mg"],
     variants: [
-      { strength: "15 mg", vialSize: "15 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "3 mL", price: 210, membershipPrice: 168 },
+      { strength: "15 mg", vialSize: "15 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "3 mL", price: 210 },
     ],
   }),
   baseProduct({
@@ -390,7 +384,7 @@ export const peptideProducts: Product[] = [
     isBlend: true,
     blendComponents: ["Tesamorelin 5mg", "Ipamorelin 2.5mg", "MGF 500mcg"],
     variants: [
-      { strength: "8 mg", vialSize: "8 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 195, membershipPrice: 156 },
+      { strength: "8 mg", vialSize: "8 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 195 },
     ],
   }),
   baseProduct({
@@ -409,7 +403,7 @@ export const peptideProducts: Product[] = [
     isBlend: true,
     blendComponents: ["Tesamorelin 5mg", "Ipamorelin 2.5mg", "GHRP-2 5mg", "MGF 500mcg"],
     variants: [
-      { strength: "13 mg", vialSize: "13 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 210, membershipPrice: 168 },
+      { strength: "13 mg", vialSize: "13 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 210 },
     ],
   }),
 ];

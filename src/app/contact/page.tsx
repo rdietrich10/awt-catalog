@@ -17,7 +17,7 @@ export default function ContactPage() {
           Contact Us
         </h1>
         <p className="text-body-sm text-brand-silver mb-8">
-          Have questions about our peptides or need assistance? Reach out—we&apos;re here to help.
+          Have questions about our products or need assistance? Reach out—we&apos;re here to help.
         </p>
         <div className="space-y-6">
           <a

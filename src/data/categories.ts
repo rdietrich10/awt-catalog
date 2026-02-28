@@ -5,7 +5,7 @@ export const categories: Category[] = [
   {
     slug: "weight-management",
     name: "Weight Management",
-    description: "GLP-1 receptor agonists and lipolysis peptides for sustainable weight management.",
+    description: "GLP-1 receptor agonists and lipolysis compounds for sustainable weight management.",
     image: "/images/categories/weight-management.png",
     productCount: 6,
   },
@@ -40,7 +40,7 @@ export const categories: Category[] = [
   {
     slug: "wellness-mood",
     name: "Mood & Wellness",
-    description: "Peptides for emotional wellbeing, bonding, stress reduction, and mood support.",
+    description: "Compounds for emotional wellbeing, bonding, stress reduction, and mood support.",
     image: "/images/categories/wellness-mood.png",
     productCount: 3,
   },

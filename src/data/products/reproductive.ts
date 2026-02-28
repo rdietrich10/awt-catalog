@@ -24,8 +24,7 @@ export const reproductiveProducts: Product[] = [
     keyBenefits: ["Fertility support", "Testosterone optimization"],
     clinicalNotes: "Consult provider for dosing.",
     variants: [
-      { strength: "5000 IU", vialSize: "5000 IU", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 147, membershipPrice: 118 },
-      { strength: "10000 IU", vialSize: "10000 IU", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 235, membershipPrice: 178 },
+      { strength: "5000 IU", vialSize: "5000 IU", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 120 },
     ],
   }),
   base({
@@ -42,8 +41,7 @@ export const reproductiveProducts: Product[] = [
     keyBenefits: ["Fertility support", "Hormone balance"],
     clinicalNotes: "Consult provider for dosing.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 135, membershipPrice: 108 },
-      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 180, membershipPrice: 144 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 250 },
     ],
   }),
   base({
@@ -54,14 +52,13 @@ export const reproductiveProducts: Product[] = [
     categorySlug: "reproductive-hormonal-health",
     shortDescription: "Reproductive hormone support.",
     fullDescription: "Kisspeptin supports reproductive hormone function.",
-    medicationClass: "Reproductive Peptide",
+    medicationClass: "Reproductive Compound",
     indications: "Reproductive support",
     administrationRoute: "Subcutaneous",
     keyBenefits: ["Reproductive support"],
     clinicalNotes: "Consult provider for dosing.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 165, membershipPrice: 124 },
-      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 255, membershipPrice: 191 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 150 },
     ],
   }),
   base({
@@ -78,8 +75,7 @@ export const reproductiveProducts: Product[] = [
     keyBenefits: ["Libido support", "Sexual function"],
     clinicalNotes: "Consult provider for dosing.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 120, membershipPrice: 96 },
-      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 175, membershipPrice: 140 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 110 },
     ],
   }),
   base({

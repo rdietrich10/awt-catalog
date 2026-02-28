@@ -9,7 +9,7 @@ export default function CategoriesPage() {
         Categories
       </h1>
       <p className="text-body-sm text-brand-silver mb-12 max-w-2xl">
-        Explore our peptide catalog by therapeutic area.
+        Explore our catalog by therapeutic area.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map((cat) => (

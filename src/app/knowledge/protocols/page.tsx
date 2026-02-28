@@ -16,7 +16,7 @@ export default function ProtocolsPage() {
           Protocols
         </h1>
         <p className="text-body-sm text-brand-silver mb-12">
-          Education on the use of peptides, nutriments, and Lathmized NAD+. Always follow your provider&apos;s guidance and the product-specific instructions.
+          Education on the use of therapeutic compounds, nutriments, and Lathmized NAD+. Always follow your provider&apos;s guidance and the product-specific instructions.
         </p>
         <div className="space-y-12">
           {protocolSections.map((section) => (

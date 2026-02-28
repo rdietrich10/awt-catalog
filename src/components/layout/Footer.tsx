@@ -35,6 +35,9 @@ export function Footer() {
               <Link href="/interest-list" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
                 My List
               </Link>
+              <Link href="/how-it-works" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
+                How It Works
+              </Link>
               <Link href="/contact" className="text-body-sm py-2 min-h-[44px] flex items-center text-brand-silver hover:text-brand-white transition-colors">
                 Contact Us
               </Link>

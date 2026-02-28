@@ -22,14 +22,14 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Americare Wellness | Peptide Catalog",
+    default: "Americare Wellness | Advanced Therapeutics",
     template: "%s | Americare Wellness",
   },
   description:
-    "Americare Wellness peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Provider-guided, precision formulated.",
+    "Americare Wellness advanced therapeutics catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Provider-guided, precision formulated.",
   keywords: [
-    "peptides",
-    "peptide catalog",
+    "advanced therapeutics",
+    "therapeutic medications",
     "Americare Wellness",
     "semaglutide",
     "tirzepatide",
@@ -52,24 +52,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "Americare Wellness Peptide Catalog",
-    title: "Americare Wellness | Peptide Catalog",
+    siteName: "Americare Wellness Advanced Therapeutics",
+    title: "Americare Wellness | Advanced Therapeutics",
     description:
-      "Americare Wellness peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision peptides. Elevated outcomes.",
+      "Americare Wellness advanced therapeutics catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision therapeutics. Elevated outcomes.",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Americare Wellness Peptide Catalog — Precision peptides. Elevated outcomes.",
+        alt: "Americare Wellness Advanced Therapeutics — Precision therapeutics. Elevated outcomes.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Americare Wellness | Peptide Catalog",
+    title: "Americare Wellness | Advanced Therapeutics",
     description:
-      "Americare Wellness peptide catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision peptides. Elevated outcomes.",
+      "Americare Wellness advanced therapeutics catalog. Clinical-grade compounds for weight management, recovery, longevity, and hormonal health. Browse, compare, submit inquiries. Precision therapeutics. Elevated outcomes.",
     images: ["/images/og-image.png"],
   },
   robots: {

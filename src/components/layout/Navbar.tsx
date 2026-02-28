@@ -13,6 +13,7 @@ const navLinks: { href: string; label: string; icon?: typeof Home }[] = [
   { href: "/products", label: "Catalog" },
   { href: "/categories", label: "Categories" },
   { href: "/knowledge", label: "Knowledge" },
+  { href: "/how-it-works", label: "How It Works" },
 ];
 
 export function Navbar() {

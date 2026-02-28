@@ -1,5 +1,23 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { QualityReportGrid } from "@/components/quality/QualityReportGrid";
+
+const coaReports = [
+  { src: "/images/quality/coa/COA_Sermorelin-10.webp", label: "Sermorelin 10mg" },
+  { src: "/images/quality/coa/COA_Sema-20mg.webp", label: "Semaglutide 20mg" },
+  { src: "/images/quality/coa/COA_Retatrutide.webp", label: "Retatrutide" },
+  { src: "/images/quality/coa/COA_CJC-NoDac-10.webp", label: "CJC-1295 No DAC 10mg" },
+  { src: "/images/quality/coa/COA_Tirzepatide-60mg.webp", label: "Tirzepatide 60mg" },
+  { src: "/images/quality/coa/COA_Tirzepatide-30mg.webp", label: "Tirzepatide 30mg" },
+  { src: "/images/quality/coa/COA_Ipamorelin-10mg.webp", label: "Ipamorelin 10mg" },
+  { src: "/images/quality/coa/COA_Tesamorelin-10mg.webp", label: "Tesamorelin 10mg" },
+];
+
+const exotoxinReports = [
+  { src: "/images/quality/exotoxin/ET_Ipamorelin-10mg.webp", label: "Ipamorelin 10mg" },
+  { src: "/images/quality/exotoxin/ET_Sermorelin-10mg.webp", label: "Sermorelin 10mg" },
+  { src: "/images/quality/exotoxin/ET_Tirz-60.webp", label: "Tirzepatide 60mg" },
+];
 
 export default function QualityControlPage() {
   return (
@@ -10,21 +28,45 @@ export default function QualityControlPage() {
           { label: "Quality Control" },
         ]}
       />
-      <div className="mt-8 max-w-3xl">
+
+      <div className="mt-8">
         <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mb-4">
           Quality Control & Chain of Custody
         </h1>
-        <p className="text-body-sm text-brand-silver mb-8">
-          Americare Wellness partners with third-party laboratories to verify quality, purity, and absence of contamination for our compounded peptides. Chain of custody reports and certificates of analysis will be available here once provided.
+        <p className="text-body-sm text-brand-silver mb-12 max-w-3xl">
+          Americare Wellness partners with independent, third-party laboratories
+          to verify the quality, purity, potency, and sterility of every
+          compounded medication we offer. Below you will find Certificates of
+          Analysis (COA) and Exotoxin Test Reports that document our commitment
+          to safety and transparency.
         </p>
-        <div className="border border-brand-border p-8 text-center">
-          <p className="text-body-sm text-brand-silver-dark">
-            Chain of custody reports and certificates of analysis will be posted here. Check back soon.
+
+        <section className="mb-16">
+          <h2 className="font-display text-2xl uppercase tracking-tight text-brand-white mb-2">
+            Certificates of Analysis (COA)
+          </h2>
+          <p className="text-body-sm text-brand-silver mb-6 max-w-2xl">
+            Each COA confirms the identity, purity, and potency of the active
+            ingredient as tested by an accredited laboratory.
           </p>
-        </div>
+          <QualityReportGrid reports={coaReports} />
+        </section>
+
+        <section>
+          <h2 className="font-display text-2xl uppercase tracking-tight text-brand-white mb-2">
+            Exotoxin Test Reports
+          </h2>
+          <p className="text-body-sm text-brand-silver mb-6 max-w-2xl">
+            Exotoxin testing verifies the absence of harmful bacterial
+            endotoxins, ensuring each product meets strict safety standards
+            before distribution.
+          </p>
+          <QualityReportGrid reports={exotoxinReports} />
+        </section>
+
         <Link
           href="/"
-          className="mt-10 inline-block text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
+          className="mt-12 inline-block text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
         >
           Back to home
         </Link>
