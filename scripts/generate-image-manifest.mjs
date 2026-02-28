@@ -17,7 +17,7 @@ const ROOT = join(__dirname, "..");
 const PRODUCTS_DIR = join(ROOT, "public/images/products");
 const OUTPUT = join(ROOT, "src/data/productImageSlugs.ts");
 
-const productSlugs = new Set(PRODUCTS.filter((p) => !p.skip).map((p) => p.slug));
+const productSlugs = new Set(PRODUCTS.map((p) => p.slug));
 const existing = new Set(
   readdirSync(PRODUCTS_DIR)
     .filter((f) => f.endsWith(".png"))

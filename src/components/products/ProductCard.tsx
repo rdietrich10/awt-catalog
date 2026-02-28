@@ -31,7 +31,7 @@ export const ProductCard = memo(function ProductCard({ product, priority = false
           />
           <Badge
             variant={product.isBlend ? "blend" : "default"}
-            className="absolute top-2 left-2 text-[10px] font-bold bg-brand-black/70 backdrop-blur-sm"
+            className="absolute top-2 left-2 text-[10px] font-bold whitespace-nowrap bg-brand-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity"
           >
             {product.category}
           </Badge>

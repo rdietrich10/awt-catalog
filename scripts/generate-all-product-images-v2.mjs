@@ -5,6 +5,8 @@
  * Each product gets its own image with explicit label prompt.
  * Uses fal.ai Nano Banana Pro edit - base image + label update.
  *
+ * All calls within a batch fire concurrently via Promise.allSettled.
+ *
  * Base images by product type:
  * - vial (injectables): sema-glp-1.png
  * - supplement-bottle (capsules): supplement-bottle.png
@@ -14,25 +16,18 @@
  * - kit: kit.png
  * - exosomes: exosomes.png
  *
- * Usage: node --env-file=.env scripts/generate-all-product-images-v2.mjs [startIndex] [count]
+ * Usage: node --env-file=.env scripts/generate-all-product-images-v2.mjs [startIndex] [count] [--force]
  */
 
 import { fal } from "@fal-ai/client";
 import { createWriteStream, readFileSync, existsSync } from "fs";
-import { mkdir } from "fs/promises";
+import { mkdir, writeFile } from "fs/promises";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = `${__dirname}/..`;
 const PRODUCTS_DIR = `${ROOT}/public/images/products`;
-
-/** Sleep between API calls to avoid rate limiting (ms) */
-const SLEEP_MS = 12000;
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 const BASES = {
   vial: `${ROOT}/public/images/products/sema-glp-1.png`,
@@ -191,13 +186,40 @@ async function generateForProduct(baseUrl, product) {
   return images[0].url;
 }
 
-async function main() {
-  const startIndex = parseInt(process.argv[2] || "0", 10);
-  const count = parseInt(process.argv[3] || "10", 10);
-  const products = PRODUCTS.slice(startIndex, startIndex + count);
+async function processProduct(baseUrlCache, product, index, total) {
+  const outputPath = `${PRODUCTS_DIR}/${product.slug}.png`;
+  const tag = `[${index + 1}/${total}]`;
 
-  if (products.length === 0) {
-    console.log("Usage: node --env-file=.env scripts/generate-all-product-images-v2.mjs [startIndex] [count]");
+  try {
+    let baseUrl = baseUrlCache.get(product.base);
+    if (!baseUrl) {
+      throw new Error(`No cached base URL for type: ${product.base}`);
+    }
+
+    console.log(`${tag} 🎨 Generating ${product.name}...`);
+    const imageUrl = await generateForProduct(baseUrl, product);
+
+    const buffer = await downloadImage(imageUrl);
+    await writeFile(outputPath, Buffer.from(buffer));
+    console.log(`${tag} ✅ ${product.slug}.png`);
+    return { slug: product.slug, success: true };
+  } catch (err) {
+    console.error(`${tag} ❌ ${product.slug}: ${err.message}`);
+    return { slug: product.slug, success: false, error: err.message };
+  }
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const force = args.includes("--force");
+  const positionalArgs = args.filter((a) => !a.startsWith("--"));
+
+  const startIndex = parseInt(positionalArgs[0] || "0", 10);
+  const count = parseInt(positionalArgs[1] || "10", 10);
+  const allProducts = PRODUCTS.slice(startIndex, startIndex + count);
+
+  if (allProducts.length === 0) {
+    console.log("Usage: node --env-file=.env scripts/generate-all-product-images-v2.mjs [startIndex] [count] [--force]");
     process.exit(0);
   }
 
@@ -210,48 +232,64 @@ async function main() {
   fal.config({ credentials });
   await mkdir(PRODUCTS_DIR, { recursive: true });
 
-  for (let i = 0; i < products.length; i++) {
-    const product = products[i];
-    const outputPath = `${PRODUCTS_DIR}/${product.slug}.png`;
-
-    if (product.skip) {
-      console.log(`[${i + 1}/${products.length}] ⏭️  Skipping ${product.slug} (already have image)`);
-      continue;
+  const products = allProducts.filter((p) => {
+    if (p.skip) {
+      console.log(`⏭️  Skipping ${p.slug} (marked skip)`);
+      return false;
     }
-
-    if (existsSync(outputPath)) {
-      console.log(`[${i + 1}/${products.length}] ⏭️  ${product.slug}.png exists, skipping`);
-      continue;
+    if (!force && existsSync(`${PRODUCTS_DIR}/${p.slug}.png`)) {
+      console.log(`⏭️  ${p.slug}.png exists, skipping (use --force to overwrite)`);
+      return false;
     }
+    return true;
+  });
 
-    const basePath = BASES[product.base];
-    if (!basePath || !existsSync(basePath)) {
-      console.error(`   ❌ Base not found: ${product.base}`);
-      continue;
-    }
-
-    console.log(`\n[${i + 1}/${products.length}] 🎨 ${product.name}...`);
-    try {
-      const baseUrl = await uploadFile(basePath, `base-${product.base}.png`);
-      const imageUrl = await generateForProduct(baseUrl, product);
-      const buffer = await downloadImage(imageUrl);
-      const stream = createWriteStream(outputPath);
-      stream.write(Buffer.from(buffer));
-      stream.end();
-      await new Promise((resolve, reject) => { stream.on("finish", resolve); stream.on("error", reject); });
-      console.log(`   ✅ ${product.slug}.png`);
-      if (i < products.length - 1) {
-        console.log(`   ⏳ Sleeping ${SLEEP_MS / 1000}s...`);
-        await sleep(SLEEP_MS);
-      }
-    } catch (err) {
-      console.error(`   ❌ ${err.message}`);
-      console.log(`   ⏳ Sleeping ${SLEEP_MS / 1000}s before retry...`);
-      await sleep(SLEEP_MS);
-    }
+  if (products.length === 0) {
+    console.log("Nothing to generate. All products already have images (use --force to overwrite).");
+    process.exit(0);
   }
 
-  console.log("\n✅ Done. Run with different [startIndex] [count] to generate more.");
+  console.log(`\n📤 Uploading base images...\n`);
+  const neededBases = [...new Set(products.map((p) => p.base))];
+  const baseUrlCache = new Map();
+
+  for (const baseType of neededBases) {
+    const basePath = BASES[baseType];
+    if (!basePath || !existsSync(basePath)) {
+      console.error(`❌ Base image not found for type: ${baseType}`);
+      continue;
+    }
+    console.log(`  Uploading ${baseType} base...`);
+    const url = await uploadFile(basePath, `base-${baseType}.png`);
+    baseUrlCache.set(baseType, url);
+    console.log(`  ✅ ${baseType} uploaded`);
+  }
+
+  console.log(`\n🚀 Generating ${products.length} images in parallel...\n`);
+
+  const results = await Promise.allSettled(
+    products.map((product, i) =>
+      processProduct(baseUrlCache, product, startIndex + i, PRODUCTS.length)
+    )
+  );
+
+  const succeeded = results.filter(
+    (r) => r.status === "fulfilled" && r.value.success
+  ).length;
+  const failed = results.filter(
+    (r) => r.status === "rejected" || (r.status === "fulfilled" && !r.value.success)
+  );
+
+  console.log(`\n${"=".repeat(50)}`);
+  console.log(`✅ Succeeded: ${succeeded}/${products.length}`);
+  if (failed.length > 0) {
+    console.log(`❌ Failed: ${failed.length}/${products.length}`);
+    for (const f of failed) {
+      const val = f.status === "fulfilled" ? f.value : { slug: "unknown", error: f.reason?.message };
+      console.log(`   - ${val.slug}: ${val.error}`);
+    }
+  }
+  console.log(`${"=".repeat(50)}\n`);
 }
 
 const __filename = fileURLToPath(import.meta.url);
