@@ -78,21 +78,4 @@ export const reproductiveProducts: Product[] = [
       { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 110 },
     ],
   }),
-  base({
-    slug: "rx-enclomiphene",
-    name: "RX-Enclomiphene",
-    genericName: "Enclomiphene Citrate",
-    category: "Reproductive & Hormonal Health",
-    categorySlug: "reproductive-hormonal-health",
-    shortDescription: "8-week enclomiphene protocol.",
-    fullDescription: "RX-Enclomiphene 50mg for 8 weeks supports testosterone optimization.",
-    medicationClass: "SERM",
-    indications: "Testosterone optimization",
-    administrationRoute: "Oral",
-    keyBenefits: ["Testosterone optimization"],
-    clinicalNotes: "8-week protocol.",
-    variants: [
-      { strength: "50 mg (8 weeks)", vialSize: "N/A", concentration: "N/A", schedule: "8 weeks", price: 355 },
-    ],
-  }),
 ];

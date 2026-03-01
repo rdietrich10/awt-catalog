@@ -7,7 +7,7 @@ import { protocolSections } from "@/data/protocols";
 export const metadata: Metadata = {
   title: "Protocols",
   description:
-    "Reconstitution, storage, injection technique, and usage protocols for therapeutic compounds, nutriments, and Lathmized NAD+.",
+    "Reconstitution, storage, injection technique, and usage protocols for therapeutic compounds.",
   alternates: { canonical: "/knowledge/protocols" },
 };
 
@@ -27,7 +27,7 @@ export default function ProtocolsPage() {
         <KnowledgeNav activeSection="protocols" />
         <div className="max-w-3xl">
         <p className="text-body-sm text-brand-silver mb-12">
-          Education on the use of therapeutic compounds, nutriments, and Lathmized NAD+. Always follow your provider&apos;s guidance and the product-specific instructions.
+          Education on the use of therapeutic compounds. Always follow your provider&apos;s guidance and the product-specific instructions.
         </p>
         <div className="space-y-12">
           {protocolSections.map((section) => (

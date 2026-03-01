@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { products } from "@/data/products";
 import { PHYSICIAN_REVIEW_PRODUCTS_INTRO, PROTOCOL_STATEMENT } from "@/data/copy";
 import { FilterableProductGrid } from "@/components/products/FilterableProductGrid";
+import { JsonLd, productItemListJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Product Catalog",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <JsonLd data={productItemListJsonLd(products)} />
       <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mb-4">
         Product Catalog
       </h1>

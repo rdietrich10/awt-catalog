@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { InterestListProvider } from "@/context/InterestListContext";
 import { JsonLd, organizationJsonLd, webSiteJsonLd } from "@/lib/structured-data";
+
+const GA_MEASUREMENT_ID = "G-X6GK5181ZJ";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -87,6 +90,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen flex flex-col font-body">
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} />

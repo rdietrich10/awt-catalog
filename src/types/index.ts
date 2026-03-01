@@ -36,7 +36,7 @@ export interface Product {
   image: string;
   shortDescription: string;
   fullDescription: string;
-  /** Default price when no variant-level price (e.g. single-variant nutriments) */
+  /** Default price when no variant-level price */
   price?: number;
   /** Default membership price when no variant-level price */
   membershipPrice?: number;

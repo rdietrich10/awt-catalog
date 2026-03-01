@@ -19,7 +19,7 @@ export function organizationJsonLd() {
     name: COMPANY_NAME,
     legalName: COMPANY_LEGAL_NAME,
     url: COMPANY_WEBSITE,
-    logo: `${BASE_URL}/images/americare-logo.png`,
+    logo: `${BASE_URL}/images/brand/logo-inverse.svg`,
     contactPoint: {
       "@type": "ContactPoint",
       telephone: COMPANY_PHONE,
@@ -91,7 +91,7 @@ export function articleJsonLd(article: Article) {
       name: COMPANY_NAME,
       logo: {
         "@type": "ImageObject",
-        url: `${BASE_URL}/images/americare-logo.png`,
+        url: `${BASE_URL}/images/brand/logo-inverse.svg`,
       },
     },
   };
@@ -127,6 +127,61 @@ export function breadcrumbJsonLd(items: BreadcrumbItem[]) {
       name: item.name,
       item: `${BASE_URL}${item.url}`,
     })),
+  };
+}
+
+export function productItemListJsonLd(productList: Product[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Product Catalog",
+    numberOfItems: productList.length,
+    itemListElement: productList.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: p.name,
+      url: `${BASE_URL}/products/${p.slug}`,
+      image: p.image ? `${BASE_URL}${p.image}` : undefined,
+    })),
+  };
+}
+
+export function articleItemListJsonLd(articleList: Article[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Articles",
+    numberOfItems: articleList.length,
+    itemListElement: articleList.map((a, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: a.title,
+      url: `${BASE_URL}/knowledge/articles/${a.slug}`,
+    })),
+  };
+}
+
+export function collectionPageJsonLd(
+  category: { name: string; slug: string; description: string },
+  categoryProducts: Product[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: category.name,
+    description: category.description,
+    url: `${BASE_URL}/categories/${category.slug}`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: categoryProducts.length,
+      itemListElement: categoryProducts.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: p.name,
+        url: `${BASE_URL}/products/${p.slug}`,
+        image: p.image ? `${BASE_URL}${p.image}` : undefined,
+      })),
+    },
   };
 }
 

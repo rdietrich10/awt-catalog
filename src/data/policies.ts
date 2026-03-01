@@ -34,7 +34,7 @@ export const policySections: PolicySection[] = [
     id: "regulatory-disclosure",
     title: "Advanced Therapeutics – Regulatory Disclosure & Informed Consent",
     content: [
-      "You understand and acknowledge that certain products made available through AW Therapeutics may include compounded preparations, nutraceuticals, or other advanced therapeutics that may be off-label and/or not approved by the U.S. Food & Drug Administration (FDA) for certain uses or indications. Some products may be labeled by the manufacturer as \"For Research Use Only\" or \"Not for Human Use.\"",
+      "You understand and acknowledge that certain products made available through AW Therapeutics may include compounded preparations or other advanced therapeutics that may be off-label and/or not approved by the U.S. Food & Drug Administration (FDA) for certain uses or indications. Some products may be labeled by the manufacturer as \"For Research Use Only\" or \"Not for Human Use.\"",
       "You acknowledge and agree that:",
       "• No guarantees are made regarding results, effectiveness, or safety.",
       "• Risks may include allergic reactions, injection site irritation, infection, inflammation, hormonal or metabolic changes, adverse effects, interactions with medications/conditions, and unknown long-term risks due to limited human data for certain uses.",
@@ -54,7 +54,7 @@ export const policySections: PolicySection[] = [
     id: "refund-cancellation",
     title: "Refund & Cancellation Policy (Products)",
     content: [
-      "Due to the sensitive nature of compounded and nutraceutical products, all sales are final and we do not accept returns.",
+      "Due to the sensitive nature of compounded products, all sales are final and we do not accept returns.",
       "Cancellation requests must be submitted before shipment. Once an order has shipped, it cannot be canceled.",
       "If you receive items that are missing, incorrect, or damaged, you must contact us within 48 hours of delivery at info@awclinics.com so we may evaluate the issue and provide a resolution in our discretion (which may include replacement or store credit where permitted).",
     ],

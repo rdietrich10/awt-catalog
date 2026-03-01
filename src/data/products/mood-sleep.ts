@@ -41,7 +41,7 @@ export const moodSleepProducts: Product[] = [
     keyBenefits: ["Anxiety support", "Cognitive function", "Emotional balance"],
     clinicalNotes: "Nootropic compound for anxiety and cognition.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "0.025 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 69 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "0.025 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 90 },
     ],
   }),
   base({
@@ -58,24 +58,7 @@ export const moodSleepProducts: Product[] = [
     keyBenefits: ["Cognitive enhancement", "Memory support", "Neuroprotection"],
     clinicalNotes: "Nootropic compound for cognition.",
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 250 },
-    ],
-  }),
-  base({
-    slug: "melanotan-2",
-    name: "Melanotan II (MT-II)",
-    genericName: "Melanotan II",
-    category: "Sleep & Detox",
-    categorySlug: "sleep-detox",
-    shortDescription: "Tanning compound; may support libido.",
-    fullDescription: "Melanotan II stimulates melanin production for tanning and may support libido.",
-    medicationClass: "Melanocortin receptor agonist",
-    indications: "Tanning support, libido",
-    administrationRoute: "Subcutaneous",
-    keyBenefits: ["Tanning support", "Libido support"],
-    clinicalNotes: "Melanocortin agonist.",
-    variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Consult provider", reconstitutionVolume: "2 mL", price: 120 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 120 },
     ],
   }),
 ];

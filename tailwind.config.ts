@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          black: "#000000",
+          black: "#090d0b",
           white: "#FAFAFA",
           grey: {
             100: "#F5F5F5",
@@ -68,9 +68,14 @@ const config: Config = {
           "0%": { transform: "scale(1)" },
           "100%": { transform: "scale(1.08)" },
         },
+        "gold-shimmer": {
+          "0%": { backgroundPosition: "-200% center" },
+          "100%": { backgroundPosition: "200% center" },
+        },
       },
       animation: {
         "hero-kb": "hero-kb 10s linear forwards",
+        "gold-shimmer": "gold-shimmer 2s ease-in-out infinite",
       },
     },
   },

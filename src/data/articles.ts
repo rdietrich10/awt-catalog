@@ -2,6 +2,15 @@ import type { Article } from "@/types";
 
 const unsorted: Article[] = [
   {
+    slug: "why-we-dont-sell-nutraceuticals",
+    title: "Why AW Therapeutics Doesn't Sell Nutraceuticals",
+    excerpt: "We could sell supplements. We choose not to. Here's the science behind that decision — and what we offer instead.",
+    content: "AW Therapeutics focuses exclusively on medical-grade, pharmacy-compounded therapeutics with verified mechanisms of action. We do not carry nutraceutical products because the science does not support their efficacy at marketed doses, oral bioavailability is a fundamental barrier for most compounds, and supplement manufacturing lacks the quality standards we require.",
+    image: "/images/articles/why-we-dont-sell-nutraceuticals.png",
+    dateCreated: "2026-02-28",
+    dateUpdated: "2026-02-28",
+  },
+  {
     slug: "peptide-regulation-2026",
     title: "Navigating the FDA Peptide Landscape in 2026",
     excerpt: "HHS Secretary RFK Jr. signaled major peptide regulation changes on the Joe Rogan Experience. Here's what he actually said, what's verified, and what it means for patients and providers.",

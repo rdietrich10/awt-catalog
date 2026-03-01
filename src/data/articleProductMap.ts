@@ -19,7 +19,6 @@ const INJECTABLE_CATEGORIES = [
   "reproductive-hormonal-health",
   "longevity-anti-aging",
   "wellness-mood",
-  "sleep-detox",
 ];
 
 const articleProductMap: Record<string, ArticleMapping> = {

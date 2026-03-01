@@ -5,8 +5,6 @@
 
 export const CATEGORY_IMAGES = {
   supplies: "/images/categories/supplies.png",
-  nutriments: "/images/categories/nutriments.png",
-  sleepDetox: "/images/categories/sleep-detox.png",
-  cognitiveHealth: "/images/categories/cognitive-health.png",
   bloodTestingAnalysis: "/images/categories/blood-testing-analysis.png",
+  telehealthServices: "/images/categories/telehealth-services.png",
 } as const;

@@ -24,7 +24,7 @@ export const suppliesProducts: Product[] = [
     keyBenefits: ["Reconstitution diluent"],
     clinicalNotes: "Use for medication reconstitution.",
     variants: [
-      { strength: "30 mL", vialSize: "30 mL", concentration: "N/A", schedule: "N/A", price: 20 },
+      { strength: "30 mL", vialSize: "30 mL", concentration: "N/A", schedule: "N/A", price: 33 },
     ],
   }),
   base({
@@ -41,7 +41,7 @@ export const suppliesProducts: Product[] = [
     keyBenefits: ["Subcutaneous administration"],
     clinicalNotes: "10 per pack.",
     variants: [
-      { strength: "10/pack", vialSize: "N/A", concentration: "N/A", schedule: "N/A", price: 15 },
+      { strength: "10/pack", vialSize: "N/A", concentration: "N/A", schedule: "N/A", price: 10 },
     ],
   }),
 ];

@@ -58,6 +58,7 @@ export const bloodTestingProducts: Product[] = [
         vialSize: "N/A",
         concentration: "N/A",
         schedule: "Annual",
+        price: 599,
       },
     ],
   }),

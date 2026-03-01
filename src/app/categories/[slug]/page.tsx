@@ -6,7 +6,7 @@ import { products } from "@/data/products";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { BMICalculator } from "@/components/weight/BMICalculator";
-import { JsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { JsonLd, breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -43,6 +43,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           { name: category.name, url: `/categories/${category.slug}` },
         ])}
       />
+      <JsonLd data={collectionPageJsonLd(category, categoryProducts)} />
       <Breadcrumb
         items={[
           { label: "Categories", href: "/categories" },

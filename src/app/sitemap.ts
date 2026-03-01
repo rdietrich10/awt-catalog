@@ -18,9 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/knowledge/protocols`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/knowledge/glossary`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/how-it-works`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/contact`, changeFrequency: "yearly", priority: 0.5 },
-    { url: `${BASE_URL}/policies`, changeFrequency: "yearly", priority: 0.4 },
     { url: `${BASE_URL}/quality-control`, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/policies`, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${BASE_URL}/privacy`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/brand`, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const productRoutes: MetadataRoute.Sitemap = products.map((p) => ({
