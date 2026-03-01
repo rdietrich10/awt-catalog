@@ -11,8 +11,12 @@ import {
   COOKIE_LIST,
   CCPA_TITLE,
   CCPA_SECTIONS,
+  CCPA_CATEGORIES_COLLECTED,
   DATA_RETENTION_TITLE,
   DATA_RETENTION_POLICY,
+  GDPR_TITLE,
+  GDPR_INTRO,
+  GDPR_SECTIONS,
   PRIVACY_LAST_UPDATED,
 } from "@/data/hipaa";
 
@@ -90,10 +94,10 @@ export function HipaaNoticeContent() {
           <table className="w-full text-left text-body-sm">
             <thead>
               <tr className="border-b border-brand-border">
-                <th className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Cookie</th>
-                <th className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Purpose</th>
-                <th className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Duration</th>
-                <th className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Type</th>
+                <th scope="col" className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Cookie</th>
+                <th scope="col" className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Purpose</th>
+                <th scope="col" className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Duration</th>
+                <th scope="col" className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Type</th>
               </tr>
             </thead>
             <tbody>
@@ -120,6 +124,35 @@ export function HipaaNoticeContent() {
           If you are a California resident, the California Consumer Privacy Act (CCPA)
           grants you additional rights regarding your personal information.
         </p>
+
+        <h3 className="text-body-sm text-brand-white font-semibold mb-3 mt-6">
+          Categories of Personal Information Collected (Preceding 12 Months)
+        </h3>
+        <div className="border border-brand-border overflow-hidden mb-6">
+          <table className="w-full text-left text-body-sm">
+            <thead>
+              <tr className="border-b border-brand-border">
+                <th scope="col" className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Category</th>
+                <th scope="col" className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Examples</th>
+                <th scope="col" className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Collected</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CCPA_CATEGORIES_COLLECTED.map((c) => (
+                <tr key={c.category} className="border-b border-brand-border last:border-b-0">
+                  <td className="px-4 py-3 text-brand-white">{c.category}</td>
+                  <td className="px-4 py-3 text-brand-silver">{c.examples}</td>
+                  <td className="px-4 py-3">
+                    <span className={c.collected ? "text-brand-gold" : "text-brand-silver-dark"}>
+                      {c.collected ? "Yes" : "No"}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         <ul className="space-y-4">
           {CCPA_SECTIONS.map((s) => (
             <li key={s.title}>
@@ -139,6 +172,25 @@ export function HipaaNoticeContent() {
         <p className="text-body-sm text-brand-silver leading-relaxed">
           {DATA_RETENTION_POLICY}
         </p>
+      </section>
+
+      <section id="gdpr">
+        <SectionHeading id="gdpr">{GDPR_TITLE}</SectionHeading>
+        <p className="text-body-sm text-brand-silver leading-relaxed mb-4">
+          {GDPR_INTRO}
+        </p>
+        <ul className="space-y-4">
+          {GDPR_SECTIONS.map((s) => (
+            <li key={s.title}>
+              <p className="text-body-sm text-brand-white font-semibold">
+                {s.title}
+              </p>
+              <p className="text-body-sm text-brand-silver leading-relaxed mt-1">
+                {s.description}
+              </p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section>

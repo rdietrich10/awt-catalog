@@ -31,6 +31,7 @@ const companyLinks = [
   { href: "/contact", label: "Contact Us" },
   { href: "/policies", label: "Policies" },
   { href: "/privacy", label: "Privacy Notice" },
+  { href: "/accessibility", label: "Accessibility" },
   { href: "/privacy#ccpa", label: "Do Not Sell My Information" },
   { href: "/interest-list", label: "My List" },
 ];
