@@ -97,8 +97,8 @@ export const PRODUCTS = [
   { slug: "ta-1", name: "TA-1 Thymosin Alpha-1", genericName: "Thymosin Alpha-1", base: "vial", strengths: "10 mg", indication: "Immune support", route: "Subcutaneous", dosing: "Consult provider" },
   { slug: "thymagen", name: "Thymagen", genericName: "Thymagen", base: "vial", strengths: "20 mg", indication: "Immune support", route: "Subcutaneous", dosing: "Consult provider" },
   { slug: "thymalin", name: "Thymalin", genericName: "Thymalin", base: "vial", strengths: "N/A", indication: "Immune support", route: "Subcutaneous", dosing: "Consult provider" },
-  { slug: "lathmized-nad-maintenance", name: "Lathmized NAD+ Maintenance", genericName: "Lathmized NAD+", base: "supplementBottle", strengths: "3,000 mg - 30 days", indication: "Cellular energy, longevity", route: "Oral", dosing: "30 days" },
-  { slug: "lathmized-nad-medical", name: "Lathmized NAD+ (Medical Strength)", genericName: "Lathmized NAD+", base: "supplementBottle", strengths: "15,000 mg", indication: "Cellular energy, longevity", route: "Oral", dosing: "Consult provider" },
+  { slug: "lathmized-nad-maintenance", name: "LathMized NAD+ Monthly Maintenance", genericName: "LathMized NAD+", base: "supplementBottle", strengths: "3,000 mg - 30 days", indication: "Daily NAD+ maintenance, longevity", route: "Oral (Lozenge)", dosing: "Daily" },
+  { slug: "lathmized-nad-medical", name: "LathMized NAD+ Load Up (7-Day Dose)", genericName: "LathMized NAD+", base: "supplementBottle", strengths: "15,000 mg - 7 days", indication: "Intensive NAD+ restoration", route: "Oral (Powder)", dosing: "7-day protocol" },
   { slug: "exosomes-luvigix", name: "Exosomes (400 Billion) - Luvigix", genericName: "Exosomes", base: "exosomes", strengths: "400 Billion", indication: "Cellular signaling, regenerative support", route: "Consult provider", dosing: "Consult provider" },
   { slug: "bdnf", name: "BDNF", genericName: "Brain-Derived Neurotrophic Factor", base: "vial", strengths: "10 mg", indication: "Neuroplasticity, cognitive", route: "Subcutaneous", dosing: "Consult provider" },
   // Mood & Sleep

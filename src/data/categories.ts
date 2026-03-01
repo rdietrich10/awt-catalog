@@ -33,9 +33,9 @@ export const categories: Category[] = [
   {
     slug: "longevity-anti-aging",
     name: "Longevity & Anti-Aging",
-    description: "Epitalon, MOTS-c, DSIP, and Glutathione for cellular longevity, mitochondrial support, and detoxification.",
+    description: "Epitalon, MOTS-c, DSIP, Glutathione, and LathMized NAD+ for cellular longevity, mitochondrial support, NAD+ optimization, and detoxification.",
     image: "/images/categories/longevity-anti-aging.png",
-    productCount: 4,
+    productCount: 6,
   },
   {
     slug: "wellness-mood",

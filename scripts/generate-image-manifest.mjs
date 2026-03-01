@@ -10,21 +10,16 @@
 import { readdirSync, writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { PRODUCTS } from "./generate-all-product-images-v2.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const PRODUCTS_DIR = join(ROOT, "public/images/products");
 const OUTPUT = join(ROOT, "src/data/productImageSlugs.ts");
 
-const productSlugs = new Set(PRODUCTS.map((p) => p.slug));
-const existing = new Set(
-  readdirSync(PRODUCTS_DIR)
-    .filter((f) => f.endsWith(".png"))
-    .map((f) => f.replace(".png", ""))
-);
-
-const withImages = [...productSlugs].filter((s) => existing.has(s));
+const withImages = readdirSync(PRODUCTS_DIR)
+  .filter((f) => f.endsWith(".png"))
+  .map((f) => f.replace(".png", ""))
+  .sort();
 
 const content = `/**
  * Product slugs that have images in public/images/products/.
