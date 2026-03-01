@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { ShieldCheck, ChevronDown, ChevronUp, Check } from "lucide-react";
 import { InsuranceVerificationForm } from "./InsuranceVerificationForm";
 import {
@@ -11,10 +11,22 @@ import {
 
 export function InsuranceBanner() {
   const [expanded, setExpanded] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
+
+  const toggle = useCallback(() => {
+    setExpanded((prev) => {
+      const next = !prev;
+      if (next) {
+        requestAnimationFrame(() => {
+          formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+      return next;
+    });
+  }, []);
 
   return (
     <section className="border border-brand-gold/30 bg-brand-gold/[0.03] mb-12">
-      {/* Banner header - always visible */}
       <div className="p-6 md:p-8">
         <div className="flex items-start gap-4">
           <div className="hidden sm:flex items-center justify-center w-12 h-12 border border-brand-gold/40 shrink-0">
@@ -46,7 +58,7 @@ export function InsuranceBanner() {
 
             <button
               type="button"
-              onClick={() => setExpanded((prev) => !prev)}
+              onClick={toggle}
               className="mt-5 inline-flex items-center gap-2 px-6 py-2.5 border border-brand-gold text-brand-gold font-display text-body-sm tracking-wider uppercase hover:bg-brand-gold hover:text-brand-black transition-colors"
               aria-expanded={expanded}
               aria-controls="insurance-form-panel"
@@ -62,19 +74,17 @@ export function InsuranceBanner() {
         </div>
       </div>
 
-      {/* Expandable form section */}
-      <div
-        id="insurance-form-panel"
-        role="region"
-        aria-label="Insurance verification form"
-        className={`overflow-hidden transition-all duration-300 ${
-          expanded ? "max-h-[4000px] opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="border-t border-brand-gold/20 p-6 md:p-8">
+      {expanded && (
+        <div
+          id="insurance-form-panel"
+          ref={formRef}
+          role="region"
+          aria-label="Insurance verification form"
+          className="border-t border-brand-gold/20 p-6 md:p-8"
+        >
           <InsuranceVerificationForm />
         </div>
-      </div>
+      )}
     </section>
   );
 }
