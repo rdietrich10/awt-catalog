@@ -1,63 +1,47 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase-server";
+import { supabase, logAuditEvent } from "@/lib/supabase-server";
 import { sendInquiryNotification } from "@/lib/email";
-
-interface ProductItem {
-  name: string;
-  slug: string;
-  category: string;
-}
-
-interface InquiryBody {
-  name: string;
-  email: string;
-  phone?: string;
-  products: ProductItem[];
-}
-
-function validate(body: unknown): body is InquiryBody {
-  if (!body || typeof body !== "object") return false;
-  const b = body as Record<string, unknown>;
-  return (
-    typeof b.name === "string" &&
-    b.name.trim().length > 0 &&
-    typeof b.email === "string" &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email) &&
-    Array.isArray(b.products) &&
-    b.products.length > 0 &&
-    b.products.every(
-      (p: unknown) =>
-        typeof p === "object" &&
-        p !== null &&
-        typeof (p as Record<string, unknown>).name === "string" &&
-        typeof (p as Record<string, unknown>).slug === "string"
-    ) &&
-    (b.phone === undefined || b.phone === "" || typeof b.phone === "string")
-  );
-}
+import { inquirySchema } from "@/lib/validations";
+import { checkRateLimit, getRateLimitHeaders } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+      "unknown";
+    const rl = checkRateLimit(`inquiry:${ip}`, { limit: 20, windowMs: 15 * 60 * 1000 });
 
-    if (!validate(body)) {
+    if (!rl.allowed) {
       return NextResponse.json(
         {
           error:
-            "We need at least your name, email, and one product to get the ball rolling. Mind double-checking your form?",
+            "Easy, tiger! You've submitted quite a few inquiries recently. Give it a few minutes and try again.",
         },
-        { status: 400 }
+        { status: 429, headers: getRateLimitHeaders(rl) }
       );
     }
 
-    const { name, email, phone, products } = body;
+    const body = await request.json();
+    const parsed = inquirySchema.safeParse(body);
+
+    if (!parsed.success) {
+      const firstIssue = parsed.error.issues[0]?.message ?? "Invalid input";
+      return NextResponse.json(
+        {
+          error: `We need a bit more info — ${firstIssue}. Mind double-checking your form?`,
+        },
+        { status: 400, headers: getRateLimitHeaders(rl) }
+      );
+    }
+
+    const { name, email, phone, products } = parsed.data;
 
     const { error: dbError } = await supabase
       .from("inquiry_submissions")
       .insert({
-        name: name.trim(),
-        email: email.trim().toLowerCase(),
-        phone: phone?.trim() || null,
+        name,
+        email,
+        phone: phone || null,
         products,
         email_sent: false,
       });
@@ -74,12 +58,26 @@ export async function POST(request: Request) {
     }
 
     const emailSent = await sendInquiryNotification({
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      phone: phone?.trim(),
+      name,
+      email,
+      phone: phone || undefined,
       products: products.map((p) => ({
         name: p.name,
+        slug: p.slug,
         category: p.category || "Uncategorized",
+        sku: p.sku,
+        genericName: p.genericName || "",
+        medicationClass: p.medicationClass || "",
+        administrationRoute: p.administrationRoute || "",
+        isBlend: p.isBlend || false,
+        blendComponents: p.blendComponents,
+        price: p.price,
+        membershipPrice: p.membershipPrice,
+        variants: (p.variants || []).map((v) => ({
+          ...v,
+          sku: v.sku,
+        })),
+        keyBenefits: p.keyBenefits || [],
       })),
     });
 
@@ -87,12 +85,22 @@ export async function POST(request: Request) {
       await supabase
         .from("inquiry_submissions")
         .update({ email_sent: true })
-        .eq("email", email.trim().toLowerCase())
+        .eq("email", email)
         .order("created_at", { ascending: false })
         .limit(1);
     }
 
-    return NextResponse.json({ success: true });
+    logAuditEvent({
+      event_type: "inquiry_submission",
+      table_name: "inquiry_submissions",
+      ip_address: ip,
+      details: { product_count: products.length, email_sent: emailSent },
+    });
+
+    return NextResponse.json(
+      { success: true },
+      { headers: getRateLimitHeaders(rl) }
+    );
   } catch {
     console.error("Inquiry API error");
     return NextResponse.json(

@@ -2,12 +2,19 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { HipaaNoticeContent } from "@/components/privacy/HipaaNoticeContent";
 import { HIPAA_PAGE_TITLE } from "@/data/hipaa";
+import { getOgImageMetadata } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: HIPAA_PAGE_TITLE,
   description:
     "HIPAA Notice of Privacy Practices for Americare Wellness and AW Therapeutics — how we collect, use, and protect your health information.",
   alternates: { canonical: "/privacy" },
+  ...getOgImageMetadata({
+    slug: "privacy",
+    title: HIPAA_PAGE_TITLE,
+    description:
+      "HIPAA Notice of Privacy Practices for Americare Wellness and AW Therapeutics — how we collect, use, and protect your health information.",
+  }),
 };
 
 export default function PrivacyPage() {

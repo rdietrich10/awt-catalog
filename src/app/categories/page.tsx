@@ -2,12 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { categories } from "@/data/categories";
+import { getOgImageMetadata } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Categories",
   description:
     "Explore advanced therapeutics by category: weight management, growth hormone, healing, reproductive health, longevity, mood, sleep, and more.",
   alternates: { canonical: "/categories" },
+  ...getOgImageMetadata({
+    slug: "categories",
+    title: "Categories",
+    description:
+      "Explore advanced therapeutics by category: weight management, growth hormone, healing, reproductive health, longevity, mood, sleep, and more.",
+  }),
 };
 
 export default function CategoriesPage() {

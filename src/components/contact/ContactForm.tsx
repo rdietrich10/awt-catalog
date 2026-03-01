@@ -102,8 +102,8 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {error && (
-        <div className="flex items-start gap-3 border border-red-500/30 bg-red-500/5 p-4">
-          <AlertTriangle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+        <div role="alert" className="flex items-start gap-3 border border-red-500/30 bg-red-500/5 p-4">
+          <AlertTriangle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" aria-hidden="true" />
           <p className="text-body-sm text-red-300">{error}</p>
         </div>
       )}

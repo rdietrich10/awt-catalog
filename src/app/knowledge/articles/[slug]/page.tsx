@@ -8,6 +8,7 @@ import { articles } from "@/data/articles";
 import { articleContentMap } from "@/data/articleContent";
 import { getProductsForArticle } from "@/data/articleProductMap";
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { getOgImageMetadata } from "@/lib/og";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -20,14 +21,12 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: article.title,
     description: article.excerpt,
-    openGraph: {
-      title: `${article.title} | AW Therapeutics`,
-      description: article.excerpt,
-      url: `/knowledge/articles/${article.slug}`,
-      type: "article",
-      images: article.image ? [{ url: article.image }] : undefined,
-    },
     alternates: { canonical: `/knowledge/articles/${article.slug}` },
+    ...getOgImageMetadata({
+      slug: "articles-detail",
+      title: article.title,
+      description: article.excerpt,
+    }),
   };
 }
 
@@ -61,7 +60,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mt-8">
           {article.title}
         </h1>
-        <div className="mt-3 flex flex-wrap gap-x-4 text-caption text-brand-silver-dim">
+        <div className="mt-3 flex flex-wrap gap-x-4 text-caption text-brand-silver-accessible">
           <time dateTime={article.dateCreated}>
             Published{" "}
             {new Date(article.dateCreated + "T00:00:00").toLocaleDateString("en-US", {

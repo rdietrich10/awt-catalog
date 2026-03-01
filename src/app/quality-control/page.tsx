@@ -2,12 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { QualityReportGrid } from "@/components/quality/QualityReportGrid";
+import { getOgImageMetadata } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Quality Control",
   description:
     "Third-party Certificates of Analysis and Exotoxin Test Reports verifying the quality, purity, potency, and sterility of AW Therapeutics compounds.",
   alternates: { canonical: "/quality-control" },
+  ...getOgImageMetadata({
+    slug: "quality-control",
+    title: "Quality Control",
+    description:
+      "Third-party Certificates of Analysis and Exotoxin Test Reports verifying the quality, purity, potency, and sterility of AW Therapeutics compounds.",
+  }),
 };
 
 const coaReports = [

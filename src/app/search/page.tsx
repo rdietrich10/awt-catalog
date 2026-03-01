@@ -40,7 +40,7 @@ function SearchResultsInner() {
   }
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12" aria-live="polite">
       {results.products.length > 0 && (
         <section>
           <h2 className="font-display text-body-sm uppercase tracking-widest text-brand-silver mb-4">

@@ -3,12 +3,19 @@ import { KnowledgeNav } from "@/components/knowledge/KnowledgeNav";
 import { FaqAccordion } from "@/components/knowledge/FaqAccordion";
 import { faqItems } from "@/data/faq";
 import { JsonLd, faqPageJsonLd } from "@/lib/structured-data";
+import { getOgImageMetadata } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "FAQ",
   description:
     "Frequently asked questions about advanced therapeutics, medication administration, reconstitution, storage, dosing, and provider review at AW Therapeutics.",
   alternates: { canonical: "/knowledge/faq" },
+  ...getOgImageMetadata({
+    slug: "faq",
+    title: "FAQ",
+    description:
+      "Frequently asked questions about advanced therapeutics, medication administration, reconstitution, storage, dosing, and provider review at AW Therapeutics.",
+  }),
 };
 
 export default function FAQPage() {

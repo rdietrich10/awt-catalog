@@ -23,7 +23,7 @@ export function ArticleCard({ article, priority = false }: ArticleCardProps) {
       <div className="p-4">
         <time
           dateTime={article.dateUpdated}
-          className="block text-caption text-brand-silver-dim mb-2"
+          className="block text-caption text-brand-silver-accessible mb-2"
         >
           {article.dateUpdated !== article.dateCreated ? "Updated " : ""}
           {new Date(article.dateUpdated + "T00:00:00").toLocaleDateString("en-US", {

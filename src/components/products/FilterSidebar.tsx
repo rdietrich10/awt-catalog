@@ -57,10 +57,14 @@ export function FilterSidebar({
         </ul>
       </div>
       <div>
-        <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-4">
+        <label
+          htmlFor="sort-products"
+          className="block font-display text-label uppercase tracking-widest text-brand-silver mb-4"
+        >
           Sort
-        </h3>
+        </label>
         <select
+          id="sort-products"
           value={sortBy}
           onChange={(e) => onSortChange(e.target.value)}
           className="w-full bg-transparent border border-brand-border px-4 py-2 text-body-sm text-brand-white focus:outline-none focus:border-brand-grey-500"

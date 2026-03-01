@@ -1,3 +1,5 @@
+import { escapeHtml } from "./sanitize";
+
 interface ContactEmailData {
   name: string;
   email: string;
@@ -31,7 +33,7 @@ function baseLayout(title: string, content: string): string {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${title}</title>
+  <title>${escapeHtml(title)}</title>
 </head>
 <body style="margin:0;padding:0;background-color:${BRAND.black};font-family:Arial,Helvetica,sans-serif;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${BRAND.black};">
@@ -85,6 +87,13 @@ function fieldRow(label: string, value: string): string {
 }
 
 export function contactEmailHtml(data: ContactEmailData): string {
+  const name = escapeHtml(data.name);
+  const email = escapeHtml(data.email);
+  const phone = escapeHtml(data.phone || "Not provided");
+  const subject = escapeHtml(data.subject);
+  const message = escapeHtml(data.message);
+  const timestamp = escapeHtml(data.timestamp);
+
   const content = `
     <h2 style="margin:0 0 8px;font-size:16px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.white};font-family:Georgia,'Times New Roman',serif;">
       New Contact Submission
@@ -93,29 +102,34 @@ export function contactEmailHtml(data: ContactEmailData): string {
       Someone reached out through the contact form.
     </p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:4px;">
-      ${fieldRow("Name", data.name)}
+      ${fieldRow("Name", name)}
       <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Email", `<a href="mailto:${data.email}" style="color:${BRAND.gold};text-decoration:none;">${data.email}</a>`)}
+      ${fieldRow("Email", `<a href="mailto:${email}" style="color:${BRAND.gold};text-decoration:none;">${email}</a>`)}
       <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Phone", data.phone || "Not provided")}
+      ${fieldRow("Phone", phone)}
       <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Subject", data.subject)}
+      ${fieldRow("Subject", subject)}
       <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Message", data.message)}
+      ${fieldRow("Message", message)}
       <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Received", data.timestamp)}
+      ${fieldRow("Received", timestamp)}
     </table>`;
 
-  return baseLayout(`New Contact: ${data.subject}`, content);
+  return baseLayout(`New Contact: ${subject}`, content);
 }
 
 export function inquiryEmailHtml(data: InquiryEmailData): string {
+  const name = escapeHtml(data.name);
+  const email = escapeHtml(data.email);
+  const phone = escapeHtml(data.phone || "Not provided");
+  const timestamp = escapeHtml(data.timestamp);
+
   const productRows = data.products
     .map(
       (p) => `
     <tr>
-      <td style="padding:10px 12px;font-size:14px;color:${BRAND.white};border-bottom:1px solid ${BRAND.border};">${p.name}</td>
-      <td style="padding:10px 12px;font-size:12px;color:${BRAND.silver};border-bottom:1px solid ${BRAND.border};">${p.category}</td>
+      <td style="padding:10px 12px;font-size:14px;color:${BRAND.white};border-bottom:1px solid ${BRAND.border};">${escapeHtml(p.name)}</td>
+      <td style="padding:10px 12px;font-size:12px;color:${BRAND.silver};border-bottom:1px solid ${BRAND.border};">${escapeHtml(p.category)}</td>
     </tr>`
     )
     .join("");
@@ -129,13 +143,13 @@ export function inquiryEmailHtml(data: InquiryEmailData): string {
     </p>
     <!-- Customer Info -->
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:4px;margin-bottom:24px;">
-      ${fieldRow("Name", data.name)}
+      ${fieldRow("Name", name)}
       <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Email", `<a href="mailto:${data.email}" style="color:${BRAND.gold};text-decoration:none;">${data.email}</a>`)}
+      ${fieldRow("Email", `<a href="mailto:${email}" style="color:${BRAND.gold};text-decoration:none;">${email}</a>`)}
       <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Phone", data.phone || "Not provided")}
+      ${fieldRow("Phone", phone)}
       <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Received", data.timestamp)}
+      ${fieldRow("Received", timestamp)}
     </table>
     <!-- Products -->
     <h3 style="margin:0 0 12px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.gold};">
@@ -154,7 +168,7 @@ export function inquiryEmailHtml(data: InquiryEmailData): string {
     </p>`;
 
   return baseLayout(
-    `New Inquiry: ${data.products.length} Products from ${data.name}`,
+    `New Inquiry: ${data.products.length} Products from ${name}`,
     content
   );
 }

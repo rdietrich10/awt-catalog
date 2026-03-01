@@ -36,16 +36,17 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           <Logo />
-          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-8">
+          <form onSubmit={handleSearch} role="search" className="hidden md:flex flex-1 max-w-md mx-8">
             <input
               type="search"
+              aria-label="Search products"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search products..."
               className="w-full bg-transparent border border-brand-border px-4 py-2 text-body-sm text-brand-white placeholder:text-brand-silver-dark focus:outline-none focus:border-brand-grey-300"
             />
           </form>
-          <nav className="hidden md:flex items-center gap-6">
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -73,6 +74,8 @@ export function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden relative min-h-[44px] min-w-[44px] flex items-center justify-center text-brand-white touch-manipulation"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-menu"
           >
             <div className="w-6 h-4 flex flex-col justify-center gap-1">
               <span className={cn("block w-full h-0.5 bg-current transition-transform", mobileOpen && "rotate-45 translate-y-1.5")} />
@@ -87,10 +90,11 @@ export function Navbar() {
           </button>
         </div>
         {mobileOpen && (
-          <div className="md:hidden py-4 border-t border-brand-border">
-            <form onSubmit={handleSearch} className="mb-4">
+          <nav id="mobile-nav-menu" aria-label="Mobile navigation" className="md:hidden py-4 border-t border-brand-border">
+            <form onSubmit={handleSearch} role="search" className="mb-4">
               <input
                 type="search"
+                aria-label="Search products"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products..."
@@ -122,7 +126,7 @@ export function Navbar() {
                 )}
               </Link>
             </div>
-          </div>
+          </nav>
         )}
       </div>
     </header>

@@ -11,12 +11,15 @@ interface InfiniteCarouselProps {
   /** Auto-scroll speed — higher is faster. 0 disables auto-scroll. */
   speed?: number;
   className?: string;
+  /** Accessible label for the carousel region */
+  ariaLabel?: string;
 }
 
 export function InfiniteCarousel({
   children,
   speed = 0.8,
   className,
+  ariaLabel = "Carousel",
 }: InfiniteCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start", skipSnaps: false, dragFree: true },
@@ -51,12 +54,20 @@ export function InfiniteCarousel({
   if (children.length === 0) return null;
 
   return (
-    <div className={cn("relative group/carousel", className)}>
-      <div ref={emblaRef} className="overflow-hidden">
+    <div
+      className={cn("relative group/carousel", className)}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={ariaLabel}
+    >
+      <div ref={emblaRef} className="overflow-hidden" aria-live="polite">
         <div className="flex gap-4">
           {children.map((child, i) => (
             <div
               key={i}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Slide ${i + 1} of ${children.length}`}
               className="flex-[0_0_72%] min-w-0 sm:flex-[0_0_45%] md:flex-[0_0_30%] lg:flex-[0_0_23%]"
             >
               {child}

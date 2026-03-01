@@ -7,6 +7,7 @@ import { ProductGrid } from "@/components/products/ProductGrid";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { BMICalculator } from "@/components/weight/BMICalculator";
 import { JsonLd, breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/structured-data";
+import { getOgImageMetadata } from "@/lib/og";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -19,12 +20,12 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: category.name,
     description: category.description,
-    openGraph: {
-      title: `${category.name} | AW Therapeutics`,
-      description: category.description,
-      url: `/categories/${category.slug}`,
-    },
     alternates: { canonical: `/categories/${category.slug}` },
+    ...getOgImageMetadata({
+      slug: "categories-detail",
+      title: category.name,
+      description: category.description,
+    }),
   };
 }
 

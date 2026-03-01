@@ -106,15 +106,18 @@ export function BMICalculator() {
         <button
           type="button"
           onClick={handleCalculate}
+          aria-label="Calculate your BMI"
           className="px-6 py-2 border border-brand-gold text-brand-gold font-display text-body-sm tracking-wider uppercase hover:bg-brand-gold hover:text-brand-black transition-colors"
         >
           Calculate BMI
         </button>
-        {result && (
-          <p className="text-body-sm text-brand-silver">
-            Your BMI: <span className="text-brand-white font-display">{result.bmi}</span> — {result.category}
-          </p>
-        )}
+        <div aria-live="polite" aria-atomic="true">
+          {result && (
+            <p className="text-body-sm text-brand-silver">
+              Your BMI: <span className="text-brand-white font-display">{result.bmi}</span> — {result.category}
+            </p>
+          )}
+        </div>
       </div>
       <p className="mt-4 text-body-sm text-brand-silver-dark">
         For the official NHLBI calculator and educational resources:{" "}

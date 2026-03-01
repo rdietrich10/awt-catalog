@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { getOgImageMetadata } from "@/lib/og";
+import { JsonLd, howToJsonLd, medicalWebPageJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "How It Works",
   description:
     "Learn how our advanced therapeutics ordering process works — from product selection and medical screening to provider review, invoicing, and fulfillment.",
   alternates: { canonical: "/how-it-works" },
+  ...getOgImageMetadata({
+    slug: "how-it-works",
+    title: "How It Works",
+    description:
+      "Learn how our advanced therapeutics ordering process works — from product selection and medical screening to provider review, invoicing, and fulfillment.",
+  }),
 };
 
 const steps = [
@@ -58,6 +66,19 @@ const steps = [
 export default function HowItWorksPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <JsonLd
+        data={howToJsonLd(
+          steps.map((s) => ({ name: s.title, text: s.description }))
+        )}
+      />
+      <JsonLd
+        data={medicalWebPageJsonLd({
+          name: "How It Works",
+          description:
+            "Learn how our advanced therapeutics ordering process works — from product selection and medical screening to provider review, invoicing, and fulfillment.",
+          url: "/how-it-works",
+        })}
+      />
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },

@@ -6,11 +6,19 @@ import {
   HIPAA_RIGHTS,
   HIPAA_CONTACT,
   HIPAA_PAGE_SUBTITLE,
+  COOKIE_POLICY_TITLE,
+  COOKIE_POLICY_INTRO,
+  COOKIE_LIST,
+  CCPA_TITLE,
+  CCPA_SECTIONS,
+  DATA_RETENTION_TITLE,
+  DATA_RETENTION_POLICY,
+  PRIVACY_LAST_UPDATED,
 } from "@/data/hipaa";
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+function SectionHeading({ id, children }: { id?: string; children: React.ReactNode }) {
   return (
-    <h2 className="font-display text-lg uppercase tracking-wider text-brand-white mb-4">
+    <h2 id={id} className="font-display text-lg uppercase tracking-wider text-brand-white mb-4">
       {children}
     </h2>
   );
@@ -19,6 +27,10 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 export function HipaaNoticeContent() {
   return (
     <div className="space-y-10">
+      <p className="text-caption text-brand-silver-dark">
+        Last updated: {PRIVACY_LAST_UPDATED}
+      </p>
+
       <section>
         <SectionHeading>{HIPAA_PAGE_SUBTITLE}</SectionHeading>
         <p className="text-body-sm text-brand-silver leading-relaxed">
@@ -67,6 +79,66 @@ export function HipaaNoticeContent() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="cookies">
+        <SectionHeading id="cookies">{COOKIE_POLICY_TITLE}</SectionHeading>
+        <p className="text-body-sm text-brand-silver leading-relaxed mb-4">
+          {COOKIE_POLICY_INTRO}
+        </p>
+        <div className="border border-brand-border overflow-hidden">
+          <table className="w-full text-left text-body-sm">
+            <thead>
+              <tr className="border-b border-brand-border">
+                <th className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Cookie</th>
+                <th className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Purpose</th>
+                <th className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Duration</th>
+                <th className="px-4 py-3 font-display text-caption uppercase tracking-wider text-brand-silver-dark">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              {COOKIE_LIST.map((c) => (
+                <tr key={c.name} className="border-b border-brand-border last:border-b-0">
+                  <td className="px-4 py-3 text-brand-white font-mono text-caption">{c.name}</td>
+                  <td className="px-4 py-3 text-brand-silver">{c.purpose}</td>
+                  <td className="px-4 py-3 text-brand-silver whitespace-nowrap">{c.duration}</td>
+                  <td className="px-4 py-3">
+                    <span className={`text-caption uppercase tracking-wider ${c.type === "essential" ? "text-brand-silver" : "text-brand-gold"}`}>
+                      {c.type}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="ccpa">
+        <SectionHeading id="ccpa">{CCPA_TITLE}</SectionHeading>
+        <p className="text-body-sm text-brand-silver leading-relaxed mb-4">
+          If you are a California resident, the California Consumer Privacy Act (CCPA)
+          grants you additional rights regarding your personal information.
+        </p>
+        <ul className="space-y-4">
+          {CCPA_SECTIONS.map((s) => (
+            <li key={s.title}>
+              <p className="text-body-sm text-brand-white font-semibold">
+                {s.title}
+              </p>
+              <p className="text-body-sm text-brand-silver leading-relaxed mt-1">
+                {s.description}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <SectionHeading>{DATA_RETENTION_TITLE}</SectionHeading>
+        <p className="text-body-sm text-brand-silver leading-relaxed">
+          {DATA_RETENTION_POLICY}
+        </p>
       </section>
 
       <section>

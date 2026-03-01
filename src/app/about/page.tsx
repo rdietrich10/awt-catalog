@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { AboutContent } from "@/components/about/AboutContent";
+import { getOgImageMetadata } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "About — Physician-Directed Care",
   description:
     "AW Therapeutics is a physician-directed medical practice delivering advanced therapeutics through a structured clinical process with medical oversight, documented records, and continuity of care.",
   alternates: { canonical: "/about" },
+  ...getOgImageMetadata({
+    slug: "about",
+    title: "About — Physician-Directed Care",
+    description:
+      "AW Therapeutics is a physician-directed medical practice delivering advanced therapeutics through a structured clinical process with medical oversight, documented records, and continuity of care.",
+  }),
 };
 
 export default function AboutPage() {

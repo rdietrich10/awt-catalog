@@ -4,12 +4,19 @@ import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { KnowledgeNav } from "@/components/knowledge/KnowledgeNav";
 import { articles } from "@/data/articles";
 import { faqItems } from "@/data/faq";
+import { getOgImageMetadata } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Knowledge Base",
   description:
     "Educational articles, FAQ, protocols, and a glossary of therapeutic terms. Learn about advanced therapeutics, medication safety, reconstitution, and Medical Grade compounds.",
   alternates: { canonical: "/knowledge" },
+  ...getOgImageMetadata({
+    slug: "knowledge",
+    title: "Knowledge Base",
+    description:
+      "Educational articles, FAQ, protocols, and a glossary of therapeutic terms. Learn about advanced therapeutics, medication safety, reconstitution, and Medical Grade compounds.",
+  }),
 };
 
 export default function KnowledgePage() {
@@ -49,7 +56,7 @@ export default function KnowledgePage() {
               <div className="p-4">
                 <time
                   dateTime={a.dateUpdated}
-                  className="block text-caption text-brand-silver-dim mb-2"
+                  className="block text-caption text-brand-silver-accessible mb-2"
                 >
                   {a.dateUpdated !== a.dateCreated ? "Updated " : ""}
                   {new Date(a.dateUpdated + "T00:00:00").toLocaleDateString("en-US", {

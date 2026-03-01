@@ -3,12 +3,19 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { COMPANY_ADDRESS, COMPANY_PHONE, COMPANY_EMAIL } from "@/data/company";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { getOgImageMetadata } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get in touch with AW Therapeutics. Reach us by email, phone, or mail for questions about products, orders, and support.",
   alternates: { canonical: "/contact" },
+  ...getOgImageMetadata({
+    slug: "contact",
+    title: "Contact Us",
+    description:
+      "Get in touch with AW Therapeutics. Reach us by email, phone, or mail for questions about products, orders, and support.",
+  }),
 };
 
 const contactMethods = [

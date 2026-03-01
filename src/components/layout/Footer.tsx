@@ -7,6 +7,7 @@ import {
   COMPANY_EMAIL,
   COMPANY_LEGAL_NAME,
 } from "@/data/company";
+import { CookieSettingsButton } from "./CookieConsent";
 
 const productLinks = [
   { href: "/categories/weight-management", label: "Weight Management" },
@@ -30,12 +31,13 @@ const companyLinks = [
   { href: "/contact", label: "Contact Us" },
   { href: "/policies", label: "Policies" },
   { href: "/privacy", label: "Privacy Notice" },
+  { href: "/privacy#ccpa", label: "Do Not Sell My Information" },
   { href: "/interest-list", label: "My List" },
 ];
 
 function FooterLinkGroup({ title, links }: { title: string; links: { href: string; label: string }[] }) {
   return (
-    <div>
+    <nav aria-label={`${title} links`}>
       <h3 className="font-display text-caption tracking-widest uppercase text-brand-silver mb-4">
         {title}
       </h3>
@@ -51,7 +53,7 @@ function FooterLinkGroup({ title, links }: { title: string; links: { href: strin
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 }
 
@@ -116,12 +118,16 @@ export function Footer() {
           </div>
 
           <div className="mt-10 pt-8 border-t border-brand-border">
-            <p className="text-caption text-brand-silver-dim text-center max-w-3xl mx-auto leading-relaxed">
+            <p className="text-caption text-brand-silver-accessible text-center max-w-3xl mx-auto leading-relaxed">
               {PROTOCOL_STATEMENT}
             </p>
-            <p className="mt-4 text-caption text-brand-silver-dim text-center">
-              &copy; {new Date().getFullYear()} {COMPANY_LEGAL_NAME}. All rights reserved.
-            </p>
+            <div className="mt-4 flex items-center justify-center gap-4 text-caption text-brand-silver-accessible">
+              <span>
+                &copy; {new Date().getFullYear()} {COMPANY_LEGAL_NAME}. All rights reserved.
+              </span>
+              <span aria-hidden="true" className="text-brand-border">|</span>
+              <CookieSettingsButton />
+            </div>
           </div>
         </div>
       </div>

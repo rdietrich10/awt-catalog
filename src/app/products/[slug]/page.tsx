@@ -5,6 +5,7 @@ import { getArticlesForProduct } from "@/data/articleProductMap";
 import { ProductDetail } from "@/components/products/ProductDetail";
 import { RelatedArticles } from "@/components/products/RelatedArticles";
 import { JsonLd, productJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { getOgImageMetadata } from "@/lib/og";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -17,13 +18,12 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: product.name,
     description: product.shortDescription,
-    openGraph: {
-      title: `${product.name} | AW Therapeutics`,
-      description: product.shortDescription,
-      url: `/products/${product.slug}`,
-      images: product.image ? [{ url: product.image }] : undefined,
-    },
     alternates: { canonical: `/products/${product.slug}` },
+    ...getOgImageMetadata({
+      slug: "products-detail",
+      title: product.name,
+      description: product.shortDescription,
+    }),
   };
 }
 

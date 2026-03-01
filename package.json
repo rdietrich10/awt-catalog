@@ -14,6 +14,7 @@
     "generate:image-manifest": "node scripts/generate-image-manifest.mjs",
     "generate:lifestyle-images": "node --env-file=.env scripts/generate-lifestyle-images.mjs",
     "generate:og-image": "node --env-file=.env scripts/generate-og-image.mjs",
+    "generate:og-images": "node --env-file=.env scripts/generate-og-images.mjs",
     "generate:rfk-image": "node --env-file=.env scripts/generate-rfk-article-image.mjs",
     "generate:blur-placeholders": "node scripts/generate-blur-placeholders.mjs",
     "download:pdfs": "node scripts/download-pdfs.mjs",
@@ -32,7 +33,8 @@
     "potrace": "^2.1.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "^20",

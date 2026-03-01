@@ -12,6 +12,7 @@
   --brand-silver: #b8b8b8;
   --brand-silver-dark: #787878;
   --brand-silver-dim: #585858;
+  --brand-silver-accessible: #999999;
   --brand-gold-light: #f4d03f;
   --brand-gold: #d4af37;
   --brand-gold-dark: #b8860b;
@@ -27,6 +28,18 @@ body {
   @apply bg-brand-black text-brand-white font-body antialiased;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: var(--brand-gold);
 }
 
 @layer components {

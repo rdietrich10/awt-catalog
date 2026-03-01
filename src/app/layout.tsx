@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { InterestListProvider } from "@/context/InterestListContext";
 import { JsonLd, organizationJsonLd, webSiteJsonLd } from "@/lib/structured-data";
-
-const GA_MEASUREMENT_ID = "G-X6GK5181ZJ";
+import { GoogleAnalytics } from "@/components/layout/GoogleAnalytics";
+import { CookieConsent } from "@/components/layout/CookieConsent";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -91,27 +90,28 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}');
-          `}
-        </Script>
+        <meta name="theme-color" content="#090d0b" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-screen flex flex-col font-body">
+        <GoogleAnalytics />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} />
         <InterestListProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-brand-gold focus:text-brand-black focus:font-display focus:text-sm focus:uppercase focus:tracking-wider"
+          >
+            Skip to main content
+          </a>
           <AnnouncementBar />
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer />
+          <CookieConsent />
         </InterestListProvider>
       </body>
     </html>

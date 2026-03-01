@@ -185,6 +185,44 @@ export function collectionPageJsonLd(
   };
 }
 
+export function medicalWebPageJsonLd(page: {
+  name: string;
+  description: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: page.name,
+    description: page.description,
+    url: `${BASE_URL}${page.url}`,
+    specialty: {
+      "@type": "MedicalSpecialty",
+      name: "Pharmaceutical Therapeutics",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: COMPANY_NAME,
+    },
+  };
+}
+
+export function howToJsonLd(steps: { name: string; text: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Get Started with AW Therapeutics",
+    description:
+      "Three-step process to access physician-directed advanced therapeutics through AW Therapeutics.",
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
     <script

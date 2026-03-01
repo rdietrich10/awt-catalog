@@ -27,6 +27,7 @@ const config: Config = {
             DEFAULT: "#B8B8B8",
             dark: "#787878",
             dim: "#585858",
+            accessible: "#999999",
           },
           gold: {
             light: "#F4D03F",
