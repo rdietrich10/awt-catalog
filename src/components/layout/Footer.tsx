@@ -29,11 +29,15 @@ const companyLinks = [
   { href: "/about", label: "About" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/contact", label: "Contact Us" },
+  { href: "/interest-list", label: "My List" },
+];
+
+const legalLinks = [
+  { href: "/terms", label: "Terms of Service" },
   { href: "/policies", label: "Policies" },
   { href: "/privacy", label: "Privacy Notice" },
   { href: "/accessibility", label: "Accessibility" },
   { href: "/privacy#ccpa", label: "Do Not Sell My Information" },
-  { href: "/interest-list", label: "My List" },
 ];
 
 function FooterLinkGroup({ title, links }: { title: string; links: { href: string; label: string }[] }) {
@@ -122,13 +126,26 @@ export function Footer() {
             <p className="text-caption text-brand-silver-accessible text-center max-w-3xl mx-auto leading-relaxed">
               {PROTOCOL_STATEMENT}
             </p>
-            <div className="mt-4 flex items-center justify-center gap-4 text-caption text-brand-silver-accessible">
-              <span>
-                &copy; {new Date().getFullYear()} {COMPANY_LEGAL_NAME}. All rights reserved.
-              </span>
+
+            <p className="mt-4 text-caption text-brand-silver-accessible text-center">
+              &copy; {new Date().getFullYear()} {COMPANY_LEGAL_NAME}. All rights reserved.
+            </p>
+
+            <nav aria-label="Legal links" className="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-caption text-brand-silver-accessible">
+              {legalLinks.map((link, i) => (
+                <span key={link.href} className="flex items-center gap-2">
+                  {i > 0 && <span aria-hidden="true" className="text-brand-border">|</span>}
+                  <Link
+                    href={link.href}
+                    className="hover:text-brand-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </span>
+              ))}
               <span aria-hidden="true" className="text-brand-border">|</span>
               <CookieSettingsButton />
-            </div>
+            </nav>
           </div>
         </div>
       </div>
