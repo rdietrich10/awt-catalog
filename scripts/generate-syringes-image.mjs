@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Regenerate the insulin-syringes product image.
- * - AW Therapeutics branding (not HealthCode360)
+ * - AW Therapeutics branding
  * - 10 syringes in the pack
  *
  * Uses fal.ai Nano Banana 2 (text-to-image) since we need to control

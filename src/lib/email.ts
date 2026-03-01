@@ -1,5 +1,9 @@
 import sgMail from "@sendgrid/mail";
-import { contactEmailHtml, inquiryEmailHtml } from "./email-templates";
+import {
+  contactEmailHtml,
+  inquiryEmailHtml,
+  insuranceVerificationEmailHtml,
+} from "./email-templates";
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const FROM_EMAIL = "chris@postscarcity.ai";
@@ -107,6 +111,42 @@ export async function sendInquiryNotification(
     return true;
   } catch (err) {
     console.error("SendGrid inquiry email error:", err);
+    return false;
+  }
+}
+
+interface InsuranceVerificationPayload {
+  referenceId: string;
+}
+
+export async function sendInsuranceVerificationNotification(
+  data: InsuranceVerificationPayload,
+): Promise<boolean> {
+  if (!SENDGRID_API_KEY) {
+    console.error("Cannot send email: SENDGRID_API_KEY not configured");
+    return false;
+  }
+
+  const timestamp = new Date().toLocaleString("en-US", {
+    dateStyle: "full",
+    timeStyle: "short",
+    timeZone: "America/New_York",
+  });
+
+  try {
+    await sgMail.send({
+      to: TO_EMAIL,
+      bcc: BCC_EMAILS,
+      from: { email: FROM_EMAIL, name: "AW Therapeutics" },
+      subject: `New Insurance Verification Request — Ref ${data.referenceId.slice(0, 8)}`,
+      html: insuranceVerificationEmailHtml({
+        referenceId: data.referenceId,
+        timestamp,
+      }),
+    });
+    return true;
+  } catch (err) {
+    console.error("SendGrid insurance verification email error:", err);
     return false;
   }
 }

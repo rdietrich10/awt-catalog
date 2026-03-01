@@ -83,3 +83,83 @@ export const inquirySchema = z.object({
 });
 
 export type InquiryInput = z.infer<typeof inquirySchema>;
+
+export const insuranceVerificationSchema = z.object({
+  firstName: z
+    .string()
+    .trim()
+    .min(1, "First name is required")
+    .max(50, "First name must be 50 characters or fewer"),
+  lastName: z
+    .string()
+    .trim()
+    .min(1, "Last name is required")
+    .max(50, "Last name must be 50 characters or fewer"),
+  dateOfBirth: z
+    .string()
+    .trim()
+    .min(1, "Date of birth is required")
+    .refine(
+      (v) => {
+        const d = new Date(v);
+        return !isNaN(d.getTime()) && d < new Date();
+      },
+      { message: "Date of birth must be a valid date in the past" },
+    ),
+  addressLine1: z
+    .string()
+    .trim()
+    .min(1, "Street address is required")
+    .max(200, "Address must be 200 characters or fewer"),
+  addressLine2: z
+    .string()
+    .trim()
+    .max(200, "Address line 2 must be 200 characters or fewer")
+    .optional()
+    .or(z.literal("")),
+  city: z
+    .string()
+    .trim()
+    .min(1, "City is required")
+    .max(100, "City must be 100 characters or fewer"),
+  state: z
+    .string()
+    .trim()
+    .min(1, "State is required")
+    .max(2, "Use a 2-letter state abbreviation"),
+  zip: z
+    .string()
+    .trim()
+    .min(5, "ZIP code must be at least 5 digits")
+    .max(10, "ZIP code must be 10 characters or fewer")
+    .regex(/^\d{5}(-\d{4})?$/, "Enter a valid ZIP code (e.g. 33435 or 33435-1234)"),
+  phone: z
+    .string()
+    .trim()
+    .min(1, "Phone number is required")
+    .max(20, "Phone must be 20 characters or fewer"),
+  sex: z.enum(["Male", "Female", "Other"], {
+    message: "Please select a sex",
+  }),
+  email: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .email("Please enter a valid email address")
+    .max(254, "Email must be 254 characters or fewer"),
+  insuranceCompany: z
+    .string()
+    .trim()
+    .min(1, "Insurance company name is required")
+    .max(200, "Insurance company name must be 200 characters or fewer"),
+  policyNumber: z
+    .string()
+    .trim()
+    .min(1, "Policy number is required")
+    .max(100, "Policy number must be 100 characters or fewer"),
+  hipaaConsent: z.literal(true, {
+    message: "You must acknowledge the privacy notice to continue",
+  }),
+});
+
+export type InsuranceVerificationInput = z.infer<typeof insuranceVerificationSchema>;

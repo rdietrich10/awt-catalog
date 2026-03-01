@@ -6,6 +6,7 @@ import { products } from "@/data/products";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { BMICalculator } from "@/components/weight/BMICalculator";
+import { InsuranceBanner } from "@/components/insurance/InsuranceBanner";
 import { JsonLd, breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/structured-data";
 import { getOgImageMetadata } from "@/lib/og";
 
@@ -35,6 +36,8 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
   const categoryProducts = products.filter((p) => p.categorySlug === params.slug);
   const isWeightManagement = params.slug === "weight-management";
+  const isBloodTesting = params.slug === "blood-testing-analysis";
+  const hasTopSection = isWeightManagement || isBloodTesting;
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
@@ -52,7 +55,8 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
         ]}
       />
       {isWeightManagement && <BMICalculator />}
-      <div className={isWeightManagement ? undefined : "mt-6"}>
+      {isBloodTesting && <InsuranceBanner />}
+      <div className={hasTopSection ? undefined : "mt-6"}>
         <PlaceholderImage src={category.image} aspectRatio="16/9" label={category.name} sizes="(max-width: 1280px) 100vw, 1280px" priority />
       </div>
       <div className="mt-8">

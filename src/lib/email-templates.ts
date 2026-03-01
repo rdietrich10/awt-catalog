@@ -242,6 +242,42 @@ function productCard(p: InquiryProduct, idx: number): string {
     </table>`;
 }
 
+interface InsuranceVerificationEmailData {
+  referenceId: string;
+  timestamp: string;
+}
+
+export function insuranceVerificationEmailHtml(
+  data: InsuranceVerificationEmailData,
+): string {
+  const refId = escapeHtml(data.referenceId);
+  const timestamp = escapeHtml(data.timestamp);
+
+  const content = `
+    <h2 style="margin:0 0 8px;font-size:16px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.white};font-family:Georgia,'Times New Roman',serif;">
+      New Insurance Verification Request
+    </h2>
+    <p style="margin:0 0 24px;font-size:13px;color:${BRAND.silver};">
+      A new insurance verification request has been submitted for blood testing services.
+    </p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:4px;">
+      ${fieldRow("Reference ID", `<span style="font-family:monospace;color:${BRAND.gold};">${refId}</span>`)}
+      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${fieldRow("Received", timestamp)}
+    </table>
+    <p style="margin:24px 0 0;padding:16px;background-color:${BRAND.black};border:1px solid ${BRAND.border};border-radius:4px;font-size:12px;color:${BRAND.silver};line-height:1.6;">
+      <strong style="color:${BRAND.gold};">Action required:</strong> Log in to the
+      <a href="https://supabase.com/dashboard" style="color:${BRAND.gold};text-decoration:underline;">secure dashboard</a>
+      to review the full submission details and insurance card images. Do not reply to this email with patient information.
+    </p>
+    <p style="margin:12px 0 0;font-size:11px;color:${BRAND.silverDim};line-height:1.5;">
+      This notification intentionally omits Protected Health Information (PHI) in compliance with HIPAA guidelines.
+      All patient data is stored securely and must be accessed through the authorized dashboard.
+    </p>`;
+
+  return baseLayout("New Insurance Verification Request", content);
+}
+
 export function inquiryEmailHtml(data: InquiryEmailData): string {
   const name = escapeHtml(data.name);
   const email = escapeHtml(data.email);
