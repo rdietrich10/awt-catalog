@@ -193,7 +193,7 @@ export function CookieSettingsButton() {
     <button
       type="button"
       onClick={openBanner}
-      className="text-body-sm text-brand-silver-dark hover:text-brand-white transition-colors"
+      className="text-caption text-brand-silver-accessible hover:text-brand-white transition-colors"
     >
       Cookie Settings
     </button>
