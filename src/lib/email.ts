@@ -22,11 +22,35 @@ interface ContactPayload {
   message: string;
 }
 
+interface InquiryProductPayload {
+  name: string;
+  category: string;
+  slug?: string;
+  sku?: string;
+  genericName?: string;
+  medicationClass?: string;
+  administrationRoute?: string;
+  isBlend?: boolean;
+  blendComponents?: string[];
+  price?: number;
+  membershipPrice?: number;
+  variants?: {
+    strength: string;
+    vialSize: string;
+    concentration: string;
+    schedule: string;
+    price?: number;
+    membershipPrice?: number;
+    sku?: string;
+  }[];
+  keyBenefits?: string[];
+}
+
 interface InquiryPayload {
   name: string;
   email: string;
   phone?: string;
-  products: { name: string; category: string }[];
+  products: InquiryProductPayload[];
 }
 
 export async function sendContactNotification(

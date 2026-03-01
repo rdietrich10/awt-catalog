@@ -9,11 +9,37 @@ interface ContactEmailData {
   timestamp: string;
 }
 
+interface ProductVariant {
+  strength: string;
+  vialSize: string;
+  concentration: string;
+  schedule: string;
+  price?: number;
+  membershipPrice?: number;
+  sku?: string;
+}
+
+interface InquiryProduct {
+  name: string;
+  category: string;
+  slug?: string;
+  sku?: string;
+  genericName?: string;
+  medicationClass?: string;
+  administrationRoute?: string;
+  isBlend?: boolean;
+  blendComponents?: string[];
+  price?: number;
+  membershipPrice?: number;
+  variants?: ProductVariant[];
+  keyBenefits?: string[];
+}
+
 interface InquiryEmailData {
   name: string;
   email: string;
   phone?: string;
-  products: { name: string; category: string }[];
+  products: InquiryProduct[];
   timestamp: string;
 }
 
@@ -118,20 +144,112 @@ export function contactEmailHtml(data: ContactEmailData): string {
   return baseLayout(`New Contact: ${subject}`, content);
 }
 
+function formatPrice(price?: number): string {
+  if (price == null) return "—";
+  return `$${price.toFixed(2)}`;
+}
+
+function productCard(p: InquiryProduct, idx: number): string {
+  const name = escapeHtml(p.name);
+  const category = escapeHtml(p.category);
+
+  const metaRows: string[] = [];
+
+  if (p.sku) {
+    metaRows.push(fieldRow("SKU", escapeHtml(p.sku)));
+  }
+  if (p.genericName) {
+    metaRows.push(fieldRow("Generic", escapeHtml(p.genericName)));
+  }
+  if (p.medicationClass) {
+    metaRows.push(fieldRow("Class", escapeHtml(p.medicationClass)));
+  }
+  if (p.administrationRoute) {
+    metaRows.push(fieldRow("Route", escapeHtml(p.administrationRoute)));
+  }
+  if (p.isBlend && p.blendComponents?.length) {
+    metaRows.push(
+      fieldRow("Blend", p.blendComponents.map((c) => escapeHtml(c)).join(", "))
+    );
+  }
+
+  const hasPricing = p.price != null || p.membershipPrice != null;
+
+  const variantRows =
+    p.variants && p.variants.length > 0
+      ? p.variants
+          .map(
+            (v) => `
+      <tr>
+        <td style="padding:6px 8px;font-size:12px;color:${BRAND.white};border-bottom:1px solid ${BRAND.border};">${escapeHtml(v.strength)}</td>
+        <td style="padding:6px 8px;font-size:12px;color:${BRAND.silver};border-bottom:1px solid ${BRAND.border};">${escapeHtml(v.vialSize)}</td>
+        <td style="padding:6px 8px;font-size:12px;color:${BRAND.silver};border-bottom:1px solid ${BRAND.border};">${escapeHtml(v.concentration)}</td>
+        <td style="padding:6px 8px;font-size:12px;color:${BRAND.silver};border-bottom:1px solid ${BRAND.border};">${escapeHtml(v.schedule)}</td>
+        <td style="padding:6px 8px;font-size:12px;color:${BRAND.white};border-bottom:1px solid ${BRAND.border};text-align:right;">${formatPrice(v.price)}</td>
+      </tr>`
+          )
+          .join("")
+      : "";
+
+  const benefitsList =
+    p.keyBenefits && p.keyBenefits.length > 0
+      ? `<td style="padding:8px 12px;" colspan="2">
+          <p style="margin:0 0 4px;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.silverDim};">Key Benefits</p>
+          <ul style="margin:0;padding-left:16px;">
+            ${p.keyBenefits.map((b) => `<li style="font-size:12px;color:${BRAND.silver};line-height:1.6;">${escapeHtml(b)}</li>`).join("")}
+          </ul>
+        </td>`
+      : "";
+
+  return `
+    <!-- Product ${idx + 1} -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:4px;margin-bottom:16px;">
+      <!-- Header -->
+      <tr>
+        <td colspan="2" style="padding:12px;background-color:${BRAND.black};border-bottom:2px solid ${BRAND.gold};">
+          <h4 style="margin:0;font-size:15px;color:${BRAND.white};font-family:Georgia,'Times New Roman',serif;">${name}</h4>
+          <p style="margin:2px 0 0;font-size:11px;color:${BRAND.silverDim};">${category}${hasPricing ? ` &middot; <span style="color:${BRAND.gold};">${formatPrice(p.price)}</span>` : ""}${p.membershipPrice != null ? ` <span style="color:${BRAND.silverDim};">(Member: ${formatPrice(p.membershipPrice)})</span>` : ""}</p>
+        </td>
+      </tr>
+      <!-- Meta -->
+      ${metaRows.length > 0 ? metaRows.join(`<tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>`) : ""}
+      <!-- Variants -->
+      ${
+        variantRows
+          ? `<tr>
+              <td colspan="2" style="padding:8px 12px 4px;">
+                <p style="margin:0;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.gold};">Variants</p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="padding:0 8px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <th style="padding:6px 8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.silverDim};text-align:left;border-bottom:1px solid ${BRAND.gold};">Strength</th>
+                    <th style="padding:6px 8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.silverDim};text-align:left;border-bottom:1px solid ${BRAND.gold};">Vial</th>
+                    <th style="padding:6px 8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.silverDim};text-align:left;border-bottom:1px solid ${BRAND.gold};">Conc.</th>
+                    <th style="padding:6px 8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.silverDim};text-align:left;border-bottom:1px solid ${BRAND.gold};">Schedule</th>
+                    <th style="padding:6px 8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.silverDim};text-align:right;border-bottom:1px solid ${BRAND.gold};">Price</th>
+                  </tr>
+                  ${variantRows}
+                </table>
+              </td>
+            </tr>`
+          : ""
+      }
+      <!-- Benefits -->
+      ${benefitsList ? `<tr>${benefitsList}</tr>` : ""}
+    </table>`;
+}
+
 export function inquiryEmailHtml(data: InquiryEmailData): string {
   const name = escapeHtml(data.name);
   const email = escapeHtml(data.email);
   const phone = escapeHtml(data.phone || "Not provided");
   const timestamp = escapeHtml(data.timestamp);
 
-  const productRows = data.products
-    .map(
-      (p) => `
-    <tr>
-      <td style="padding:10px 12px;font-size:14px;color:${BRAND.white};border-bottom:1px solid ${BRAND.border};">${escapeHtml(p.name)}</td>
-      <td style="padding:10px 12px;font-size:12px;color:${BRAND.silver};border-bottom:1px solid ${BRAND.border};">${escapeHtml(p.category)}</td>
-    </tr>`
-    )
+  const productCards = data.products
+    .map((p, i) => productCard(p, i))
     .join("");
 
   const content = `
@@ -152,17 +270,11 @@ export function inquiryEmailHtml(data: InquiryEmailData): string {
       ${fieldRow("Received", timestamp)}
     </table>
     <!-- Products -->
-    <h3 style="margin:0 0 12px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.gold};">
+    <h3 style="margin:0 0 16px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.gold};">
       Requested Products (${data.products.length})
     </h3>
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:4px;">
-      <tr>
-        <th style="padding:10px 12px;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.silverDim};text-align:left;border-bottom:2px solid ${BRAND.gold};">Product</th>
-        <th style="padding:10px 12px;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:${BRAND.silverDim};text-align:left;border-bottom:2px solid ${BRAND.gold};">Category</th>
-      </tr>
-      ${productRows}
-    </table>
-    <p style="margin:24px 0 0;padding:16px;background-color:${BRAND.black};border:1px solid ${BRAND.border};border-radius:4px;font-size:12px;color:${BRAND.silver};line-height:1.6;">
+    ${productCards}
+    <p style="margin:8px 0 0;padding:16px;background-color:${BRAND.black};border:1px solid ${BRAND.border};border-radius:4px;font-size:12px;color:${BRAND.silver};line-height:1.6;">
       <strong style="color:${BRAND.gold};">Next step:</strong> Physician review required per AW Therapeutics protocol.
       Review selections and prepare invoice within 24 hours.
     </p>`;
