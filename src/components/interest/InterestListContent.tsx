@@ -55,9 +55,16 @@ export function InterestListContent() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: data.name,
-          email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          sex: data.sex,
+          address1: data.address1,
+          address2: data.address2,
+          city: data.city,
+          state: data.state,
+          zip: data.zip,
           phone: data.phone,
+          email: data.email,
           products: items.map((p) => ({
             name: p.name,
             slug: p.slug,

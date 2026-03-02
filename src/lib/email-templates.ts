@@ -36,9 +36,16 @@ interface InquiryProduct {
 }
 
 interface InquiryEmailData {
-  name: string;
+  firstName: string;
+  lastName: string;
+  sex: string;
+  address1: string;
+  address2?: string;
+  city: string;
+  state: string;
+  zip: string;
+  phone: string;
   email: string;
-  phone?: string;
   products: InquiryProduct[];
   timestamp: string;
 }
@@ -279,10 +286,24 @@ export function insuranceVerificationEmailHtml(
 }
 
 export function inquiryEmailHtml(data: InquiryEmailData): string {
-  const name = escapeHtml(data.name);
+  const firstName = escapeHtml(data.firstName);
+  const lastName = escapeHtml(data.lastName);
+  const fullName = `${firstName} ${lastName}`;
+  const sex = escapeHtml(data.sex);
+  const address1 = escapeHtml(data.address1);
+  const address2 = data.address2 ? escapeHtml(data.address2) : "";
+  const city = escapeHtml(data.city);
+  const state = escapeHtml(data.state);
+  const zip = escapeHtml(data.zip);
+  const phone = escapeHtml(data.phone);
   const email = escapeHtml(data.email);
-  const phone = escapeHtml(data.phone || "Not provided");
   const timestamp = escapeHtml(data.timestamp);
+
+  const addressLine = address2
+    ? `${address1}<br/>${address2}<br/>${city}, ${state} ${zip}`
+    : `${address1}<br/>${city}, ${state} ${zip}`;
+
+  const divider = `<tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>`;
 
   const productCards = data.products
     .map((p, i) => productCard(p, i))
@@ -297,12 +318,16 @@ export function inquiryEmailHtml(data: InquiryEmailData): string {
     </p>
     <!-- Customer Info -->
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:4px;margin-bottom:24px;">
-      ${fieldRow("Name", name)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
-      ${fieldRow("Email", `<a href="mailto:${email}" style="color:${BRAND.gold};text-decoration:none;">${email}</a>`)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${fieldRow("Name", fullName)}
+      ${divider}
+      ${fieldRow("Sex", sex)}
+      ${divider}
+      ${fieldRow("Address", addressLine)}
+      ${divider}
       ${fieldRow("Phone", phone)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
+      ${fieldRow("Email", `<a href="mailto:${email}" style="color:${BRAND.gold};text-decoration:none;">${email}</a>`)}
+      ${divider}
       ${fieldRow("Received", timestamp)}
     </table>
     <!-- Products -->
@@ -316,7 +341,7 @@ export function inquiryEmailHtml(data: InquiryEmailData): string {
     </p>`;
 
   return baseLayout(
-    `New Inquiry: ${data.products.length} Products from ${name}`,
+    `New Inquiry: ${data.products.length} Products from ${fullName}`,
     content
   );
 }

@@ -34,14 +34,25 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, phone, products } = parsed.data;
+    const {
+      firstName, lastName, sex,
+      address1, address2, city, state, zip,
+      phone, email, products,
+    } = parsed.data;
 
     const { error: dbError } = await supabase
       .from("inquiry_submissions")
       .insert({
-        name,
+        first_name: firstName,
+        last_name: lastName,
+        sex,
+        address1,
+        address2: address2 || null,
+        city,
+        state,
+        zip,
+        phone,
         email,
-        phone: phone || null,
         products,
         email_sent: false,
       });
@@ -58,9 +69,16 @@ export async function POST(request: Request) {
     }
 
     const emailSent = await sendInquiryNotification({
-      name,
+      firstName,
+      lastName,
+      sex,
+      address1,
+      address2: address2 || undefined,
+      city,
+      state,
+      zip,
+      phone,
       email,
-      phone: phone || undefined,
       products: products.map((p) => ({
         name: p.name,
         slug: p.slug,

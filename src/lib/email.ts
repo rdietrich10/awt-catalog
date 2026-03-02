@@ -51,9 +51,16 @@ interface InquiryProductPayload {
 }
 
 interface InquiryPayload {
-  name: string;
+  firstName: string;
+  lastName: string;
+  sex: string;
+  address1: string;
+  address2?: string;
+  city: string;
+  state: string;
+  zip: string;
+  phone: string;
   email: string;
-  phone?: string;
   products: InquiryProductPayload[];
 }
 
@@ -105,7 +112,7 @@ export async function sendInquiryNotification(
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
       from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Inquiry from ${data.name} — ${data.products.length} Product${data.products.length === 1 ? "" : "s"}`,
+      subject: `New Inquiry from ${data.firstName} ${data.lastName} — ${data.products.length} Product${data.products.length === 1 ? "" : "s"}`,
       html: inquiryEmailHtml({ ...data, timestamp }),
     });
     return true;

@@ -9,11 +9,19 @@ import {
   HIPAA_BANNER_LINK_TEXT,
   HIPAA_CONSENT_LABEL,
 } from "@/data/hipaa";
+import { SEX_OPTIONS, US_STATES } from "@/data/insurance";
 
 export interface EmailCaptureData {
-  name: string;
-  email: string;
+  firstName: string;
+  lastName: string;
+  sex: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  zip: string;
   phone: string;
+  email: string;
 }
 
 interface EmailCaptureFormProps {
@@ -27,6 +35,12 @@ interface EmailCaptureFormProps {
 const inputBase =
   "w-full bg-transparent border border-brand-border px-4 py-2 text-body-sm text-brand-white placeholder:text-brand-silver-dark focus:outline-none focus:border-brand-silver-dark transition-colors";
 
+const selectBase =
+  "w-full bg-transparent border border-brand-border px-4 py-2 text-body-sm text-brand-white focus:outline-none focus:border-brand-silver-dark transition-colors appearance-none";
+
+const labelBase =
+  "block text-label font-display tracking-wider uppercase text-brand-silver mb-1";
+
 export function EmailCaptureForm({
   onSubmit,
   onCancel,
@@ -34,14 +48,21 @@ export function EmailCaptureForm({
   loading = false,
   error = null,
 }: EmailCaptureFormProps) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [sex, setSex] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [hipaaConsent, setHipaaConsent] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit({ name, email, phone });
+    onSubmit({ firstName, lastName, sex, address1, address2, city, state, zip, phone, email });
   };
 
   return (
@@ -53,23 +74,167 @@ export function EmailCaptureForm({
         </div>
       )}
 
+      {/* Personal Info */}
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="capture-first-name" className={labelBase}>
+            First Name
+          </label>
+          <input
+            id="capture-first-name"
+            type="text"
+            required
+            disabled={loading}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="First name"
+            className={inputBase}
+          />
+        </div>
+        <div>
+          <label htmlFor="capture-last-name" className={labelBase}>
+            Last Name
+          </label>
+          <input
+            id="capture-last-name"
+            type="text"
+            required
+            disabled={loading}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Last name"
+            className={inputBase}
+          />
+        </div>
+      </div>
+
       <div>
-        <label htmlFor="capture-name" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
-          Name
+        <label htmlFor="capture-sex" className={labelBase}>
+          Sex
+        </label>
+        <select
+          id="capture-sex"
+          required
+          disabled={loading}
+          value={sex}
+          onChange={(e) => setSex(e.target.value)}
+          className={selectBase}
+        >
+          <option value="" disabled className="bg-brand-black">
+            Select
+          </option>
+          {SEX_OPTIONS.map((opt) => (
+            <option key={opt} value={opt} className="bg-brand-black">
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Address */}
+      <div>
+        <label htmlFor="capture-address1" className={labelBase}>
+          Address
         </label>
         <input
-          id="capture-name"
+          id="capture-address1"
           type="text"
           required
           disabled={loading}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Your name"
+          value={address1}
+          onChange={(e) => setAddress1(e.target.value)}
+          placeholder="Street address"
           className={inputBase}
         />
       </div>
       <div>
-        <label htmlFor="capture-email" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
+        <label htmlFor="capture-address2" className={labelBase}>
+          Address 2 <span className="text-brand-silver-dark">(optional)</span>
+        </label>
+        <input
+          id="capture-address2"
+          type="text"
+          disabled={loading}
+          value={address2}
+          onChange={(e) => setAddress2(e.target.value)}
+          placeholder="Apt, suite, unit, etc."
+          className={inputBase}
+        />
+      </div>
+
+      <div className="grid grid-cols-4 gap-4">
+        <div className="col-span-2">
+          <label htmlFor="capture-city" className={labelBase}>
+            City
+          </label>
+          <input
+            id="capture-city"
+            type="text"
+            required
+            disabled={loading}
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="City"
+            className={inputBase}
+          />
+        </div>
+        <div>
+          <label htmlFor="capture-state" className={labelBase}>
+            State
+          </label>
+          <select
+            id="capture-state"
+            required
+            disabled={loading}
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            className={selectBase}
+          >
+            <option value="" disabled className="bg-brand-black">
+              State
+            </option>
+            {US_STATES.map((s) => (
+              <option key={s} value={s} className="bg-brand-black">
+                {s}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="capture-zip" className={labelBase}>
+            Zip
+          </label>
+          <input
+            id="capture-zip"
+            type="text"
+            required
+            disabled={loading}
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+            placeholder="12345"
+            className={inputBase}
+          />
+        </div>
+      </div>
+
+      {/* Contact */}
+      <div>
+        <label htmlFor="capture-phone" className={labelBase}>
+          Phone
+        </label>
+        <input
+          id="capture-phone"
+          type="tel"
+          required
+          disabled={loading}
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="(555) 123-4567"
+          className={inputBase}
+        />
+      </div>
+      <div>
+        <label htmlFor="capture-email" className={labelBase}>
           Email
         </label>
         <input
@@ -83,20 +248,8 @@ export function EmailCaptureForm({
           className={inputBase}
         />
       </div>
-      <div>
-        <label htmlFor="capture-phone" className="block text-label font-display tracking-wider uppercase text-brand-silver mb-1">
-          Phone <span className="text-brand-silver-dark">(optional)</span>
-        </label>
-        <input
-          id="capture-phone"
-          type="tel"
-          disabled={loading}
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="(555) 123-4567"
-          className={inputBase}
-        />
-      </div>
+
+      {/* HIPAA Consent */}
       <div className="pt-4 border-t border-brand-border space-y-3">
         <p className="text-caption text-brand-silver-dark leading-relaxed">
           {HIPAA_BANNER_TEXT}{" "}
