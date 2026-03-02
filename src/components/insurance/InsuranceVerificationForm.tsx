@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Send, Loader2, AlertTriangle, CheckCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { InsuranceCardUpload } from "./InsuranceCardUpload";
@@ -53,6 +53,7 @@ const inputStyles =
   "w-full bg-transparent border border-brand-border px-4 py-3 text-body-sm text-brand-white placeholder:text-brand-silver-dim focus:outline-none focus:border-brand-gold transition-colors min-h-[44px]";
 
 export function InsuranceVerificationForm() {
+  const topRef = useRef<HTMLDivElement>(null);
   const [form, setForm] = useState<FormState>(initialState);
   const [cardFront, setCardFront] = useState<File | null>(null);
   const [cardBack, setCardBack] = useState<File | null>(null);
@@ -113,6 +114,7 @@ export function InsuranceVerificationForm() {
         }
 
         setSubmitted(true);
+        topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       } catch {
         setError(
           "Looks like we lost connection for a sec. Check your internet and give it another go!",
@@ -126,7 +128,7 @@ export function InsuranceVerificationForm() {
 
   if (submitted) {
     return (
-      <div className="border border-brand-border p-8 text-center">
+      <div ref={topRef} className="border border-brand-border p-8 text-center">
         <CheckCircle className="w-10 h-10 text-brand-gold mx-auto" />
         <h3 className="mt-4 font-display text-lg uppercase tracking-wider text-brand-white">
           {INSURANCE_SUCCESS_HEADING}
@@ -151,7 +153,7 @@ export function InsuranceVerificationForm() {
   }
 
   return (
-    <div>
+    <div ref={topRef}>
       <div className="flex items-center gap-3 mb-2">
         <ShieldCheck className="w-6 h-6 text-brand-gold shrink-0" />
         <h3 className="font-display text-lg uppercase tracking-wider text-brand-white">
