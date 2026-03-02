@@ -26,8 +26,8 @@ export const peptideProducts: Product[] = [
     clinicalNotes: "GLP-1 receptor agonist for weight management.",
     featured: true,
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "2 mL", price: 380 },
-      { strength: "20 mg", vialSize: "20 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "4 mL", price: 550 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "2 mL", price: 400 },
+      { strength: "20 mg", vialSize: "20 mg", concentration: "0.05 mg/unit", schedule: "Once weekly", reconstitutionVolume: "4 mL", price: 500 },
     ],
   }),
   baseProduct({
@@ -46,7 +46,7 @@ export const peptideProducts: Product[] = [
     featured: true,
     variants: [
       { strength: "30 mg", vialSize: "30 mg", concentration: "0.1 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 400 },
-      { strength: "60 mg", vialSize: "60 mg", concentration: "0.2 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 600 },
+      { strength: "60 mg", vialSize: "60 mg", concentration: "0.2 mg/unit", schedule: "Once weekly", reconstitutionVolume: "3 mL", price: 550 },
     ],
   }),
   baseProduct({
@@ -100,6 +100,25 @@ export const peptideProducts: Product[] = [
     clinicalNotes: "500mg/mL concentration, 30mL vial. Store refrigerated.",
     variants: [
       { strength: "500 mg/mL", vialSize: "30 mL", concentration: "500 mg/mL", schedule: "Consult provider", price: 250 },
+    ],
+  }),
+  baseProduct({
+    slug: "lipo-plus",
+    name: "Lipo+",
+    genericName: "Pyridoxine / Methionine / Inositol / Choline",
+    category: "Weight Management",
+    categorySlug: "weight-management",
+    shortDescription: "Lipotropic injection for fat metabolism, liver support, and energy.",
+    fullDescription: "Lipo+ is a lipotropic compound combining Pyridoxine (B6), Methionine, Inositol, and Choline to support fat metabolism, liver function, and cellular energy production. This injectable formulation delivers key nutrients that aid in the breakdown and transport of dietary fats, promote healthy liver detoxification, and support sustained energy levels.",
+    medicationClass: "Lipotropic Compound",
+    indications: "Fat metabolism, liver support, energy production",
+    administrationRoute: "Subcutaneous / Intramuscular",
+    keyBenefits: ["Fat metabolism support", "Liver detoxification", "Cellular energy production", "Nutrient delivery"],
+    clinicalNotes: "2mg/12.4mg/25mg/25mg per mL concentration, 30 mL vial. Store refrigerated. Consult provider for individualized dosing.",
+    isBlend: true,
+    blendComponents: ["Pyridoxine (B6) 2mg/mL", "Methionine 12.4mg/mL", "Inositol 25mg/mL", "Choline 25mg/mL"],
+    variants: [
+      { strength: "2/12.4/25/25 mg/mL", vialSize: "30 mL", concentration: "2/12.4/25/25 mg/mL", schedule: "Consult provider", price: 175 },
     ],
   }),
   // Growth Hormone & Recomposition

@@ -41,7 +41,7 @@ export const suppliesProducts: Product[] = [
     keyBenefits: ["Subcutaneous administration"],
     clinicalNotes: "10 per pack.",
     variants: [
-      { strength: "10/pack", vialSize: "N/A", concentration: "N/A", schedule: "N/A", price: 10 },
+      { strength: "10/pack", vialSize: "N/A", concentration: "N/A", schedule: "N/A", price: 15 },
     ],
   }),
 ];
