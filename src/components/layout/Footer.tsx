@@ -23,6 +23,7 @@ const resourceLinks = [
   { href: "/knowledge/protocols", label: "Protocols" },
   { href: "/quality-control", label: "Quality Control" },
   { href: "/knowledge/glossary", label: "Glossary" },
+  { href: "/insurance", label: "Insurance Verification" },
 ];
 
 const companyLinks = [
@@ -30,6 +31,10 @@ const companyLinks = [
   { href: "/how-it-works", label: "How It Works" },
   { href: "/contact", label: "Contact Us" },
   { href: "/interest-list", label: "My List" },
+];
+
+const localLinks = [
+  { href: "/lp/boynton-beach", label: "Boynton Beach" },
 ];
 
 const legalLinks = [
@@ -119,7 +124,10 @@ export function Footer() {
 
             <FooterLinkGroup title="Products" links={productLinks} />
             <FooterLinkGroup title="Resources" links={resourceLinks} />
-            <FooterLinkGroup title="Company" links={companyLinks} />
+            <div className="space-y-8">
+              <FooterLinkGroup title="Company" links={companyLinks} />
+              <FooterLinkGroup title="South Florida" links={localLinks} />
+            </div>
           </div>
 
           <div className="mt-10 pt-8 border-t border-brand-border">

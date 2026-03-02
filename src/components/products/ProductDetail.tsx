@@ -29,6 +29,7 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
   const [selectedVariant, setSelectedVariant] = useState(0);
   const variant = product.variants[selectedVariant];
   const related = relatedProducts;
+  const isBloodPanel = product.categorySlug === "blood-testing-analysis";
 
   return (
     <article>
@@ -88,6 +89,20 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
               </p>
             </div>
           )}
+          {product.includedTests && product.includedTests.length > 0 && (
+            <div className="mt-8">
+              <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-3">
+                Included Tests
+              </h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+                {product.includedTests.map((test) => (
+                  <li key={test} className="flex items-start gap-2 text-body-sm text-brand-silver py-1">
+                    <span className="text-brand-gold shrink-0">+</span> {test}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <div className="space-y-6">
           {(variant.price !== undefined || variant.membershipPrice !== undefined) && (
@@ -136,25 +151,27 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
               </div>
             </div>
           )}
+          {!isBloodPanel && (
+            <div>
+              <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-2">
+                Medication Details
+              </h3>
+              <p className="text-caption text-brand-silver-dark">{variant.vialSize}</p>
+              {variant.concentration && variant.concentration !== "N/A" && (
+                <p className="mt-1 text-caption text-brand-silver-dark">
+                  Concentration: {variant.concentration}
+                </p>
+              )}
+              {variant.reconstitutionVolume && variant.reconstitutionVolume !== "N/A" && variant.reconstitutionVolume !== "Consult provider" && (
+                <p className="mt-1 text-caption text-brand-silver-dark">
+                  Bacteriostatic Water {variant.reconstitutionVolume}
+                </p>
+              )}
+            </div>
+          )}
           <div>
             <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-2">
-              Medication Details
-            </h3>
-            <p className="text-caption text-brand-silver-dark">{variant.vialSize}</p>
-            {variant.concentration && variant.concentration !== "N/A" && (
-              <p className="mt-1 text-caption text-brand-silver-dark">
-                Concentration: {variant.concentration}
-              </p>
-            )}
-            {variant.reconstitutionVolume && variant.reconstitutionVolume !== "N/A" && variant.reconstitutionVolume !== "Consult provider" && (
-              <p className="mt-1 text-caption text-brand-silver-dark">
-                Bacteriostatic Water {variant.reconstitutionVolume}
-              </p>
-            )}
-          </div>
-          <div>
-            <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-2">
-              Dosing
+              {isBloodPanel ? "Frequency" : "Dosing"}
             </h3>
             <p className="text-body-sm text-brand-silver">{variant.schedule}</p>
           </div>
@@ -197,12 +214,14 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
               </ul>
             </div>
           )}
-          <div>
-            <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-2">
-              Storage & Handling
-            </h3>
-            <p className="text-caption text-brand-silver-dark">{IFU_DEFAULTS.storage}</p>
-          </div>
+          {!isBloodPanel && (
+            <div>
+              <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-2">
+                Storage & Handling
+              </h3>
+              <p className="text-caption text-brand-silver-dark">{IFU_DEFAULTS.storage}</p>
+            </div>
+          )}
           <div>
             <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-2">
               Notes
@@ -212,13 +231,17 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
               <p className="mt-2 text-caption text-brand-silver-dark">{product.providerNote}</p>
             )}
           </div>
-          <div>
-            <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-2">
-              Disclaimer
-            </h3>
-            <p className="text-caption text-brand-silver-dark italic">{IFU_DEFAULTS.disclaimer}</p>
-          </div>
-          <p className="text-caption text-brand-silver-dark">{IFU_DEFAULTS.effectiveDate}</p>
+          {!isBloodPanel && (
+            <>
+              <div>
+                <h3 className="font-display text-label uppercase tracking-widest text-brand-silver mb-2">
+                  Disclaimer
+                </h3>
+                <p className="text-caption text-brand-silver-dark italic">{IFU_DEFAULTS.disclaimer}</p>
+              </div>
+              <p className="text-caption text-brand-silver-dark">{IFU_DEFAULTS.effectiveDate}</p>
+            </>
+          )}
           <PhysicianTrustStrip />
           <InterestButton product={product} className="mt-4" />
         </div>

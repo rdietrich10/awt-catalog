@@ -1,8 +1,5 @@
-"use client";
-
-import { useState, useRef, useCallback } from "react";
-import { ShieldCheck, ChevronDown, ChevronUp, Check } from "lucide-react";
-import { InsuranceVerificationForm } from "./InsuranceVerificationForm";
+import Link from "next/link";
+import { ShieldCheck, Check, ArrowRight } from "lucide-react";
 import {
   INSURANCE_BANNER_HEADLINE,
   INSURANCE_BANNER_SUBHEADLINE,
@@ -10,21 +7,6 @@ import {
 } from "@/data/insurance";
 
 export function InsuranceBanner() {
-  const [expanded, setExpanded] = useState(false);
-  const formRef = useRef<HTMLDivElement>(null);
-
-  const toggle = useCallback(() => {
-    setExpanded((prev) => {
-      const next = !prev;
-      if (next) {
-        requestAnimationFrame(() => {
-          formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      }
-      return next;
-    });
-  }, []);
-
   return (
     <section className="border border-brand-gold/30 bg-brand-gold/[0.03] mb-12">
       <div className="p-6 md:p-8">
@@ -56,35 +38,16 @@ export function InsuranceBanner() {
               ))}
             </ul>
 
-            <button
-              type="button"
-              onClick={toggle}
+            <Link
+              href="/insurance"
               className="mt-5 inline-flex items-center gap-2 px-6 py-2.5 border border-brand-gold text-brand-gold font-display text-body-sm tracking-wider uppercase hover:bg-brand-gold hover:text-brand-black transition-colors"
-              aria-expanded={expanded}
-              aria-controls="insurance-form-panel"
             >
-              {expanded ? "Hide Form" : "Check My Coverage"}
-              {expanded ? (
-                <ChevronUp size={16} aria-hidden />
-              ) : (
-                <ChevronDown size={16} aria-hidden />
-              )}
-            </button>
+              Check My Coverage
+              <ArrowRight size={16} aria-hidden />
+            </Link>
           </div>
         </div>
       </div>
-
-      {expanded && (
-        <div
-          id="insurance-form-panel"
-          ref={formRef}
-          role="region"
-          aria-label="Insurance verification form"
-          className="border-t border-brand-gold/20 p-6 md:p-8"
-        >
-          <InsuranceVerificationForm />
-        </div>
-      )}
     </section>
   );
 }

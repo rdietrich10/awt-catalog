@@ -22,6 +22,7 @@ const PAGE_OG_MAP: Record<string, string> = {
   categories: "og-categories.png",
   privacy: "og-privacy.png",
   faq: "og-faq.png",
+  "lp-boynton-beach": "og-lp-boynton-beach.png",
 };
 
 /**

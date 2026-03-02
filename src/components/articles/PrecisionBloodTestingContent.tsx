@@ -286,10 +286,10 @@ export function PrecisionBloodTestingContent() {
           Ready to move beyond routine labs? Explore precision biomarker screening.
         </p>
         <Link
-          href="/products/comprehensive-100-biomarker-panel"
+          href="/products/annual-comprehensive-wellness-screen"
           className="inline-flex items-center gap-2 font-display tracking-wider uppercase text-brand-gold hover:text-brand-gold-light transition-colors text-body-sm"
         >
-          View the 100+ Biomarker Panel &rarr;
+          View the Annual Comprehensive Wellness Screen &rarr;
         </Link>
       </div>
     </div>

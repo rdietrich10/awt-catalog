@@ -60,6 +60,8 @@ export interface Product {
   providerNote?: string;
   isBlend: boolean;
   blendComponents?: string[];
+  /** Ordered list of biomarker / test names included in a blood-testing panel */
+  includedTests?: string[];
   featured: boolean;
 }
 

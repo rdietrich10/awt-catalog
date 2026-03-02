@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
 import { articles } from "@/data/articles";
+import { landingPages } from "@/data/lp";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
@@ -19,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/knowledge/glossary`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/how-it-works`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/insurance`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/contact`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${BASE_URL}/quality-control`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE_URL}/policies`, changeFrequency: "yearly", priority: 0.4 },
@@ -46,5 +48,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...categoryRoutes, ...articleRoutes];
+  const lpRoutes: MetadataRoute.Sitemap = landingPages.map((lp) => ({
+    url: `${BASE_URL}/lp/${lp.slug}`,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...categoryRoutes, ...articleRoutes, ...lpRoutes];
 }

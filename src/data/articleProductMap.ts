@@ -62,7 +62,7 @@ const articleProductMap: Record<string, ArticleMapping> = {
   },
   "precision-blood-testing-healthcare": {
     categorySlugs: ["blood-testing-analysis"],
-    productSlugs: ["comprehensive-100-biomarker-panel"],
+    productSlugs: ["annual-comprehensive-wellness-screen"],
   },
 };
 

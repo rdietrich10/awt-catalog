@@ -26,6 +26,10 @@ const COMPARE_ROWS = [
   { key: "Benefits", get: (p: Product) => p.keyBenefits.join("; ") },
   { key: "Notes", get: (p: Product) => p.clinicalNotes },
   { key: "Blend", get: (p: Product) => (p.blendComponents ?? []).join(", ") || "—" },
+  {
+    key: "Included Tests",
+    get: (p: Product) => (p.includedTests ?? []).join(", ") || "—",
+  },
 ];
 
 const STICKY_LABEL_CLASS =

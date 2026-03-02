@@ -223,6 +223,72 @@ export function howToJsonLd(steps: { name: string; text: string }[]) {
   };
 }
 
+export interface LocalBusinessConfig {
+  name: string;
+  url: string;
+  telephone: string;
+  email: string;
+  address: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+  };
+  geo: {
+    latitude: number;
+    longitude: number;
+  };
+  areaServed: string[];
+  services: { name: string; url: string }[];
+}
+
+export function localBusinessJsonLd(config: LocalBusinessConfig) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "@id": `${BASE_URL}/#${config.address.addressLocality.toLowerCase().replace(/\s+/g, "-")}`,
+    name: config.name,
+    url: `${BASE_URL}${config.url}`,
+    telephone: config.telephone,
+    email: config.email,
+    logo: `${BASE_URL}/images/brand/logo-inverse.svg`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: config.address.streetAddress,
+      addressLocality: config.address.addressLocality,
+      addressRegion: config.address.addressRegion,
+      postalCode: config.address.postalCode,
+      addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: config.geo.latitude,
+      longitude: config.geo.longitude,
+    },
+    areaServed: config.areaServed.map((city) => ({
+      "@type": "City",
+      name: city,
+    })),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Therapeutic Products & Services",
+      itemListElement: config.services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "MedicalTherapy",
+          name: s.name,
+          url: `${BASE_URL}${s.url}`,
+        },
+      })),
+    },
+    medicalSpecialty: {
+      "@type": "MedicalSpecialty",
+      name: "Pharmaceutical Therapeutics",
+    },
+    isAcceptingNewPatients: true,
+  };
+}
+
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
     <script

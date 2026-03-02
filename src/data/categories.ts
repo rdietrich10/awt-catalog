@@ -56,7 +56,7 @@ export const categories: Category[] = [
     name: "Blood Testing & Analysis",
     description: "Annual comprehensive biomarker screening panels analyzing 100+ clinically relevant markers for precision-guided, whole-person healthcare.",
     image: CATEGORY_IMAGES.bloodTestingAnalysis,
-    productCount: 8,
+    productCount: 10,
   },
   {
     slug: "telehealth-services",
