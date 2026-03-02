@@ -124,9 +124,12 @@ export async function POST(request: Request) {
       phone, sex, email, insuranceCompany, policyNumber,
     } = parsed.data;
 
-    const { data: insertData, error: dbError } = await supabase
+    const referenceId = crypto.randomUUID();
+
+    const { error: dbError } = await supabase
       .from("insurance_verification_requests")
       .insert({
+        id: referenceId,
         first_name: firstName,
         last_name: lastName,
         date_of_birth: dateOfBirth,
@@ -143,11 +146,9 @@ export async function POST(request: Request) {
         card_front_path: frontResult.path,
         card_back_path: backResult.path,
         email_sent: false,
-      })
-      .select("id")
-      .single();
+      });
 
-    if (dbError || !insertData) {
+    if (dbError) {
       console.error("Supabase insert error:", dbError);
       return NextResponse.json(
         {
@@ -157,8 +158,6 @@ export async function POST(request: Request) {
         { status: 500 },
       );
     }
-
-    const referenceId = insertData.id as string;
 
     const emailSent = await sendInsuranceVerificationNotification({
       referenceId,
