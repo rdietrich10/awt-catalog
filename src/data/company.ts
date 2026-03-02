@@ -13,3 +13,8 @@ export const COMPANY_PHONE = "(561) 536-3166";
 export const COMPANY_EMAIL = "info@awclinics.com";
 
 export const COMPANY_WEBSITE = "https://americarewellness.com";
+
+export const COMPANY_LICENSES = [
+  { label: "FL AHCA Health Care Clinic", number: "11043" },
+  { label: "FL DBPR Drugs, Devices & Cosmetics", number: "6026901" },
+] as const;

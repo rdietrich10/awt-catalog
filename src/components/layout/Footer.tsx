@@ -6,6 +6,7 @@ import {
   COMPANY_PHONE,
   COMPANY_EMAIL,
   COMPANY_LEGAL_NAME,
+  COMPANY_LICENSES,
 } from "@/data/company";
 import { CookieSettingsButton } from "./CookieConsent";
 
@@ -120,6 +121,15 @@ export function Footer() {
               >
                 {COMPANY_EMAIL}
               </a>
+
+              <ul className="mt-4 space-y-1">
+                {COMPANY_LICENSES.map((lic) => (
+                  <li key={lic.number} className="text-caption text-brand-silver-dark">
+                    <span className="text-brand-silver">{lic.label}</span>{" "}
+                    <span className="tracking-wide">#{lic.number}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <FooterLinkGroup title="Products" links={productLinks} />
