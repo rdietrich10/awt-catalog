@@ -8,6 +8,7 @@ import { InterestListProvider } from "@/context/InterestListContext";
 import { JsonLd, organizationJsonLd, webSiteJsonLd } from "@/lib/structured-data";
 import { GoogleAnalytics } from "@/components/layout/GoogleAnalytics";
 import { CookieConsent } from "@/components/layout/CookieConsent";
+import { Analytics } from "@vercel/analytics/next";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -113,6 +114,7 @@ export default function RootLayout({
           <Footer />
           <CookieConsent />
         </InterestListProvider>
+        <Analytics />
       </body>
     </html>
   );

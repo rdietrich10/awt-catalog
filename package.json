@@ -25,6 +25,7 @@
     "@fal-ai/client": "^1.9.1",
     "@sendgrid/mail": "^8.1.6",
     "@supabase/supabase-js": "^2.98.0",
+    "@vercel/analytics": "^2.0.1",
     "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.563.0",
