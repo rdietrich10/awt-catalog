@@ -19,7 +19,10 @@
     "download:pdfs": "node scripts/download-pdfs.mjs",
     "extract:pdfs": "node scripts/extract-pdf-content.mjs",
     "deploy": "vercel --prod",
-    "deploy:preview": "vercel"
+    "deploy:preview": "vercel",
+    "mcp:install": "cd mcp-server && npm install",
+    "mcp:start": "cd mcp-server && npm start",
+    "mcp:dev": "cd mcp-server && npm run dev"
   },
   "dependencies": {
     "@fal-ai/client": "^1.9.1",
