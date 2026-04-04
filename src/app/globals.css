@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+  --font-space-grotesk: "Space Grotesk", system-ui, sans-serif;
+  --font-inter: "Inter", system-ui, sans-serif;
   --brand-black: #090d0b;
   --brand-white: #fafafa;
   --brand-grey-300: #888888;

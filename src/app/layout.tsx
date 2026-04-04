@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
@@ -8,16 +7,6 @@ import { InterestListProvider } from "@/context/InterestListContext";
 import { JsonLd, organizationJsonLd, webSiteJsonLd } from "@/lib/structured-data";
 import { GoogleAnalytics } from "@/components/layout/GoogleAnalytics";
 import { CookieConsent } from "@/components/layout/CookieConsent";
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
@@ -88,13 +77,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    <html lang="en">
       <head>
         <meta name="theme-color" content="#090d0b" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className="min-h-screen flex flex-col font-body">
         <GoogleAnalytics />
