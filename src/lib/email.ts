@@ -6,7 +6,7 @@ import {
 } from "./email-templates";
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-const FROM_EMAIL = "chris@postscarcity.ai";
+const FROM_EMAIL = "noreply@awtherapeutics.com";
 const TO_EMAIL = "info@awclinics.com";
 const BCC_EMAILS = ["cjohndesign@gmail.com"];
 
@@ -83,7 +83,7 @@ export async function sendContactNotification(
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
       from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Contact: ${data.subject} — from ${data.name}`,
+      subject: `New Contact: ${data.subject} \u2014 from ${data.name}`,
       html: contactEmailHtml({ ...data, timestamp }),
     });
     return true;
@@ -112,7 +112,7 @@ export async function sendInquiryNotification(
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
       from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Inquiry from ${data.firstName} ${data.lastName} — ${data.products.length} Product${data.products.length === 1 ? "" : "s"}`,
+      subject: `New Inquiry from ${data.firstName} ${data.lastName} \u2014 ${data.products.length} Product${data.products.length === 1 ? "" : "s"}`,
       html: inquiryEmailHtml({ ...data, timestamp }),
     });
     return true;
@@ -145,7 +145,7 @@ export async function sendInsuranceVerificationNotification(
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
       from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Insurance Verification Request — Ref ${data.referenceId.slice(0, 8)}`,
+      subject: `New Insurance Verification Request \u2014 Ref ${data.referenceId.slice(0, 8)}`,
       html: insuranceVerificationEmailHtml({
         referenceId: data.referenceId,
         timestamp,
