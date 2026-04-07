@@ -29,17 +29,13 @@ const mockSendContactNotification = vi.mocked(sendContactNotification);
 const mockCheckRateLimit = vi.mocked(checkRateLimit);
 const mockGetRateLimitHeaders = vi.mocked(getRateLimitHeaders);
 
-function makeInsertChain(error: unknown = null, id = "test-id-123") {
-  const selectChain = {
-    single: vi.fn().mockResolvedValue({ data: error ? null : { id }, error }),
-  };
-  const insertChain = {
-    select: vi.fn().mockReturnValue(selectChain),
-  };
+function makeInsertChain(error: unknown = null) {
   return {
-    insert: vi.fn().mockReturnValue(insertChain),
+    insert: vi.fn().mockResolvedValue({ error }),
     update: vi.fn().mockReturnValue({
-      eq: vi.fn().mockResolvedValue({ error: null }),
+      eq: vi.fn().mockReturnValue({
+        eq: vi.fn().mockResolvedValue({ error: null }),
+      }),
     }),
   };
 }

@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
     const { name, email, phone, subject, message } = parsed.data;
 
-    const { data: insertedRow, error: dbError } = await supabase
+    const { error: dbError } = await supabase
       .from("contact_submissions")
       .insert({
         name,
@@ -45,9 +45,7 @@ export async function POST(request: Request) {
         subject,
         message,
         email_sent: false,
-      })
-      .select("id")
-      .single();
+      });
 
     if (dbError) {
       console.error("Supabase insert error:", dbError);
@@ -69,11 +67,12 @@ export async function POST(request: Request) {
     });
     console.log("[contact] email_sent:", emailSent);
 
-    if (emailSent && insertedRow?.id) {
+    if (emailSent) {
       await supabase
         .from("contact_submissions")
         .update({ email_sent: true })
-        .eq("id", insertedRow.id);
+        .eq("email", email)
+        .eq("email_sent", false);
     }
 
     await logAuditEvent({
