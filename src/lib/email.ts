@@ -86,9 +86,11 @@ export async function sendContactNotification(
       subject: `New Contact: ${data.subject} \u2014 from ${data.name}`,
       html: contactEmailHtml({ ...data, timestamp }),
     });
+    console.log("[email] contact notification sent successfully");
     return true;
-  } catch (err) {
-    console.error("SendGrid contact email error:", err);
+  } catch (err: unknown) {
+    const sgErr = err as { code?: number; response?: { body?: unknown } };
+    console.error("[email] SendGrid contact error \u2014 code:", sgErr?.code, "body:", JSON.stringify(sgErr?.response?.body));
     return false;
   }
 }

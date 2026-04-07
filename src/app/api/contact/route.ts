@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       const firstIssue = parsed.error.issues[0]?.message ?? "Invalid input";
       return NextResponse.json(
         {
-          error: `Hmm, something's off with your form — ${firstIssue}. Double-check and give it another go!`,
+          error: `Hmm, something's off with your form \u2014 ${firstIssue}. Double-check and give it another go!`,
         },
         { status: 400, headers: getRateLimitHeaders(rl) }
       );
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Our database took a quick nap. Your message is important to us — please try again in a moment!",
+            "Our database took a quick nap. Your message is important to us \u2014 please try again in a moment!",
         },
         { status: 500 }
       );
@@ -65,6 +65,7 @@ export async function POST(request: Request) {
       subject,
       message,
     });
+    console.log("[contact] email_sent:", emailSent);
 
     if (emailSent) {
       await supabase
@@ -86,12 +87,12 @@ export async function POST(request: Request) {
       { success: true },
       { headers: getRateLimitHeaders(rl) }
     );
-  } catch {
-    console.error("Contact API error");
+  } catch (err) {
+    console.error("Contact API error:", err);
     return NextResponse.json(
       {
         error:
-          "Something unexpected happened on our end. Don't worry — it's not you, it's us. Give it another shot!",
+          "Something unexpected happened on our end. Don't worry \u2014 it's not you, it's us. Give it another shot!",
       },
       { status: 500 }
     );
