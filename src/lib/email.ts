@@ -86,7 +86,7 @@ export async function sendContactNotification(
       subject: `New Contact: ${data.subject} \u2014 from ${data.name}`,
       html: contactEmailHtml({ ...data, timestamp }),
     });
-    console.log("[email] contact notification sent successfully");
+    console.error("[email] contact notification sent successfully");
     return true;
   } catch (err: unknown) {
     const sgErr = err as { code?: number; response?: { body?: unknown } };

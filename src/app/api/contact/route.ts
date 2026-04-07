@@ -65,7 +65,7 @@ export async function POST(request: Request) {
       subject,
       message,
     });
-    console.log("[contact] email_sent:", emailSent);
+    console.error("[contact] email_sent:", emailSent);
 
     if (emailSent) {
       await supabase
