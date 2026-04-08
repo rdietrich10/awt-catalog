@@ -23,6 +23,7 @@ export interface EmailCaptureData {
   zip: string;
   phone: string;
   email: string;
+  referralCode?: string;
 }
 
 interface EmailCaptureFormProps {
@@ -60,11 +61,12 @@ export function EmailCaptureForm({
   const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [referralCode, setReferralCode] = useState("");
   const [hipaaConsent, setHipaaConsent] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit({ firstName, lastName, sex, dateOfBirth, address1, address2, city, state, zip, phone, email });
+    onSubmit({ firstName, lastName, sex, dateOfBirth, address1, address2, city, state, zip, phone, email, referralCode });
   };
 
   return (
@@ -263,6 +265,21 @@ export function EmailCaptureForm({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
+          className={inputBase}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="capture-referral-code" className={labelBase}>
+          Referral Code <span className="text-brand-silver-dark">(optional)</span>
+        </label>
+        <input
+          id="capture-referral-code"
+          type="text"
+          disabled={loading}
+          value={referralCode}
+          onChange={(e) => setReferralCode(e.target.value)}
+          placeholder="e.g. FRIEND2024"
           className={inputBase}
         />
       </div>

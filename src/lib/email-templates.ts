@@ -47,6 +47,7 @@ interface InquiryEmailData {
   zip: string;
   phone: string;
   email: string;
+  referralCode?: string;
   products: InquiryProduct[];
   timestamp: string;
 }
@@ -300,6 +301,7 @@ export function inquiryEmailHtml(data: InquiryEmailData): string {
   const phone = escapeHtml(data.phone);
   const email = escapeHtml(data.email);
   const timestamp = escapeHtml(data.timestamp);
+  const referralCode = data.referralCode ? escapeHtml(data.referralCode) : "";
 
   const addressLine = address2
     ? `${address1}<br/>${address2}<br/>${city}, ${state} ${zip}`
@@ -331,6 +333,7 @@ export function inquiryEmailHtml(data: InquiryEmailData): string {
       ${fieldRow("Phone", phone)}
       ${divider}
       ${fieldRow("Email", `<a href="mailto:${email}" style="color:${BRAND.gold};text-decoration:none;">${email}</a>`)}
+      ${referralCode ? `${divider}${fieldRow("Referral Code", referralCode)}` : ""}
       ${divider}
       ${fieldRow("Received", timestamp)}
     </table>

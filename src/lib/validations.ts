@@ -125,6 +125,12 @@ export const inquirySchema = z.object({
     .array(productItemSchema)
     .min(1, "At least one product is required")
     .max(50, "Maximum 50 products per inquiry"),
+  referralCode: z
+    .string()
+    .trim()
+    .max(50, "Referral code must be 50 characters or fewer")
+    .optional()
+    .or(z.literal("")),
 });
 
 export type InquiryInput = z.infer<typeof inquirySchema>;

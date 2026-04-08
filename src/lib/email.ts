@@ -62,6 +62,7 @@ interface InquiryPayload {
   zip: string;
   phone: string;
   email: string;
+  referralCode?: string;
   products: InquiryProductPayload[];
 }
 
