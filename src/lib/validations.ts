@@ -72,6 +72,17 @@ export const inquirySchema = z.object({
   sex: z.enum(["Male", "Female", "Other"], {
     message: "Please select a sex",
   }),
+  dateOfBirth: z
+    .string()
+    .trim()
+    .min(1, "Date of birth is required")
+    .refine(
+      (v) => {
+        const d = new Date(v);
+        return !isNaN(d.getTime()) && d < new Date();
+      },
+      { message: "Date of birth must be a valid date in the past" },
+    ),
   address1: z
     .string()
     .trim()
@@ -114,6 +125,12 @@ export const inquirySchema = z.object({
     .array(productItemSchema)
     .min(1, "At least one product is required")
     .max(50, "Maximum 50 products per inquiry"),
+  referralCode: z
+    .string()
+    .trim()
+    .max(50, "Referral code must be 50 characters or fewer")
+    .optional()
+    .or(z.literal("")),
 });
 
 export type InquiryInput = z.infer<typeof inquirySchema>;

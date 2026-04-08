@@ -35,9 +35,9 @@ export async function POST(request: Request) {
     }
 
     const {
-      firstName, lastName, sex,
+      firstName, lastName, sex, dateOfBirth,
       address1, address2, city, state, zip,
-      phone, email, products,
+      phone, email, products, referralCode,
     } = parsed.data;
 
     const { error: dbError } = await supabase
@@ -46,6 +46,7 @@ export async function POST(request: Request) {
         first_name: firstName,
         last_name: lastName,
         sex,
+        date_of_birth: dateOfBirth,
         address1,
         address2: address2 || null,
         city,
@@ -54,6 +55,7 @@ export async function POST(request: Request) {
         phone,
         email,
         products,
+        referral_code: referralCode || null,
         email_sent: false,
       });
 
@@ -72,6 +74,7 @@ export async function POST(request: Request) {
       firstName,
       lastName,
       sex,
+      dateOfBirth,
       address1,
       address2: address2 || undefined,
       city,
@@ -79,6 +82,7 @@ export async function POST(request: Request) {
       zip,
       phone,
       email,
+      referralCode: referralCode || undefined,
       products: products.map((p) => ({
         name: p.name,
         slug: p.slug,

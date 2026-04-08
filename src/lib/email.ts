@@ -6,9 +6,9 @@ import {
 } from "./email-templates";
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-const FROM_EMAIL = "chris@postscarcity.ai";
+const FROM_EMAIL = "noreply@awtherapeutics.com";
 const TO_EMAIL = "info@awclinics.com";
-const BCC_EMAILS = ["cjohndesign@gmail.com"];
+const BCC_EMAILS = ["reannedietrich@gmail.com"];
 
 if (!SENDGRID_API_KEY) {
   console.warn("SENDGRID_API_KEY is not set. Emails will not be sent.");
@@ -54,6 +54,7 @@ interface InquiryPayload {
   firstName: string;
   lastName: string;
   sex: string;
+  dateOfBirth: string;
   address1: string;
   address2?: string;
   city: string;
@@ -61,6 +62,7 @@ interface InquiryPayload {
   zip: string;
   phone: string;
   email: string;
+  referralCode?: string;
   products: InquiryProductPayload[];
 }
 
@@ -83,12 +85,14 @@ export async function sendContactNotification(
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
       from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Contact: ${data.subject} — from ${data.name}`,
+      subject: `New Contact: ${data.subject} \u2014 from ${data.name}`,
       html: contactEmailHtml({ ...data, timestamp }),
     });
+    console.error("[email] contact notification sent successfully");
     return true;
-  } catch (err) {
-    console.error("SendGrid contact email error:", err);
+  } catch (err: unknown) {
+    const sgErr = err as { code?: number; response?: { body?: unknown } };
+    console.error("[email] SendGrid contact error \u2014 code:", sgErr?.code, "body:", JSON.stringify(sgErr?.response?.body));
     return false;
   }
 }
@@ -112,7 +116,7 @@ export async function sendInquiryNotification(
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
       from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Inquiry from ${data.firstName} ${data.lastName} — ${data.products.length} Product${data.products.length === 1 ? "" : "s"}`,
+      subject: `New Inquiry from ${data.firstName} ${data.lastName} \u2014 ${data.products.length} Product${data.products.length === 1 ? "" : "s"}`,
       html: inquiryEmailHtml({ ...data, timestamp }),
     });
     return true;
@@ -145,7 +149,7 @@ export async function sendInsuranceVerificationNotification(
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
       from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Insurance Verification Request — Ref ${data.referenceId.slice(0, 8)}`,
+      subject: `New Insurance Verification Request \u2014 Ref ${data.referenceId.slice(0, 8)}`,
       html: insuranceVerificationEmailHtml({
         referenceId: data.referenceId,
         timestamp,
