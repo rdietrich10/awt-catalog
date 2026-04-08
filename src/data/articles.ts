@@ -2,6 +2,33 @@ import type { Article } from "@/types";
 
 const unsorted: Article[] = [
   {
+    slug: "glp-1-comparison",
+    title: "Semaglutide, Tirzepatide, Retatrutide: What's the Actual Difference?",
+    excerpt: "Three GLP-1–based medications. Three different receptor profiles. Here's what the clinical data shows — and how to think about which is right for you.",
+    content: "GLP-1 agonists have redefined weight management. Semaglutide targets a single receptor for ~15% average weight loss. Tirzepatide adds GIP activation for up to 22–24%. Retatrutide introduces a third pathway — glucagon receptor agonism — with early trials showing comparable results and greater energy expenditure.",
+    image: "/images/articles/glp-1-comparison.png",
+    dateCreated: "2026-04-08",
+    dateUpdated: "2026-04-08",
+  },
+  {
+    slug: "future-of-weight-loss",
+    title: "The Future of Weight Loss: How Incretin Therapy Is Changing the Science",
+    excerpt: "Obesity is a hormonal condition, not a character flaw. The medications evolving to treat it — from single to triple receptor agonism — reflect a fundamentally new understanding of metabolism.",
+    content: "Incretin-based therapies have evolved from single-pathway to triple-pathway mechanisms in under a decade. The progression from semaglutide to tirzepatide to retatrutide reflects a deeper pharmacological understanding of how the body regulates weight — and opens the door to patient-specific treatment matching.",
+    image: "/images/articles/future-of-weight-loss.png",
+    dateCreated: "2026-04-11",
+    dateUpdated: "2026-04-11",
+  },
+  {
+    slug: "starting-glp-1-medication",
+    title: "What to Expect When Starting a GLP-1 Medication",
+    excerpt: "The first month on a GLP-1 medication is an adjustment phase. Here's a clinical timeline — and what it means when the medication is working as intended.",
+    content: "GLP-1 protocols begin at sub-therapeutic doses to minimize gastrointestinal effects. Appetite reduction typically becomes noticeable in week 2–4. Meaningful weight loss accumulates over months — with clinical studies showing 15–20%+ reductions at 6–12 months depending on the agent and adherence to protocol.",
+    image: "/images/articles/starting-glp-1-medication.png",
+    dateCreated: "2026-04-15",
+    dateUpdated: "2026-04-15",
+  },
+  {
     slug: "why-we-dont-sell-nutraceuticals",
     title: "Why AW Therapeutics Doesn't Sell Nutraceuticals",
     excerpt: "We could sell supplements. We choose not to. Here's the science behind that decision — and what we offer instead.",
