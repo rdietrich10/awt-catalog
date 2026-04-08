@@ -15,6 +15,7 @@ export interface EmailCaptureData {
   firstName: string;
   lastName: string;
   sex: string;
+  dateOfBirth: string;
   address1: string;
   address2: string;
   city: string;
@@ -51,6 +52,7 @@ export function EmailCaptureForm({
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [sex, setSex] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
@@ -62,7 +64,7 @@ export function EmailCaptureForm({
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit({ firstName, lastName, sex, address1, address2, city, state, zip, phone, email });
+    onSubmit({ firstName, lastName, sex, dateOfBirth, address1, address2, city, state, zip, phone, email });
   };
 
   return (
@@ -129,6 +131,22 @@ export function EmailCaptureForm({
             </option>
           ))}
         </select>
+      </div>
+
+      <div>
+        <label htmlFor="capture-dob" className={labelBase}>
+          Date of Birth
+        </label>
+        <input
+          id="capture-dob"
+          type="date"
+          required
+          disabled={loading}
+          value={dateOfBirth}
+          onChange={(e) => setDateOfBirth(e.target.value)}
+          max={new Date().toISOString().split("T")[0]}
+          className={inputBase}
+        />
       </div>
 
       {/* Address */}

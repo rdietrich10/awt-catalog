@@ -54,6 +54,7 @@ interface InquiryPayload {
   firstName: string;
   lastName: string;
   sex: string;
+  dateOfBirth: string;
   address1: string;
   address2?: string;
   city: string;

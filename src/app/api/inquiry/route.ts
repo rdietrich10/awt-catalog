@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     }
 
     const {
-      firstName, lastName, sex,
+      firstName, lastName, sex, dateOfBirth,
       address1, address2, city, state, zip,
       phone, email, products,
     } = parsed.data;
@@ -46,6 +46,7 @@ export async function POST(request: Request) {
         first_name: firstName,
         last_name: lastName,
         sex,
+        date_of_birth: dateOfBirth,
         address1,
         address2: address2 || null,
         city,
@@ -72,6 +73,7 @@ export async function POST(request: Request) {
       firstName,
       lastName,
       sex,
+      dateOfBirth,
       address1,
       address2: address2 || undefined,
       city,
