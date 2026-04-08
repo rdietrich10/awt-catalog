@@ -8,7 +8,7 @@ import {
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const FROM_EMAIL = "noreply@awtherapeutics.com";
 const TO_EMAIL = "info@awclinics.com";
-const BCC_EMAILS = ["cjohndesign@gmail.com"];
+const BCC_EMAILS = ["reannedietrich@gmail.com"];
 
 if (!SENDGRID_API_KEY) {
   console.warn("SENDGRID_API_KEY is not set. Emails will not be sent.");
