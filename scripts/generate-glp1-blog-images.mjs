@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 /**
- * One-off script: generate 3 article images for the GLP-1 blog series.
+ * Generate missing article images for the AW Therapeutics catalog.
+ * Covers the 4 articles that are missing images:
+ *   - glp-1-comparison
+ *   - future-of-weight-loss
+ *   - starting-glp-1-medication
+ *   - why-we-dont-sell-nutraceuticals
+ *
  * Usage: FAL_KEY=<key> node scripts/generate-glp1-blog-images.mjs
  */
 
@@ -60,6 +66,15 @@ Strictly monochromatic: black, charcoal, grey, silver, white only. No color. Bla
 
 Photography: Hasselblad H6D-400c, HC 120mm f/4 Macro, f/4, 1/250s, ISO 50. Single strip softbox at 90-degrees camera-left creating hard specular edge on the syringe and vial. No fill — deep shadow on the gloves. Background pure matte black. Focus on the needle-to-stopper contact point, syringe barrel and vial glass in sharp focus. 16:9 composition, hands centered in frame. Mood: precision, protocol, the controlled beginning of a clinical process.`,
   },
+  {
+    slug: "why-we-dont-sell-nutraceuticals",
+    aspectRatio: "16:9",
+    prompt: `Editorial pharmaceutical still-life with a strong contrast narrative. In sharp foreground focus: a single pristine clear glass pharmaceutical vial on a polished black surface — clinical, precise, authoritative. Behind it, deliberately out of focus and receding into soft bokeh: a cluster of generic supplement capsules and tablets scattered loosely on the same surface — their informal arrangement contrasting with the vial's precision. The composition is intentional — one clear subject, one dismissed background. Dramatic side lighting from camera-left illuminates the vial with clinical brilliance while the capsules remain in soft shadow.
+
+Strictly monochromatic: black, charcoal, grey, silver, white only. No color. The capsules and tablets read as grey/charcoal shapes in soft bokeh.
+
+Photography: Hasselblad H6D-400c, HC 120mm f/4 Macro, f/2.8, 1/125s, ISO 50. Single Broncolor strip at 90-degrees camera-left. Shallow depth of field — vial tack-sharp, capsules fully dissolved into background bokeh. Polished obsidian surface. 16:9 composition, vial at center-left, capsule scatter receding right. Mood: the choice between pharmaceutical precision and supplement ambiguity — clinical authority over noise.`,
+  },
 ];
 
 async function downloadImage(url) {
@@ -117,7 +132,7 @@ async function main() {
     }
   }
 
-  console.log("\nDone.");
+  console.log("\nDone. Commit the generated images and push.");
 }
 
 main().catch((err) => {

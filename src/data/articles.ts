@@ -16,8 +16,8 @@ const unsorted: Article[] = [
     excerpt: "Obesity is a hormonal condition, not a character flaw. The medications evolving to treat it — from single to triple receptor agonism — reflect a fundamentally new understanding of metabolism.",
     content: "Incretin-based therapies have evolved from single-pathway to triple-pathway mechanisms in under a decade. The progression from semaglutide to tirzepatide to retatrutide reflects a deeper pharmacological understanding of how the body regulates weight — and opens the door to patient-specific treatment matching.",
     image: "/images/articles/future-of-weight-loss.png",
-    dateCreated: "2026-04-11",
-    dateUpdated: "2026-04-11",
+    dateCreated: "2026-03-15",
+    dateUpdated: "2026-03-15",
   },
   {
     slug: "starting-glp-1-medication",
@@ -25,8 +25,8 @@ const unsorted: Article[] = [
     excerpt: "The first month on a GLP-1 medication is an adjustment phase. Here's a clinical timeline — and what it means when the medication is working as intended.",
     content: "GLP-1 protocols begin at sub-therapeutic doses to minimize gastrointestinal effects. Appetite reduction typically becomes noticeable in week 2–4. Meaningful weight loss accumulates over months — with clinical studies showing 15–20%+ reductions at 6–12 months depending on the agent and adherence to protocol.",
     image: "/images/articles/starting-glp-1-medication.png",
-    dateCreated: "2026-04-15",
-    dateUpdated: "2026-04-15",
+    dateCreated: "2026-03-22",
+    dateUpdated: "2026-03-22",
   },
   {
     slug: "why-we-dont-sell-nutraceuticals",
