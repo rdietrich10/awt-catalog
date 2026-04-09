@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { NewPatientCallout } from "@/components/ui/NewPatientCallout";
 import { categories } from "@/data/categories";
 import { getOgImageMetadata } from "@/lib/og";
 
@@ -23,9 +24,12 @@ export default function CategoriesPage() {
       <h1 className="font-display text-3xl uppercase tracking-tight text-brand-white mb-4">
         Categories
       </h1>
-      <p className="text-body-sm text-brand-silver mb-12 max-w-2xl">
+      <p className="text-body-sm text-brand-silver mb-6 max-w-2xl">
         Explore our catalog by therapeutic area.
       </p>
+      <div className="mb-10 max-w-2xl">
+        <NewPatientCallout />
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map((cat) => (
           <Link

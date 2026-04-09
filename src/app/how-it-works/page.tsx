@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { NewPatientCallout } from "@/components/ui/NewPatientCallout";
 import { getOgImageMetadata } from "@/lib/og";
 import { JsonLd, howToJsonLd, medicalWebPageJsonLd } from "@/lib/structured-data";
 
@@ -159,9 +160,13 @@ export default function HowItWorksPage() {
           </p>
         </div>
 
+        <div className="mt-10">
+          <NewPatientCallout />
+        </div>
+
         <Link
           href="/"
-          className="mt-10 inline-block text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
+          className="mt-8 inline-block text-body-sm text-brand-silver hover:text-brand-white transition-colors underline"
         >
           Back to home
         </Link>

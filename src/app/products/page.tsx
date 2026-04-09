@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { products } from "@/data/products";
 import { PHYSICIAN_REVIEW_PRODUCTS_INTRO, PROTOCOL_STATEMENT } from "@/data/copy";
 import { FilterableProductGrid } from "@/components/products/FilterableProductGrid";
+import { NewPatientCallout } from "@/components/ui/NewPatientCallout";
 import { JsonLd, productItemListJsonLd, medicalWebPageJsonLd } from "@/lib/structured-data";
 import { getOgImageMetadata } from "@/lib/og";
 
@@ -39,7 +40,10 @@ export default function ProductsPage() {
       <p className="text-body-sm text-brand-silver-dark mb-8 max-w-2xl">
         {PROTOCOL_STATEMENT}
       </p>
-      <FilterableProductGrid products={products} />
+      <NewPatientCallout />
+      <div className="mt-8">
+        <FilterableProductGrid products={products} />
+      </div>
     </div>
   );
 }

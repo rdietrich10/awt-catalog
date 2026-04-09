@@ -153,3 +153,6 @@ export const ANNOUNCEMENT_HREF = "/knowledge/articles/peptide-regulation-2026";
 export const FOOTER_CTA_HEADLINE = "Have Questions?";
 export const FOOTER_CTA_SUBHEADLINE =
   "Our team responds within 24 hours. Reach out anytime.";
+
+export const NEW_PATIENT_CALLOUT =
+  "New to peptide therapy? That's exactly what we're here for. Our team will guide you through every step — no prior knowledge required.";

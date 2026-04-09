@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { CTA_SECTION_HEADLINE, CTA_SECTION_SUBHEADLINE } from "@/data/copy";
@@ -35,6 +36,15 @@ export function CtaSection() {
                 Contact Us
               </ButtonLink>
             </div>
+            <p className="mt-6 text-body-sm text-brand-silver-dark">
+              New to peptide therapy?{" "}
+              <Link
+                href="/contact"
+                className="text-brand-silver underline underline-offset-2 hover:text-brand-white transition-colors"
+              >
+                Our team will walk you through everything — no prior knowledge required.
+              </Link>
+            </p>
           </div>
         </div>
       </div>
