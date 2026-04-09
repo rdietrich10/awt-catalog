@@ -4,6 +4,8 @@
  */
 export const BLUR_DATA: ReadonlyMap<string, string> = new Map([
   ["/images/americare-logo.png", "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAACwAQCdASoIAAIABUB8JZwCdAD0h/pcAP7QL0gsX+kAAA=="],
+  ["/images/articles/future-of-weight-loss.png", "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAACQAQCdASoIAAQABUB8JaQAAp1HI1AA/ooD1/WVD0AAAA=="],
+  ["/images/articles/glp-1-comparison.png", "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAACwAQCdASoIAAQABUB8JaQAAxeeDen+AP7Z5AQgAAA="],
   ["/images/articles/glp-1-overview.png", "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAACQAQCdASoIAAQABUB8JaQAAlnCu0AA9coCPdhlIHl8QAAA"],
   ["/images/articles/healing-peptides.png", "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAACwAQCdASoIAAQABUB8JaQAAxec9J3gAP7miv2sOcp8AAAA"],
   ["/images/articles/intro-peptides.png", "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAACQAQCdASoIAAQABUB8JaQAApz9zgAA/uWgeQNqoIAAAA=="],
@@ -13,8 +15,10 @@ export const BLUR_DATA: ReadonlyMap<string, string> = new Map([
   ["/images/articles/rfk-jr-hhs-portrait.jpg", "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAADQAQCdASoIAAgABUB8JagCdADJf3rUwAD+Rh8dbxOPg1M18PTvOlqrsegAAA=="],
   ["/images/articles/safety-protocols.png", "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAACQAQCdASoIAAQABUB8JZwAAp0L1mAA/tywjhfIsVS8CAAA"],
   ["/images/articles/stacking-guide.png", "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAACQAQCdASoIAAQABUB8JaQAAp02KwAA/t2MN3d8tgAAAA=="],
+  ["/images/articles/starting-glp-1-medication.png", "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAAAwAQCdASoIAAQABUB8JaQAA3AA/u+CErsVHi5YwNfAAA=="],
   ["/images/articles/understanding-blood-biomarkers.png", "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAACQAQCdASoIAAQABUB8JaQAAp02KwAA/unqpI0f90AAAA=="],
   ["/images/articles/why-annual-biomarker-screening-matters.png", "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAACQAQCdASoIAAQABUB8JaQAAp1HI1AA+OsmtpyAAAA="],
+  ["/images/articles/why-we-dont-sell-nutraceuticals.png", "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAACQAQCdASoIAAQABUB8JZwAAlvrtoAA/qvI57fPBSAAAA=="],
   ["/images/brand/logo-inverse.png", "data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAABwAAAAAAQUxQSAkAAAAAWkc9ODw1MzMAVlA4IBoAAABQAQCdASoIAAEABUB8JZwABAAAAP7waYAAAA=="],
   ["/images/brand/logo-primary.png", "data:image/webp;base64,UklGRkgAAABXRUJQVlA4WAoAAAAQAAAABwAAAAAAQUxQSAkAAAAAWkc9ODw1MzMAVlA4IBgAAAAwAQCdASoIAAEABUB8JaQAA3AA/vBdAAA="],
   ["/images/categories/blood-testing-analysis.png", "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAACwAQCdASoIAAQABUB8JaQAAp1zuQQAAP32CMpAAAA="],
