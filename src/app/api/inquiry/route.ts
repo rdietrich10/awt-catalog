@@ -57,16 +57,10 @@ export async function POST(request: Request) {
       email_sent: false,
     };
 
-    let dbError = (await supabase.from("inquiry_submissions").insert(insertPayload)).error;
+    const { error: dbError } = await supabase.from("inquiry_submissions").insert(insertPayload);
 
     if (dbError) {
-      // Retry once after a short delay for transient errors (e.g. cold-start timeout)
-      await new Promise((r) => setTimeout(r, 1500));
-      dbError = (await supabase.from("inquiry_submissions").insert(insertPayload)).error;
-    }
-
-    if (dbError) {
-      console.error("Supabase insert error:", dbError);
+      console.error("Supabase insert error:", JSON.stringify(dbError));
       return NextResponse.json(
         {
           error:
