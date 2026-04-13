@@ -122,7 +122,8 @@ export async function sendInquiryNotification(
     return true;
   } catch (err: unknown) {
     const sgErr = err as { code?: number; response?: { body?: unknown } };
-    console.error("[email] SendGrid inquiry error \u2014 code:", sgErr?.code, "body:", JSON.stringify(sgErr?.response?.body));
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.error(`[email] inquiry failed code=${sgErr?.code ?? "unknown"} msg=${errMsg} body=${JSON.stringify(sgErr?.response?.body)}`);
     return false;
   }
 }
