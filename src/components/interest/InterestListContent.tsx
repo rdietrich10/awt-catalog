@@ -58,6 +58,7 @@ export function InterestListContent() {
           firstName: data.firstName,
           lastName: data.lastName,
           sex: data.sex,
+          dateOfBirth: data.dateOfBirth,
           address1: data.address1,
           address2: data.address2,
           city: data.city,
@@ -65,6 +66,7 @@ export function InterestListContent() {
           zip: data.zip,
           phone: data.phone,
           email: data.email,
+          referralCode: data.referralCode,
           products: items.map((p) => ({
             name: p.name,
             slug: p.slug,
