@@ -13,6 +13,15 @@ function getSupabaseClient(): SupabaseClient {
   }
   _supabase = createClient(supabaseUrl, supabaseKey, {
     auth: { persistSession: false },
+    global: {
+      fetch: (url: RequestInfo | URL, init?: RequestInit) => {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 8000);
+        return fetch(url, { ...init, signal: controller.signal }).finally(() =>
+          clearTimeout(timeout)
+        );
+      },
+    },
   });
   return _supabase;
 }
