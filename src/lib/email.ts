@@ -120,8 +120,9 @@ export async function sendInquiryNotification(
       html: inquiryEmailHtml({ ...data, timestamp }),
     });
     return true;
-  } catch (err) {
-    console.error("SendGrid inquiry email error:", err);
+  } catch (err: unknown) {
+    const sgErr = err as { code?: number; response?: { body?: unknown } };
+    console.error("[email] SendGrid inquiry error \u2014 code:", sgErr?.code, "body:", JSON.stringify(sgErr?.response?.body));
     return false;
   }
 }

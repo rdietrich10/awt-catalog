@@ -123,8 +123,8 @@ export async function POST(request: Request) {
       { success: true },
       { headers: getRateLimitHeaders(rl) }
     );
-  } catch {
-    console.error("Inquiry API error");
+  } catch (err) {
+    console.error("Inquiry API error:", err);
     return NextResponse.json(
       {
         error:
