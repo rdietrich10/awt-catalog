@@ -40,24 +40,30 @@ export async function POST(request: Request) {
       phone, email, products, referralCode,
     } = parsed.data;
 
-    const { error: dbError } = await supabase
-      .from("inquiry_submissions")
-      .insert({
-        first_name: firstName,
-        last_name: lastName,
-        sex,
-        date_of_birth: dateOfBirth,
-        address1,
-        address2: address2 || null,
-        city,
-        state,
-        zip,
-        phone,
-        email,
-        products,
-        referral_code: referralCode || null,
-        email_sent: false,
-      });
+    const insertPayload = {
+      first_name: firstName,
+      last_name: lastName,
+      sex,
+      date_of_birth: dateOfBirth,
+      address1,
+      address2: address2 || null,
+      city,
+      state,
+      zip,
+      phone,
+      email,
+      products,
+      referral_code: referralCode || null,
+      email_sent: false,
+    };
+
+    let dbError = (await supabase.from("inquiry_submissions").insert(insertPayload)).error;
+
+    if (dbError) {
+      // Retry once after a short delay for transient errors (e.g. cold-start timeout)
+      await new Promise((r) => setTimeout(r, 1500));
+      dbError = (await supabase.from("inquiry_submissions").insert(insertPayload)).error;
+    }
 
     if (dbError) {
       console.error("Supabase insert error:", dbError);
