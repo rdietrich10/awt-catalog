@@ -12,7 +12,7 @@ export function NewPatientCallout() {
           href="/contact"
           className="text-brand-gold underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap"
         >
-          Reach out — we're happy to help.
+          Reach out — we&apos;re happy to help.
         </Link>
       </p>
     </div>

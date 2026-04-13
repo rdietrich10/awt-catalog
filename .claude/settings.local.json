@@ -7,7 +7,11 @@
       "mcp__claude_ai_Vercel__list_projects",
       "mcp__claude_ai_Vercel__get_project",
       "mcp__claude_ai_Vercel__get_runtime_logs",
-      "mcp__claude_ai_Vercel__list_deployments"
+      "mcp__claude_ai_Vercel__list_deployments",
+      "mcp__d92371ab-57b1-4148-8616-0b22932227ee__list_teams",
+      "mcp__d92371ab-57b1-4148-8616-0b22932227ee__list_projects",
+      "mcp__d92371ab-57b1-4148-8616-0b22932227ee__list_deployments",
+      "mcp__d92371ab-57b1-4148-8616-0b22932227ee__get_deployment_build_logs"
     ]
   }
 }
