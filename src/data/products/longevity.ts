@@ -24,7 +24,7 @@ export const longevityProducts: Product[] = [
     keyBenefits: ["Telomere support", "Sleep quality", "Longevity"],
     clinicalNotes: "Consult provider for dosing.",
     variants: [
-      { strength: "50 mg", vialSize: "50 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 230 },
+      { strength: "50 mg", vialSize: "50 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 90 },
     ],
   }),
   base({
@@ -127,7 +127,7 @@ export const longevityProducts: Product[] = [
         vialSize: "7-day supply",
         concentration: "~2,143 mg/day",
         schedule: "Daily for 7 days",
-        price: 1995,
+        price: 1500,
       },
     ],
   }),
