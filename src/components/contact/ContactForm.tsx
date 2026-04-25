@@ -3,12 +3,20 @@
 import { useState } from "react";
 import { Send, CheckCircle, AlertTriangle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { SEX_OPTIONS, US_STATES } from "@/data/insurance";
 
 interface FormState {
   name: string;
   email: string;
   phone: string;
   subject: string;
+  sex: string;
+  dateOfBirth: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  zip: string;
   message: string;
   referralCode: string;
 }
@@ -18,6 +26,13 @@ const initialState: FormState = {
   email: "",
   phone: "",
   subject: "",
+  sex: "",
+  dateOfBirth: "",
+  address1: "",
+  address2: "",
+  city: "",
+  state: "",
+  zip: "",
   message: "",
   referralCode: "",
 };
@@ -181,6 +196,129 @@ export function ContactForm() {
               </option>
             ))}
           </select>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="sex" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
+            Sex
+          </label>
+          <select
+            id="sex"
+            name="sex"
+            disabled={loading}
+            value={form.sex}
+            onChange={handleChange}
+            className={`${inputStyles} appearance-none`}
+          >
+            <option value="" className="bg-brand-black">Select</option>
+            {SEX_OPTIONS.map((opt) => (
+              <option key={opt} value={opt} className="bg-brand-black">
+                {opt}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="dateOfBirth" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
+            Date of Birth
+          </label>
+          <input
+            type="date"
+            id="dateOfBirth"
+            name="dateOfBirth"
+            disabled={loading}
+            value={form.dateOfBirth}
+            onChange={handleChange}
+            max={new Date().toISOString().split("T")[0]}
+            className={inputStyles}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="address1" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
+          Address
+        </label>
+        <input
+          type="text"
+          id="address1"
+          name="address1"
+          disabled={loading}
+          value={form.address1}
+          onChange={handleChange}
+          placeholder="Street address"
+          className={inputStyles}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="address2" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
+          Address 2 <span className="text-brand-silver-dim">(optional)</span>
+        </label>
+        <input
+          type="text"
+          id="address2"
+          name="address2"
+          disabled={loading}
+          value={form.address2}
+          onChange={handleChange}
+          placeholder="Apt, suite, unit, etc."
+          className={inputStyles}
+        />
+      </div>
+
+      <div className="grid grid-cols-4 gap-5">
+        <div className="col-span-2">
+          <label htmlFor="city" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
+            City
+          </label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            disabled={loading}
+            value={form.city}
+            onChange={handleChange}
+            placeholder="City"
+            className={inputStyles}
+          />
+        </div>
+        <div>
+          <label htmlFor="state" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
+            State
+          </label>
+          <select
+            id="state"
+            name="state"
+            disabled={loading}
+            value={form.state}
+            onChange={handleChange}
+            className={`${inputStyles} appearance-none`}
+          >
+            <option value="" className="bg-brand-black">State</option>
+            {US_STATES.map((s) => (
+              <option key={s} value={s} className="bg-brand-black">
+                {s}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="zip" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
+            Zip
+          </label>
+          <input
+            type="text"
+            id="zip"
+            name="zip"
+            disabled={loading}
+            value={form.zip}
+            onChange={handleChange}
+            placeholder="12345"
+            className={inputStyles}
+          />
         </div>
       </div>
 
