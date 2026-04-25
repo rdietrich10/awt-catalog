@@ -5,6 +5,13 @@ interface ContactEmailData {
   email: string;
   phone?: string;
   subject: string;
+  sex?: string;
+  dateOfBirth?: string;
+  address1?: string;
+  address2?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
   message: string;
   timestamp: string;
 }
@@ -126,8 +133,20 @@ export function contactEmailHtml(data: ContactEmailData): string {
   const email = escapeHtml(data.email);
   const phone = escapeHtml(data.phone || "Not provided");
   const subject = escapeHtml(data.subject);
+  const sex = data.sex ? escapeHtml(data.sex) : "";
+  const dateOfBirth = data.dateOfBirth ? escapeHtml(data.dateOfBirth) : "";
+  const address1 = data.address1 ? escapeHtml(data.address1) : "";
+  const address2 = data.address2 ? escapeHtml(data.address2) : "";
+  const city = data.city ? escapeHtml(data.city) : "";
+  const state = data.state ? escapeHtml(data.state) : "";
+  const zip = data.zip ? escapeHtml(data.zip) : "";
   const message = escapeHtml(data.message);
   const timestamp = escapeHtml(data.timestamp);
+
+  const divider = `<tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>`;
+
+  const addressParts = [address1, address2, city && state && zip ? `${city}, ${state} ${zip}` : city || state || zip].filter(Boolean);
+  const addressLine = addressParts.length > 0 ? addressParts.join("<br/>") : "";
 
   const content = `
     <h2 style="margin:0 0 8px;font-size:16px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.white};font-family:Georgia,'Times New Roman',serif;">
@@ -138,15 +157,18 @@ export function contactEmailHtml(data: ContactEmailData): string {
     </p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:4px;">
       ${fieldRow("Name", name)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
       ${fieldRow("Email", `<a href="mailto:${email}" style="color:${BRAND.gold};text-decoration:none;">${email}</a>`)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
       ${fieldRow("Phone", phone)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
       ${fieldRow("Subject", subject)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${sex ? `${divider}${fieldRow("Sex", sex)}` : ""}
+      ${dateOfBirth ? `${divider}${fieldRow("Date of Birth", dateOfBirth)}` : ""}
+      ${addressLine ? `${divider}${fieldRow("Address", addressLine)}` : ""}
+      ${divider}
       ${fieldRow("Message", message)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
       ${fieldRow("Received", timestamp)}
     </table>`;
 

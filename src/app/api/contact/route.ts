@@ -34,7 +34,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, phone, subject, message } = parsed.data;
+    const { name, email, phone, subject, sex, dateOfBirth, address1, address2, city, state, zip, message } = parsed.data;
 
     const { error: dbError } = await supabase
       .from("contact_submissions")
@@ -43,6 +43,13 @@ export async function POST(request: Request) {
         email,
         phone: phone || null,
         subject,
+        sex: sex || null,
+        date_of_birth: dateOfBirth || null,
+        address1: address1 || null,
+        address2: address2 || null,
+        city: city || null,
+        state: state || null,
+        zip: zip || null,
         message,
         email_sent: false,
       });
@@ -63,6 +70,13 @@ export async function POST(request: Request) {
       email,
       phone: phone || undefined,
       subject,
+      sex: sex || undefined,
+      dateOfBirth: dateOfBirth || undefined,
+      address1: address1 || undefined,
+      address2: address2 || undefined,
+      city: city || undefined,
+      state: state || undefined,
+      zip: zip || undefined,
       message,
     });
     console.error("[contact] email_sent:", emailSent);

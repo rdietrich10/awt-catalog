@@ -23,6 +23,60 @@ export const contactSchema = z.object({
     .trim()
     .min(1, "Subject is required")
     .max(100, "Subject must be 100 characters or fewer"),
+  sex: z
+    .enum(["Male", "Female", "Other"])
+    .optional()
+    .or(z.literal("").transform(() => undefined)),
+  dateOfBirth: z
+    .string()
+    .trim()
+    .optional()
+    .or(z.literal(""))
+    .refine(
+      (v) => {
+        if (!v) return true;
+        const d = new Date(v);
+        return !isNaN(d.getTime()) && d < new Date();
+      },
+      { message: "Date of birth must be a valid date in the past" },
+    ),
+  address1: z
+    .string()
+    .trim()
+    .max(200, "Address must be 200 characters or fewer")
+    .optional()
+    .or(z.literal("")),
+  address2: z
+    .string()
+    .trim()
+    .max(200, "Address line 2 must be 200 characters or fewer")
+    .optional()
+    .or(z.literal("")),
+  city: z
+    .string()
+    .trim()
+    .max(100, "City must be 100 characters or fewer")
+    .optional()
+    .or(z.literal("")),
+  state: z
+    .string()
+    .trim()
+    .max(2, "Use a 2-letter state abbreviation")
+    .optional()
+    .or(z.literal("")),
+  zip: z
+    .string()
+    .trim()
+    .max(10, "ZIP code must be 10 characters or fewer")
+    .optional()
+    .or(z.literal(""))
+    .refine(
+      (v) => {
+        if (!v) return true;
+        return /^\d{5}(-\d{4})?$/.test(v);
+      },
+      { message: "Enter a valid ZIP code (e.g. 12345 or 12345-6789)" },
+    ),
   message: z
     .string()
     .trim()
