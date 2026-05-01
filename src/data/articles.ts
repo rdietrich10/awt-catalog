@@ -78,7 +78,7 @@ const unsorted: Article[] = [
     title: "Why a Physician-Directed Model Matters",
     excerpt: "Online peptide vendors sell products. AW Therapeutics delivers healthcare. Here's why that distinction matters for your safety, outcomes, and peace of mind.",
     content: "AW Therapeutics is a physician-directed medical practice delivering advanced therapeutics through a structured clinical process.",
-    image: "/images/articles/physician-directed-model.png",
+    image: "/images/articles/physician-directed-model.jpg",
     dateCreated: "2026-02-10",
     dateUpdated: "2026-02-10",
   },
