@@ -10,6 +10,7 @@ interface FormState {
   phone: string;
   subject: string;
   message: string;
+  referralCode: string;
 }
 
 const initialState: FormState = {
@@ -18,6 +19,7 @@ const initialState: FormState = {
   phone: "",
   subject: "",
   message: "",
+  referralCode: "",
 };
 
 const subjectOptions = [
@@ -196,6 +198,22 @@ export function ContactForm() {
           onChange={handleChange}
           placeholder="How can we help?"
           className={`${inputStyles} resize-y`}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="referralCode" className="block text-caption font-display tracking-wider uppercase text-brand-silver-dark mb-1.5">
+          Referral Code
+        </label>
+        <input
+          type="text"
+          id="referralCode"
+          name="referralCode"
+          disabled={loading}
+          value={form.referralCode}
+          onChange={handleChange}
+          placeholder="e.g. FRIEND2024"
+          className={inputStyles}
         />
       </div>
 

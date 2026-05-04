@@ -6,6 +6,7 @@ interface ContactEmailData {
   phone?: string;
   subject: string;
   message: string;
+  referralCode?: string;
   timestamp: string;
 }
 
@@ -127,7 +128,10 @@ export function contactEmailHtml(data: ContactEmailData): string {
   const phone = escapeHtml(data.phone || "Not provided");
   const subject = escapeHtml(data.subject);
   const message = escapeHtml(data.message);
+  const referralCode = data.referralCode ? escapeHtml(data.referralCode) : "";
   const timestamp = escapeHtml(data.timestamp);
+
+  const divider = `<tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>`;
 
   const content = `
     <h2 style="margin:0 0 8px;font-size:16px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.white};font-family:Georgia,'Times New Roman',serif;">
@@ -138,15 +142,16 @@ export function contactEmailHtml(data: ContactEmailData): string {
     </p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:4px;">
       ${fieldRow("Name", name)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
       ${fieldRow("Email", `<a href="mailto:${email}" style="color:${BRAND.gold};text-decoration:none;">${email}</a>`)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
       ${fieldRow("Phone", phone)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
       ${fieldRow("Subject", subject)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${divider}
       ${fieldRow("Message", message)}
-      <tr><td colspan="2" style="border-bottom:1px solid ${BRAND.border};"></td></tr>
+      ${referralCode ? `${divider}${fieldRow("Referral Code", referralCode)}` : ""}
+      ${divider}
       ${fieldRow("Received", timestamp)}
     </table>`;
 

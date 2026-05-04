@@ -24,6 +24,7 @@ interface ContactPayload {
   phone?: string;
   subject: string;
   message: string;
+  referralCode?: string;
 }
 
 interface InquiryProductPayload {

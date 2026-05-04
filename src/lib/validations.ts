@@ -28,6 +28,12 @@ export const contactSchema = z.object({
     .trim()
     .min(1, "Message is required")
     .max(5000, "Message must be 5,000 characters or fewer"),
+  referralCode: z
+    .string()
+    .trim()
+    .max(50, "Referral code must be 50 characters or fewer")
+    .optional()
+    .or(z.literal("")),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

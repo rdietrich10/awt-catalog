@@ -34,7 +34,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, phone, subject, message } = parsed.data;
+    const { name, email, phone, subject, message, referralCode } = parsed.data;
 
     const { error: dbError } = await supabase
       .from("contact_submissions")
@@ -44,6 +44,7 @@ export async function POST(request: Request) {
         phone: phone || null,
         subject,
         message,
+        referral_code: referralCode || null,
         email_sent: false,
       });
 
@@ -64,6 +65,7 @@ export async function POST(request: Request) {
       phone: phone || undefined,
       subject,
       message,
+      referralCode: referralCode || undefined,
     });
     console.error("[contact] email_sent:", emailSent);
 
