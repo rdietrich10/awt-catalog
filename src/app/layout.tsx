@@ -8,9 +8,10 @@ import { JsonLd, organizationJsonLd, webSiteJsonLd } from "@/lib/structured-data
 import { GoogleAnalytics } from "@/components/layout/GoogleAnalytics";
 import { CookieConsent } from "@/components/layout/CookieConsent";
 
+const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

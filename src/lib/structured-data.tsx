@@ -8,9 +8,10 @@ import {
 } from "@/data/company";
 import type { Product, Article, FAQ } from "@/types";
 
+const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://localhost:3000");
+  (vercelUrl ? `https://${vercelUrl}` : "https://localhost:3000");
 
 export function organizationJsonLd() {
   return {
