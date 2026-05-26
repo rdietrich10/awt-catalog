@@ -1,21 +1,35 @@
-import sgMail from "@sendgrid/mail";
+import nodemailer from "nodemailer";
 import {
   contactEmailHtml,
   inquiryEmailHtml,
   insuranceVerificationEmailHtml,
 } from "./email-templates";
 
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-const FROM_EMAIL = "noreply@awtherapeutics.com";
+const SMTP_HOST = process.env.SMTP_HOST ?? "mail.awtherapeutics.com";
+const SMTP_PORT = parseInt(process.env.SMTP_PORT ?? "465", 10);
+const SMTP_SECURE = process.env.SMTP_SECURE !== "false"; // true by default (SSL on port 465)
+const SMTP_USER = process.env.SMTP_USER ?? "info@awtherapeutics.com";
+const SMTP_PASS = process.env.SMTP_PASS;
+
+const FROM_EMAIL = SMTP_USER;
+const FROM_NAME = "AW Therapeutics";
 const TO_EMAIL = "info@awclinics.com";
 const BCC_EMAILS = ["reannedietrich@gmail.com"];
 
-if (!SENDGRID_API_KEY) {
-  console.warn("SENDGRID_API_KEY is not set. Emails will not be sent.");
+if (!SMTP_PASS) {
+  console.warn("SMTP_PASS is not set. Emails will not be sent.");
 }
 
-if (SENDGRID_API_KEY) {
-  sgMail.setApiKey(SENDGRID_API_KEY);
+function createTransporter() {
+  return nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_SECURE,
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASS,
+    },
+  });
 }
 
 interface ContactPayload {
@@ -77,8 +91,8 @@ interface InquiryPayload {
 export async function sendContactNotification(
   data: ContactPayload
 ): Promise<boolean> {
-  if (!SENDGRID_API_KEY) {
-    console.error("Cannot send email: SENDGRID_API_KEY not configured");
+  if (!SMTP_PASS) {
+    console.error("Cannot send email: SMTP_PASS not configured");
     return false;
   }
 
@@ -89,18 +103,18 @@ export async function sendContactNotification(
   });
 
   try {
-    await sgMail.send({
+    const transporter = createTransporter();
+    await transporter.sendMail({
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
-      from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Contact: ${data.subject} \u2014 from ${data.name}`,
+      from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
+      subject: `New Contact: ${data.subject} — from ${data.name}`,
       html: contactEmailHtml({ ...data, timestamp }),
     });
-    console.error("[email] contact notification sent successfully");
+    console.log("[email] contact notification sent successfully");
     return true;
-  } catch (err: unknown) {
-    const sgErr = err as { code?: number; response?: { body?: unknown } };
-    console.error("[email] SendGrid contact error \u2014 code:", sgErr?.code, "body:", JSON.stringify(sgErr?.response?.body));
+  } catch (err) {
+    console.error("[email] SMTP contact error:", err);
     return false;
   }
 }
@@ -108,8 +122,8 @@ export async function sendContactNotification(
 export async function sendInquiryNotification(
   data: InquiryPayload
 ): Promise<boolean> {
-  if (!SENDGRID_API_KEY) {
-    console.error("Cannot send email: SENDGRID_API_KEY not configured");
+  if (!SMTP_PASS) {
+    console.error("Cannot send email: SMTP_PASS not configured");
     return false;
   }
 
@@ -120,16 +134,17 @@ export async function sendInquiryNotification(
   });
 
   try {
-    await sgMail.send({
+    const transporter = createTransporter();
+    await transporter.sendMail({
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
-      from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Inquiry from ${data.firstName} ${data.lastName} \u2014 ${data.products.length} Product${data.products.length === 1 ? "" : "s"}`,
+      from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
+      subject: `New Inquiry from ${data.firstName} ${data.lastName} — ${data.products.length} Product${data.products.length === 1 ? "" : "s"}`,
       html: inquiryEmailHtml({ ...data, timestamp }),
     });
     return true;
   } catch (err) {
-    console.error("SendGrid inquiry email error:", err);
+    console.error("[email] SMTP inquiry error:", err);
     return false;
   }
 }
@@ -139,10 +154,10 @@ interface InsuranceVerificationPayload {
 }
 
 export async function sendInsuranceVerificationNotification(
-  data: InsuranceVerificationPayload,
+  data: InsuranceVerificationPayload
 ): Promise<boolean> {
-  if (!SENDGRID_API_KEY) {
-    console.error("Cannot send email: SENDGRID_API_KEY not configured");
+  if (!SMTP_PASS) {
+    console.error("Cannot send email: SMTP_PASS not configured");
     return false;
   }
 
@@ -153,11 +168,12 @@ export async function sendInsuranceVerificationNotification(
   });
 
   try {
-    await sgMail.send({
+    const transporter = createTransporter();
+    await transporter.sendMail({
       to: TO_EMAIL,
       bcc: BCC_EMAILS,
-      from: { email: FROM_EMAIL, name: "AW Therapeutics" },
-      subject: `New Insurance Verification Request \u2014 Ref ${data.referenceId.slice(0, 8)}`,
+      from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
+      subject: `New Insurance Verification Request — Ref ${data.referenceId.slice(0, 8)}`,
       html: insuranceVerificationEmailHtml({
         referenceId: data.referenceId,
         timestamp,
@@ -165,7 +181,7 @@ export async function sendInsuranceVerificationNotification(
     });
     return true;
   } catch (err) {
-    console.error("SendGrid insurance verification email error:", err);
+    console.error("[email] SMTP insurance verification error:", err);
     return false;
   }
 }
