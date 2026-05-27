@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase-server";
+import { createClient } from "@supabase/supabase-js";
 import {
   sendContactNotification,
   sendInquiryNotification,
@@ -7,6 +7,13 @@ import {
 } from "@/lib/email";
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
+
+// Use service role key to bypass RLS for admin operations
+function getAdminSupabase() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_ANON_KEY!;
+  return createClient(url, key, { auth: { persistSession: false } });
+}
 
 function isAuthorized(request: Request): { ok: boolean; debug: object } {
   if (!ADMIN_SECRET) return { ok: false, debug: { reason: "ADMIN_SECRET not set in env" } };
@@ -45,9 +52,10 @@ export async function POST(request: Request) {
   };
 
   const debug: Record<string, unknown> = {};
+  const db = getAdminSupabase();
 
   // ── Contact submissions ─────────────────────────────────────────────────────
-  const { data: contacts, error: contactsErr } = await supabase
+  const { data: contacts, error: contactsErr } = await db
     .from("contact_submissions")
     .select("*")
     .not("email_sent", "is", true)
@@ -78,7 +86,7 @@ export async function POST(request: Request) {
 
       if (sent) {
         results.contacts.sent++;
-        await supabase
+        await db
           .from("contact_submissions")
           .update({ email_sent: true })
           .eq("id", row.id);
@@ -89,7 +97,7 @@ export async function POST(request: Request) {
   }
 
   // ── Inquiry submissions ─────────────────────────────────────────────────────
-  const { data: inquiries, error: inquiriesErr } = await supabase
+  const { data: inquiries, error: inquiriesErr } = await db
     .from("inquiry_submissions")
     .select("*")
     .not("email_sent", "is", true)
@@ -120,7 +128,7 @@ export async function POST(request: Request) {
 
       if (sent) {
         results.inquiries.sent++;
-        await supabase
+        await db
           .from("inquiry_submissions")
           .update({ email_sent: true })
           .eq("id", row.id);
@@ -131,7 +139,7 @@ export async function POST(request: Request) {
   }
 
   // ── Insurance verification requests ────────────────────────────────────────
-  const { data: insurance, error: insuranceErr } = await supabase
+  const { data: insurance, error: insuranceErr } = await db
     .from("insurance_verification_requests")
     .select("id")
     .not("email_sent", "is", true)
@@ -150,7 +158,7 @@ export async function POST(request: Request) {
 
       if (sent) {
         results.insurance.sent++;
-        await supabase
+        await db
           .from("insurance_verification_requests")
           .update({ email_sent: true })
           .eq("id", row.id);
