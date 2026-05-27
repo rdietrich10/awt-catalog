@@ -8,10 +8,23 @@ import {
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
 
-export async function POST(request: Request) {
-  // Simple secret-key auth
+function isAuthorized(request: Request): boolean {
+  if (!ADMIN_SECRET) return false;
+  // Accept secret via Authorization header or ?secret= query param
   const authHeader = request.headers.get("authorization");
-  if (!ADMIN_SECRET || authHeader !== `Bearer ${ADMIN_SECRET}`) {
+  if (authHeader === `Bearer ${ADMIN_SECRET}`) return true;
+  const { searchParams } = new URL(request.url);
+  if (searchParams.get("secret") === ADMIN_SECRET) return true;
+  return false;
+}
+
+// GET: browser-friendly — just visit the URL with ?secret=...
+export async function GET(request: Request) {
+  return POST(request);
+}
+
+export async function POST(request: Request) {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
