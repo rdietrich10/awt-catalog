@@ -8,14 +8,22 @@ import {
 
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
 
-function isAuthorized(request: Request): boolean {
-  if (!ADMIN_SECRET) return false;
-  // Accept secret via Authorization header or ?secret= query param
+function isAuthorized(request: Request): { ok: boolean; debug: object } {
+  if (!ADMIN_SECRET) return { ok: false, debug: { reason: "ADMIN_SECRET not set in env" } };
   const authHeader = request.headers.get("authorization");
-  if (authHeader === `Bearer ${ADMIN_SECRET}`) return true;
+  if (authHeader === `Bearer ${ADMIN_SECRET}`) return { ok: true, debug: { method: "header" } };
   const { searchParams } = new URL(request.url);
-  if (searchParams.get("secret") === ADMIN_SECRET) return true;
-  return false;
+  const param = searchParams.get("secret");
+  const matches = param === ADMIN_SECRET;
+  return {
+    ok: matches,
+    debug: {
+      method: "query",
+      secretEnvLen: ADMIN_SECRET.length,
+      secretParamLen: param?.length ?? null,
+      matches,
+    },
+  };
 }
 
 // GET: browser-friendly — just visit the URL with ?secret=...
@@ -24,8 +32,10 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  if (!isAuthorized(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = isAuthorized(request);
+  console.log("[resend] auth check:", JSON.stringify(auth.debug));
+  if (!auth.ok) {
+    return NextResponse.json({ error: "Unauthorized", debug: auth.debug }, { status: 401 });
   }
 
   const results = {
