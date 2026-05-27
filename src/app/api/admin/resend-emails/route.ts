@@ -44,6 +44,8 @@ export async function POST(request: Request) {
     insurance: { found: 0, sent: 0, failed: 0 },
   };
 
+  const debug: Record<string, unknown> = {};
+
   // ── Contact submissions ─────────────────────────────────────────────────────
   const { data: contacts, error: contactsErr } = await supabase
     .from("contact_submissions")
@@ -51,6 +53,8 @@ export async function POST(request: Request) {
     .not("email_sent", "is", true)
     .order("created_at", { ascending: true });
 
+  debug.contactsErr = contactsErr ?? null;
+  debug.contactsRaw = contacts?.length ?? null;
   if (contactsErr) {
     console.error("[resend] failed to fetch contacts:", contactsErr);
   } else {
@@ -91,6 +95,8 @@ export async function POST(request: Request) {
     .not("email_sent", "is", true)
     .order("created_at", { ascending: true });
 
+  debug.inquiriesErr = inquiriesErr ?? null;
+  debug.inquiriesRaw = inquiries?.length ?? null;
   if (inquiriesErr) {
     console.error("[resend] failed to fetch inquiries:", inquiriesErr);
   } else {
@@ -131,6 +137,8 @@ export async function POST(request: Request) {
     .not("email_sent", "is", true)
     .order("created_at", { ascending: true });
 
+  debug.insuranceErr = insuranceErr ?? null;
+  debug.insuranceRaw = insurance?.length ?? null;
   if (insuranceErr) {
     console.error("[resend] failed to fetch insurance requests:", insuranceErr);
   } else {
@@ -153,5 +161,5 @@ export async function POST(request: Request) {
   }
 
   console.log("[resend] results:", JSON.stringify(results));
-  return NextResponse.json({ success: true, results });
+  return NextResponse.json({ success: true, results, debug });
 }
