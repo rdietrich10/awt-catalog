@@ -29,6 +29,14 @@ function createTransporter() {
       user: SMTP_USER,
       pass: SMTP_PASS,
     },
+    // cPanel shared hosting often uses a cert issued to the server hostname
+    // rather than the domain, so we disable strict TLS verification.
+    tls: {
+      rejectUnauthorized: false,
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 }
 
@@ -114,7 +122,8 @@ export async function sendContactNotification(
     console.log("[email] contact notification sent successfully");
     return true;
   } catch (err) {
-    console.error("[email] SMTP contact error:", err);
+    const e = err as { code?: string; message?: string; command?: string; response?: string };
+    console.error("[email] SMTP contact error — code:", e?.code, "message:", e?.message, "command:", e?.command, "response:", e?.response);
     return false;
   }
 }
@@ -144,7 +153,8 @@ export async function sendInquiryNotification(
     });
     return true;
   } catch (err) {
-    console.error("[email] SMTP inquiry error:", err);
+    const e = err as { code?: string; message?: string; command?: string; response?: string };
+    console.error("[email] SMTP inquiry error — code:", e?.code, "message:", e?.message, "command:", e?.command, "response:", e?.response);
     return false;
   }
 }
@@ -181,7 +191,8 @@ export async function sendInsuranceVerificationNotification(
     });
     return true;
   } catch (err) {
-    console.error("[email] SMTP insurance verification error:", err);
+    const e = err as { code?: string; message?: string; command?: string; response?: string };
+    console.error("[email] SMTP insurance error — code:", e?.code, "message:", e?.message, "command:", e?.command, "response:", e?.response);
     return false;
   }
 }
