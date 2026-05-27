@@ -48,7 +48,7 @@ export async function POST(request: Request) {
   const { data: contacts, error: contactsErr } = await supabase
     .from("contact_submissions")
     .select("*")
-    .eq("email_sent", false)
+    .not("email_sent", "is", true)
     .order("created_at", { ascending: true });
 
   if (contactsErr) {
@@ -88,7 +88,7 @@ export async function POST(request: Request) {
   const { data: inquiries, error: inquiriesErr } = await supabase
     .from("inquiry_submissions")
     .select("*")
-    .eq("email_sent", false)
+    .not("email_sent", "is", true)
     .order("created_at", { ascending: true });
 
   if (inquiriesErr) {
@@ -128,7 +128,7 @@ export async function POST(request: Request) {
   const { data: insurance, error: insuranceErr } = await supabase
     .from("insurance_verification_requests")
     .select("id")
-    .eq("email_sent", false)
+    .not("email_sent", "is", true)
     .order("created_at", { ascending: true });
 
   if (insuranceErr) {
