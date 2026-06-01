@@ -24,7 +24,7 @@ export const longevityProducts: Product[] = [
     keyBenefits: ["Telomere support", "Sleep quality", "Longevity"],
     clinicalNotes: "Consult provider for dosing.",
     variants: [
-      { strength: "50 mg", vialSize: "50 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 90 },
+      { strength: "50 mg", vialSize: "50 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 130 },
     ],
   }),
   base({
@@ -41,7 +41,7 @@ export const longevityProducts: Product[] = [
     keyBenefits: ["Mitochondrial support", "Metabolic health"],
     clinicalNotes: "Consult provider for dosing.",
     variants: [
-      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 90 },
+      { strength: "10 mg", vialSize: "10 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 130 },
     ],
   }),
   base({
@@ -58,7 +58,7 @@ export const longevityProducts: Product[] = [
     keyBenefits: ["Sleep support", "Circadian rhythm"],
     clinicalNotes: "Consult provider for dosing.",
     variants: [
-      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 90 },
+      { strength: "5 mg", vialSize: "5 mg", concentration: "Consult provider", schedule: "Consult provider", reconstitutionVolume: "Consult provider", price: 130 },
     ],
   }),
   base({

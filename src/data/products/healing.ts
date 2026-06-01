@@ -63,7 +63,7 @@ export const healingProducts: Product[] = [
     blendComponents: ["BPC-157 10mg", "TB-500 10mg"],
     featured: true,
     variants: [
-      { strength: "10/10 mg", vialSize: "10/10 mg", concentration: "0.05/0.05 mg/unit", schedule: "20 units daily", reconstitutionVolume: "2 mL", price: 165 },
+      { strength: "10/10 mg", vialSize: "10/10 mg", concentration: "0.05/0.05 mg/unit", schedule: "20 units daily", reconstitutionVolume: "2 mL", price: 185 },
     ],
   }),
   base({
@@ -137,7 +137,7 @@ export const healingProducts: Product[] = [
     keyBenefits: ["Skin tightening", "Hair support", "Wound healing"],
     clinicalNotes: "Skin tightening, hair loss, wound healing.",
     variants: [
-      { strength: "100 mg", vialSize: "100 mg", concentration: "0.25 mg/unit", schedule: "28 days on/14 off", reconstitutionVolume: "2 mL", price: 99 },
+      { strength: "100 mg", vialSize: "100 mg", concentration: "0.25 mg/unit", schedule: "28 days on/14 off", reconstitutionVolume: "2 mL", price: 130 },
     ],
   }),
 ];
