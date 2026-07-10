@@ -178,7 +178,6 @@ cp .env.example .env
 | `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL |
 | `SUPABASE_ANON_KEY` | Yes | Supabase anon key |
 | `SENDGRID_API_KEY` | For forms | SendGrid API key (emails won't send without it) |
-| `SENDGRID_FROM_EMAIL` | Recommended | Verified sender identity/domain in SendGrid (defaults to `info@awtherapeutics.com`) |
 | `FAL_API_KEY` or `FAL_KEY` | For image scripts | fal.ai API key for image generation |
 
 ### 3. Supabase setup
