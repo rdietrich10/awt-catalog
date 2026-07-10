@@ -59,7 +59,7 @@ A sophisticated peptide catalog for **AW Therapeutics** (Americare Wellness, LLC
 | **Next.js 14** | React framework, App Router |
 | **Vercel** | Hosting, deployment, serverless functions |
 | **Supabase** | PostgreSQL database, storage, audit logging |
-| **SendGrid** | Transactional email notifications |
+| **cPanel SMTP** | Transactional email notifications (Namecheap-hosted mailbox) |
 | **Fal AI** | AI-powered image generation (build-time) |
 
 ---
@@ -101,9 +101,9 @@ Supabase provides the backend for form submissions and audit trails.
 
 ---
 
-### SendGrid
+### Email (cPanel SMTP)
 
-SendGrid sends transactional emails when forms are submitted.
+Transactional emails are sent via direct SMTP relay (nodemailer) to a cPanel/Namecheap-hosted mailbox (`mail.awtherapeutics.com`), independent of whichever provider hosts the domain's regular mailboxes (currently Microsoft 365).
 
 **Email types:**
 - **Contact notification** — New contact form submission → `info@awclinics.com`
@@ -111,6 +111,8 @@ SendGrid sends transactional emails when forms are submitted.
 - **Insurance verification notification** — New verification request with reference ID
 
 All emails use branded HTML templates (`src/lib/email-templates.ts`) with proper escaping of user content.
+
+**Note:** TLS certificate verification is disabled for this SMTP connection (`tls.rejectUnauthorized: false`) because shared cPanel hosting often serves a certificate issued to the server hostname rather than `mail.awtherapeutics.com`. See `src/lib/email.ts`.
 
 ---
 
@@ -177,7 +179,11 @@ cp .env.example .env
 |----------|----------|---------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL |
 | `SUPABASE_ANON_KEY` | Yes | Supabase anon key |
-| `SENDGRID_API_KEY` | For forms | SendGrid API key (emails won't send without it) |
+| `SMTP_HOST` | For forms | SMTP host (defaults to `mail.awtherapeutics.com`) |
+| `SMTP_PORT` | For forms | SMTP port (defaults to `465`) |
+| `SMTP_SECURE` | For forms | `true`/`false` for implicit TLS (defaults to `true`) |
+| `SMTP_USER` | For forms | Mailbox username (defaults to `info@awtherapeutics.com`) |
+| `SMTP_PASS` | For forms | Mailbox password (emails won't send without it) |
 | `FAL_API_KEY` or `FAL_KEY` | For image scripts | fal.ai API key for image generation |
 
 ### 3. Supabase setup
@@ -202,7 +208,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-> **Note:** If forms fail, ensure Supabase and SendGrid env vars are set. The app will run without them, but contact/inquiry/insurance endpoints will error.
+> **Note:** If forms fail, ensure Supabase and SMTP env vars are set. The app will run without them, but contact/inquiry/insurance endpoints will error.
 
 ### 5. (Optional) Generate images
 
