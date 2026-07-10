@@ -14,7 +14,7 @@ are grouped by urgency and regulatory domain.
 | # | Item | Effort | Notes |
 | --- | --- | --- | --- |
 | 1 | **Execute BAA with Supabase** | Admin | Requires Supabase Team or Enterprise plan |
-| 2 | **Execute BAA with SendGrid/Twilio** | Admin | Available through Twilio's HIPAA portal |
+| 2 | **Resolve email BAA gap** | Admin | Notifications currently relay through a cPanel/Namecheap mailbox (no BAA available). Move back to a BAA-eligible ESP (e.g. SendGrid/Twilio, once billing is restored) or formally document risk acceptance |
 | 3 | **Execute BAA with Vercel** | Admin | Requires Vercel Enterprise plan; evaluate risk acceptance if not on Enterprise |
 | 4 | **Designate a Privacy Officer** | Admin | Update `docs/hipaa-breach-response.md` and privacy page with name/title |
 | 5 | **Conduct formal HIPAA Security Risk Assessment (SRA)** | 1–2 days | Required by 45 CFR 164.308(a)(1)(ii)(A); document findings and remediation plan |
@@ -80,7 +80,7 @@ are grouped by urgency and regulatory domain.
 | # | Item | Effort | Notes |
 | --- | --- | --- | --- |
 | 24 | **Add GDPR language to privacy page** | 2 hours | Reference GDPR by name, add lawful basis for processing, right to erasure, data portability, DPO contact |
-| 25 | **Data Processing Agreement (DPA)** | Admin | Ensure DPAs are in place with Supabase, SendGrid, and Vercel |
+| 25 | **Data Processing Agreement (DPA)** | Admin | Ensure DPAs are in place with Supabase and Vercel; revisit once email moves back to a third-party ESP |
 
 ### Cookie Compliance
 

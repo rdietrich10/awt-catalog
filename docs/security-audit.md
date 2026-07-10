@@ -10,7 +10,7 @@
 
 - **Framework:** Next.js 14.2 (App Router) deployed on Vercel
 - **Database:** Supabase (PostgreSQL) — stores contact and inquiry submissions
-- **Email:** SendGrid — sends internal notification emails
+- **Email:** cPanel SMTP relay (Namecheap-hosted mailbox) — sends internal notification emails via nodemailer
 - **Analytics:** Google Analytics 4 with Consent Mode v2
 - **Image generation:** fal.ai (build-time scripts only, no runtime API calls)
 - **Authentication:** None (no user accounts; catalog-only site)
@@ -89,7 +89,7 @@ All headers are set in `next.config.js` and apply to every route:
 | --- | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` | Public (URL only, no key) | Supabase project URL |
 | `SUPABASE_ANON_KEY` | Server-only | Supabase anon key for API routes |
-| `SENDGRID_API_KEY` | Server-only | SendGrid email delivery |
+| `SMTP_PASS` | Server-only | cPanel mailbox password for email delivery |
 | `FAL_API_KEY` | Build-time scripts only | fal.ai image generation |
 
 - `.env` is listed in `.gitignore`.

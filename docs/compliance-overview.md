@@ -50,22 +50,28 @@ status, and outstanding action items.
   (treatment, payment, operations, legal), information sharing, patient rights
 - **HIPAA consent checkbox** on inquiry form with acknowledgment text
 - **Encryption in transit:** TLS 1.2+ enforced via HSTS (2-year max-age)
-- **Encryption at rest:** Supabase (AES-256), SendGrid (AES-256), Vercel (AES-256)
+- **Encryption at rest:** Supabase (AES-256), Vercel (AES-256). Email is sent via direct SMTP relay to a cPanel mailbox rather than a third-party API vendor — see "What remains" below.
 - **Minimum necessary standard:** Forms collect only name, email, phone, and
   product selections — no diagnoses, SSNs, or detailed health records
 - **Audit logging:** All form submissions logged to `audit_log` table in
   Supabase with event type, IP address, timestamp, and details
 - **Row-Level Security:** Supabase tables restrict anon key to INSERT-only;
   no read access to submission data via the public API
-- **BAA checklist** documenting required agreements with Supabase, SendGrid,
-  Vercel, and Google Analytics
+- **BAA checklist** documenting required agreements with Supabase, Vercel,
+  and Google Analytics
 - **Breach notification procedure** documenting the 60-day notification
   timeline, HHS reporting, and internal incident response steps
 
 ### What remains
 
-- **Execute BAAs** with Supabase (Team plan required), SendGrid/Twilio, and
-  Vercel (Enterprise plan)
+- **Execute BAAs** with Supabase (Team plan required) and Vercel (Enterprise plan)
+- **Email vendor decision:** Notification emails (contact/inquiry forms
+  include name, address, DOB, sex, phone — PHI-adjacent) currently go out via
+  direct SMTP relay to a cPanel/Namecheap-hosted mailbox, which typically does
+  not offer a HIPAA BAA. This is a gap versus a BAA-eligible ESP like
+  SendGrid/Twilio. Until a BAA-capable provider is back in place, treat this
+  as an accepted risk requiring sign-off, or minimize PHI-adjacent fields in
+  outbound email bodies.
 - **Designate a Privacy Officer** (referenced in breach procedure but unnamed)
 - **Workforce training** documentation (HIPAA requires documented training)
 - **Risk assessment** — formal HIPAA Security Risk Assessment (SRA) per 45 CFR
